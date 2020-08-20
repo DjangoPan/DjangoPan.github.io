@@ -91,7 +91,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="pwnable系列-fd">
 <meta property="og:url" content="https://7h4mid4.cn/pwnable系列-fd.html">
-<meta property="og:site_name" content="7h4mid4、墨言♫">
+<meta property="og:site_name" content="九月八">
 <meta property="og:description" content="到位。直接读源码就可以了。#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; #include &amp;lt;string.h&amp;gt; char buf[32]; int main(int argc, char* argv[], char* envp[]){     if(argc&amp;lt;2){         printf(&amp;quot;pass a">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://7h4mid4.cn/images/pasted-1.png">
@@ -167,7 +167,7 @@
         }
     })();
 </script>
-  <title>pwnable系列-fd | 7h4mid4、墨言♫</title>
+  <title>pwnable系列-fd | 九月八</title>
   
 
 
@@ -207,12 +207,12 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">7h4mid4、墨言♫</span>
+        <span class="site-title">九月八</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">7h4mid4's Blog</p>
+        <p class="site-subtitle">一叶扁舟谁念我，独独走，无人留。</p>
       
   </div>
 
@@ -278,6 +278,26 @@
               <i class="menu-item-icon fa fa-fw fa-camera-retro"></i> <br>
             
             相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br>
+            
+            我的读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br>
+            
+            我的电影
           </a>
         </li>
       
@@ -351,11 +371,11 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="7h4mid4">
       <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="7h4mid4、墨言♫">
+      <meta itemprop="name" content="九月八">
     </span>
 
     
@@ -433,6 +453,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/pwnable系列-fd.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/pwnable系列-fd.html" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -550,6 +580,35 @@ int main(int argc, char* argv[], char* envp[]){
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的认可是我不断进步的动力</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="7h4mid4 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="7h4mid4 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -617,6 +676,9 @@ int main(int argc, char* argv[], char* envp[]){
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -656,11 +718,11 @@ int main(int argc, char* argv[], char* envp[]){
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
             <a href="/">
-              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="7h4mid4">
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpeg" alt="7h4mid4">
             </a>
             
               <p class="site-author-name" itemprop="name">7h4mid4</p>
-              <p class="site-description motion-element" itemprop="description">静水流深，宁静致远。</p>
+              <p class="site-description motion-element" itemprop="description">幽人独往来，缥缈孤鸿影。</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -865,6 +927,38 @@ show_date_time();
 
 
 
+<!--添加网站的运行时间-->
+<span id="sitetime"> <br></span>
+<script language="javascript">
+  function siteTime(){
+    window.setTimeout("siteTime()", 1000);
+    var seconds = 1000
+    var minutes = seconds * 60
+    var hours = minutes * 60
+    var days = hours * 24
+    var years = days * 365
+
+    var today = new Date()
+    var todayYear = today.getFullYear()
+    var todayMonth = today.getMonth()
+    var todayDate = today.getDate()
+    var todayHour = today.getHours()
+    var todayMinute = today.getMinutes()
+    var todaySecond = today.getSeconds()
+    var t1 = Date.UTC(2018,10,11,19,21,18)
+    var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond)
+    var diff = t2-t1
+
+    var diffYears = Math.floor(diff/years)
+    var diffDays = Math.floor((diff/days)-diffYears*365)
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours)
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes)
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds)
+    document.getElementById("sitetime").innerHTML=" 本站已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒<br>"
+  }
+  siteTime()
+</script>
+
 
 
 
@@ -1016,6 +1110,28 @@ show_date_time();
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'YMMXqH0MkcPRGMzdbg0gNv58-gzGzoHsz',
+        appKey: '4kakI7eBTjj8rGycy4eSciJp',
+        placeholder: '欢迎留言评论，发表你的看法...',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
