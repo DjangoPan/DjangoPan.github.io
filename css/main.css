@@ -1768,6 +1768,64 @@ pre .javascript .function {
     transform: rotateZ(-30deg);
   }
 }
+.swal-overlay {
+  background-color: transparent;
+}
+.copy-success-message {
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  width: auto;
+  margin: 16x 0px;
+  vertical-align: top;
+}
+.copy-success-message .swal-content {
+  margin: 0px 0px !important;
+  padding: 10px 16px;
+  line-height: 1em;
+}
+.copy-success-message .message-icon {
+  color: #52c41a;
+  margin-right: 8px;
+}
+.copy-success-message .message-content {
+  font-size: 14px;
+}
+.post-widgets {
+  border-top: 1px solid #eee;
+  padding-top: 9px;
+  margin-top: 45px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.post-widgets .post-meta-divider {
+  height: 28px;
+  color: #999;
+}
+.wp_rating {
+  height: 20px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 20px;
+  padding-top: 6px;
+}
+.social-like {
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.vk_like {
+  width: 85px;
+  height: 21px;
+  padding-top: 7px;
+  align-self: center;
+}
+.fb_like {
+  height: 30px;
+  align-self: center;
+}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -1967,7 +2025,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d5ffff;
+  background: #34525e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2526,6 +2584,13 @@ pre .javascript .function {
 .page-pv .busuanzi-value {
   margin: 0 5px;
 }
+.site-uv {
+  margin-right: 10px;
+}
+.site-uv::after {
+  content: "|";
+  padding-left: 10px;
+}
 .page-archive .archive-page-counter {
   position: relative;
   top: 3px;
@@ -2865,6 +2930,43 @@ body {
 }
 .with-love {
   color: #ff71a8;
+}
+.busuanzi-value {
+  color: #1890ff;
+}
+.highlight {
+  position: relative;
+}
+.btn-copy {
+  display: inline-block;
+  cursor: pointer;
+  background-color: #eee;
+  background-image: linear-gradient(#fcfcfc, #eee);
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #333;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  padding: 2px 6px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  opacity: 0;
+}
+.btn-copy span {
+  margin-left: 5px;
+}
+.highlight:hover .btn-copy {
+  opacity: 1;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
