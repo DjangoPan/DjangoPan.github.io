@@ -415,8 +415,6 @@
 
           
 
-          
-          
 
           
             
@@ -435,7 +433,10 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="post-meta-item-text">
+              阅读次数&#58;
+            </span>            
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
             </span>
           
@@ -452,7 +453,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.1k
+                  2.2k
                 </span>
               
 
@@ -501,7 +502,7 @@
 -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; pstree
 以树的形式显示出来
 -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan
--f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psxview</code></pre><h5 id="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"><a href="#pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。" class="headerlink" title="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"></a>pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。</h5><h5 id="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"><a href="#psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。" class="headerlink" title="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"></a>psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。</h5><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan</code></pre><h5 id="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"><a href="#显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。" class="headerlink" title="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"></a>显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。</h5><h4 id="查看用户SID："><a href="#查看用户SID：" class="headerlink" title="查看用户SID："></a>查看用户SID：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; getsids</code></pre><h4 id="查看系统中的用户："><a href="#查看系统中的用户：" class="headerlink" title="查看系统中的用户："></a>查看系统中的用户：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;SAM\Domains\Account\Users\Names&quot;</code></pre><h4 id="获取系统中最后登录用户"><a href="#获取系统中最后登录用户" class="headerlink" title="获取系统中最后登录用户"></a>获取系统中最后登录用户</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></pre><h4 id="查看启动项："><a href="#查看启动项：" class="headerlink" title="查看启动项："></a>查看启动项：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;Microsoft\Windows\CurrentVersion\Run&quot;</code></pre><h4 id="查看动态链接库的信息："><a href="#查看动态链接库的信息：" class="headerlink" title="查看动态链接库的信息："></a>查看动态链接库的信息：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; dlllist [-p pid]</code></pre><h5 id="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"><a href="#显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。" class="headerlink" title="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"></a>显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。</h5><h4 id="查看临时内存注册表信息："><a href="#查看临时内存注册表信息：" class="headerlink" title="查看临时内存注册表信息："></a>查看临时内存注册表信息：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hivelist
+-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psxview</code></pre><h5 id="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"><a href="#pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。" class="headerlink" title="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"></a>pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。</h5><h5 id="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"><a href="#psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。" class="headerlink" title="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"></a>psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。</h5><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan</code></pre><h5 id="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"><a href="#显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。" class="headerlink" title="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"></a>显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。</h5><h4 id="查看用户SID："><a href="#查看用户SID：" class="headerlink" title="查看用户SID："></a>查看用户SID：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; getsids</code></pre><h4 id="查看系统中的用户："><a href="#查看系统中的用户：" class="headerlink" title="查看系统中的用户："></a>查看系统中的用户：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K "SAM\Domains\Account\Users\Names"</code></pre><h4 id="获取系统中最后登录用户"><a href="#获取系统中最后登录用户" class="headerlink" title="获取系统中最后登录用户"></a>获取系统中最后登录用户</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></pre><h4 id="查看启动项："><a href="#查看启动项：" class="headerlink" title="查看启动项："></a>查看启动项：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K "Microsoft\Windows\CurrentVersion\Run"</code></pre><h4 id="查看动态链接库的信息："><a href="#查看动态链接库的信息：" class="headerlink" title="查看动态链接库的信息："></a>查看动态链接库的信息：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; dlllist [-p pid]</code></pre><h5 id="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"><a href="#显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。" class="headerlink" title="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"></a>显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。</h5><h4 id="查看临时内存注册表信息："><a href="#查看临时内存注册表信息：" class="headerlink" title="查看临时内存注册表信息："></a>查看临时内存注册表信息：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hivelist
 -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; lsadump -y SYSTEM的virtualaddr -s SECURITY的virtualaddr
 
 都是用来查看第二类注册表信息</code></pre><h5 id="注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件-hive-”的分散文件组成。"><a href="#注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件-hive-”的分散文件组成。" class="headerlink" title="注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件(hive)”的分散文件组成。"></a>注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件(hive)”的分散文件组成。</h5><h5 id="注册表文件主要包括两类："><a href="#注册表文件主要包括两类：" class="headerlink" title="注册表文件主要包括两类："></a>注册表文件主要包括两类：</h5><h5 id="第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32-config文件夹下。一般在运行中使用regedit查看。"><a href="#第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32-config文件夹下。一般在运行中使用regedit查看。" class="headerlink" title="第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32\config文件夹下。一般在运行中使用regedit查看。"></a>第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32\config文件夹下。一般在运行中使用regedit查看。</h5><h5 id="第二类-易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。"><a href="#第二类-易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。" class="headerlink" title="第二类;易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。"></a>第二类;易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。</h5><h4 id="hivelist："><a href="#hivelist：" class="headerlink" title="hivelist："></a>hivelist：</h4><h5 id="定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。"><a href="#定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。" class="headerlink" title="定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。"></a>定位与硬盘上对应的注册表文件在内存中的<strong>虚拟地址</strong>和<strong>物理地址</strong>。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。</h5><h4 id="lsadump："><a href="#lsadump：" class="headerlink" title="lsadump："></a>lsadump：</h4><h5 id="使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。"><a href="#使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。" class="headerlink" title="使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。"></a>使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。</h5><h5 id="LSA-Local-Security-Authority-即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。"><a href="#LSA-Local-Security-Authority-即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。" class="headerlink" title="LSA(Local Security Authority)即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。"></a>LSA(Local Security Authority)即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。</h5><h5 id="使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数"><a href="#使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数" class="headerlink" title="使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数."></a>使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数.</h5><pre><code>-f &lt;memdump.img&gt; --profile=&lt;prifile&gt; lsadump -y SYSTEM的virtualaddr -s SECURE的virtualaddr</code></pre><h4 id="获取注册表信息以爆破密码："><a href="#获取注册表信息以爆破密码：" class="headerlink" title="获取注册表信息以爆破密码："></a>获取注册表信息以爆破密码：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hashdump -y SYSTEM的virtualaddr -s SAM的virtualaddr</code></pre><h5 id="之后就能看到用户名和两个hash值，选后面那个hash值，用www-cmd5-com-搜索hash转文字，用NTLM来查SAM中的hash。"><a href="#之后就能看到用户名和两个hash值，选后面那个hash值，用www-cmd5-com-搜索hash转文字，用NTLM来查SAM中的hash。" class="headerlink" title="之后就能看到用户名和两个hash值，选后面那个hash值，用www.cmd5.com 搜索hash转文字，用NTLM来查SAM中的hash。"></a>之后就能看到用户名和两个hash值，选后面那个hash值，用<a href="http://www.cmd5.com" target="_blank" rel="noopener">www.cmd5.com</a> 搜索hash转文字，用NTLM来查SAM中的hash。</h5><h4 id="查看历史命令："><a href="#查看历史命令：" class="headerlink" title="查看历史命令："></a>查看历史命令：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; cmdscan</code></pre><h4 id="查看控制台命令："><a href="#查看控制台命令：" class="headerlink" title="查看控制台命令："></a>查看控制台命令：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; consoles</code></pre><h4 id="查看网络连接（TCP连接）："><a href="#查看网络连接（TCP连接）：" class="headerlink" title="查看网络连接（TCP连接）："></a>查看网络连接（TCP连接）：</h4><pre><code>-f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; connections           Vista前的系统用的
@@ -527,7 +528,25 @@ strings 1608.dmp &gt; 1736.txt | grep shellcode</code></pre><p>–cache选项的
 <p><a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference" target="_blank" rel="noopener">命令行指南</a></p>
 <p>附上一篇好文章，其中有一些典型的题目可以参考，日后感兴趣的可以做做。<br><a href="http://shaobaobaoer.cn/archives/693/memory-forensics-tool-volatility-usage-and-practice" target="_blank" rel="noopener">传送门</a></p>
 <p>另外加上一篇<a href="https://www.cnblogs.com/ECJTUACM-873284962/p/9473808.html" target="_blank" rel="noopener">USB流量分析文章</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
     
@@ -896,7 +915,7 @@ show_date_time();
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">17.7k</span>
+    <span title="博客全站字数">18.2k</span>
   
 </div>
 
@@ -946,7 +965,7 @@ show_date_time();
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">
@@ -1063,9 +1082,12 @@ show_date_time();
   <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
+  
 
-  
-  
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
 
 
   
@@ -1074,10 +1096,9 @@ show_date_time();
 
 
 
+
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  
 
 
   
@@ -1490,6 +1511,16 @@ show_date_time();
   
 
 
+  
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+
+
+
+
 <!-- 动态标题功能 -->
 <script type="text/javascript" src="/js/src/dytitle.js"></script>
 
@@ -1497,10 +1528,10 @@ show_date_time();
 <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1.3,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":180,"height":200,"position":"left"},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script><script>
+<script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1.3,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":180,"height":200,"position":"left"},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
 </html>

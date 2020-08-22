@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="stackfrom pwn import * context.log_level = &amp;apos;debug&amp;apos; io = process(&amp;quot;&amp;quot;) code = ELF(&amp;quot;&amp;quot;) #lib = ELF(&amp;quot;./bc.so.6&amp;quot;) #r = remote(&amp;quot;&amp;quot;) def debug():     print io.p">
+<meta name="description" content="stackfrom pwn import * context.log_level = &apos;debug&apos; io = process(&quot;&quot;) code = ELF(&quot;&quot;) #lib = ELF(&quot;./bc.so.6&quot;) #r = remote(&quot;&quot;) def debug():     print io.pid     pause() def gdb(script = &apos;&apos;):     gdb.attac">
 <meta name="keywords" content="pwn,EXP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通用pwn exp脚本">
 <meta property="og:url" content="https://7h4mid4.cn/用pwn-exp脚本.html">
 <meta property="og:site_name" content="一葉扁舟">
-<meta property="og:description" content="stackfrom pwn import * context.log_level = &amp;apos;debug&amp;apos; io = process(&amp;quot;&amp;quot;) code = ELF(&amp;quot;&amp;quot;) #lib = ELF(&amp;quot;./bc.so.6&amp;quot;) #r = remote(&amp;quot;&amp;quot;) def debug():     print io.p">
+<meta property="og:description" content="stackfrom pwn import * context.log_level = &apos;debug&apos; io = process(&quot;&quot;) code = ELF(&quot;&quot;) #lib = ELF(&quot;./bc.so.6&quot;) #r = remote(&quot;&quot;) def debug():     print io.pid     pause() def gdb(script = &apos;&apos;):     gdb.attac">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-08-18T05:08:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="通用pwn exp脚本">
-<meta name="twitter:description" content="stackfrom pwn import * context.log_level = &amp;apos;debug&amp;apos; io = process(&amp;quot;&amp;quot;) code = ELF(&amp;quot;&amp;quot;) #lib = ELF(&amp;quot;./bc.so.6&amp;quot;) #r = remote(&amp;quot;&amp;quot;) def debug():     print io.p">
+<meta name="twitter:description" content="stackfrom pwn import * context.log_level = &apos;debug&apos; io = process(&quot;&quot;) code = ELF(&quot;&quot;) #lib = ELF(&quot;./bc.so.6&quot;) #r = remote(&quot;&quot;) def debug():     print io.pid     pause() def gdb(script = &apos;&apos;):     gdb.attac">
 
 
 
@@ -437,8 +437,6 @@
             </span>
           
 
-          
-          
 
           
             
@@ -457,7 +455,10 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="post-meta-item-text">
+              阅读次数&#58;
+            </span>            
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
             </span>
           
@@ -474,7 +475,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  142
+                  182
                 </span>
               
 
@@ -512,21 +513,39 @@
 
       
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><pre><code>from pwn import *
-context.log_level = &apos;debug&apos;
-io = process(&quot;&quot;)
-code = ELF(&quot;&quot;)
-#lib = ELF(&quot;./bc.so.6&quot;)
-#r = remote(&quot;&quot;)
+context.log_level = 'debug'
+io = process("")
+code = ELF("")
+#lib = ELF("./bc.so.6")
+#r = remote("")
 def debug():
     print io.pid
     pause()
-def gdb(script = &apos;&apos;):
+def gdb(script = ''):
     gdb.attach(io, gdbscrippt = script)
 
 def exploit():
 
     io.interactive()
-exploit()</code></pre><h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">io = process(<span class="string">"./"</span>)</span><br><span class="line"><span class="comment">#io = remote("",)</span></span><br><span class="line">libc = ELF(<span class="string">"./bc.so.6"</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(size)</span>:</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'1'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Size:"</span>,str(size))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(num)</span>:</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'4'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(num)</span>:</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'2'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(num,content)</span>:</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'3'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line">    io.sendlineafter(<span class="string">"Content:"</span>,content)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> io.pid</span><br><span class="line">    pause()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span><span class="params">(script=<span class="string">''</span>)</span>:</span></span><br><span class="line">    gdb.attach(io, gdbscript=script)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exploit</span><span class="params">()</span>:</span></span><br></pre></td></tr></table></figure>
+exploit()</code></pre><h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">io = process(<span class="string">"./"</span>)</span><br><span class="line"><span class="comment">#io = remote("",)</span></span><br><span class="line">libc = ELF(<span class="string">"./bc.so.6"</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(size)</span>:</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'1'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Size:"</span>,str(size))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(num)</span>:</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'4'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(num)</span>:</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'2'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span><span class="params">(num,content)</span>:</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'3'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line">    io.sendlineafter(<span class="string">"Content:"</span>,content)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> io.pid</span><br><span class="line">    pause()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span><span class="params">(script=<span class="string">''</span>)</span>:</span></span><br><span class="line">    gdb.attach(io, gdbscript=script)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exploit</span><span class="params">()</span>:</span></span><br></pre></td></tr></tbody></table></figure><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
     
@@ -893,7 +912,7 @@ show_date_time();
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">17.7k</span>
+    <span title="博客全站字数">18.2k</span>
   
 </div>
 
@@ -943,7 +962,7 @@ show_date_time();
 
         
 <div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
   
     <span class="site-uv">
@@ -1060,9 +1079,12 @@ show_date_time();
   <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
+  
 
-  
-  
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
 
 
   
@@ -1071,10 +1093,9 @@ show_date_time();
 
 
 
+
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+  
 
 
   
@@ -1487,6 +1508,16 @@ show_date_time();
   
 
 
+  
+  
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+
+
+
+
+
 <!-- 动态标题功能 -->
 <script type="text/javascript" src="/js/src/dytitle.js"></script>
 
@@ -1494,10 +1525,10 @@ show_date_time();
 <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
 <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1.3,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":180,"height":200,"position":"left"},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script><script>
+<script>
             window.imageLazyLoadSetting = {
                 isSPA: false,
                 processImages: null,
             };
-        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1.3,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":180,"height":200,"position":"left"},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body>
 </html>
