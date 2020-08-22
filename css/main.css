@@ -2025,7 +2025,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff65ff;
+  background: #ff6a95;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2889,6 +2889,13 @@ embed {
 .links-of-blogroll-inline .links-of-blogroll-item {
   display: inline-block;
 }
+body {
+  background: url("https://source.unsplash.com/random/1920x1080?wallpapers");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 50% 50%;
+}
 .container .header-inner {
   width: 100%;
 }
@@ -3016,7 +3023,7 @@ img.img-topic {
 .sidebar-toggle {
   right: 10px;
   bottom: 43px;
-  background-color: rgba(247,149,51,0.75);
+  background-color: rgba(247,149,51,0.7);
   border-radius: 5px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
 }
@@ -3030,13 +3037,13 @@ img.img-topic {
   padding-left: 5px;
   padding-top: 2.5px;
   padding-bottom: 2.5px;
-  background-color: rgba(247,149,51,0.75);
+  background-color: rgba(247,149,51,0.7);
   border-radius: 5px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.35);
 }
 .sidebar {
-  box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.5);
-  background-color: rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.35);
+  background-color: rgba(0,0,0,0.7);
 }
 .sidebar-inner {
   margin-top: 30px;
@@ -3093,7 +3100,7 @@ img.img-topic {
 .links-of-blogroll-title {
   margin-bottom: 10px;
   margin-top: 15px;
-  color: rgba(7,179,155,0.75);
+  color: rgba(7,179,155,0.7);
   margin-left: 6px;
   font-size: 15px;
   font-weight: bold;
