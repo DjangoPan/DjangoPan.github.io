@@ -6,7 +6,7 @@
   <link href="https://7h4mid4.cn/atom.xml" rel="self"/>
   
   <link href="https://7h4mid4.cn/"/>
-  <updated>2020-08-22T22:41:45.973Z</updated>
+  <updated>2020-08-22T23:01:51.758Z</updated>
   <id>https://7h4mid4.cn/</id>
   
   <author>
@@ -21,12 +21,12 @@
     <link href="https://7h4mid4.cn/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html"/>
     <id>https://7h4mid4.cn/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html</id>
     <published>2020-08-22T22:22:46.000Z</published>
-    <updated>2020-08-22T22:41:45.973Z</updated>
+    <updated>2020-08-22T23:01:51.758Z</updated>
     
     
       
       
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h3 id=&quot;Home-Brew&quot;&gt;&lt;a href=&quot;#Home-Brew&quot; c</summary>
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css&quot;&gt;&lt;h3 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerli</summary>
       
     
     
@@ -45,7 +45,7 @@
     <link href="https://7h4mid4.cn/1-2-%E5%B8%A6%E5%A3%B3%E7%A0%B4%E8%A7%A3%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%B3%A8%E5%86%8C%E7%A0%81.html"/>
     <id>https://7h4mid4.cn/1-2-%E5%B8%A6%E5%A3%B3%E7%A0%B4%E8%A7%A3%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%B3%A8%E5%86%8C%E7%A0%81.html</id>
     <published>2019-12-12T16:51:00.000Z</published>
-    <updated>2019-12-12T17:02:24.000Z</updated>
+    <updated>2020-08-22T22:56:56.066Z</updated>
     
     
       
@@ -275,11 +275,11 @@
     <category term="CTF" scheme="https://7h4mid4.cn/categories/学习/CTF/"/>
     
     
-    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
-    
     <category term="pwnable" scheme="https://7h4mid4.cn/tags/pwnable/"/>
     
     <category term="文件描述符" scheme="https://7h4mid4.cn/tags/文件描述符/"/>
+    
+    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
     
   </entry>
   
