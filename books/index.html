@@ -80,8 +80,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="一葉扁舟" type="application/atom+xml">
 
@@ -770,10 +768,6 @@ for (var i = 0; i < firstpages.length; i++) {
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://ctf-wiki.github.io/ctf-wiki/" title="CTFwiki" target="_blank">CTFwiki</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
                     <a href="https://buuoj.cn/" title="BUUCTF" target="_blank">BUUCTF</a>
                   </li>
                 
@@ -820,7 +814,7 @@ for (var i = 0; i < firstpages.length; i++) {
         e_minsold=(e_hrsold-hrsold)*60;
         minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
         seconds=setzero(Math.floor((e_minsold-minsold)*60));
-        document.getElementById('days').innerHTML="此站已陪伴博主"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+        document.getElementById('days').innerHTML="此站已历经风雨"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
     }
 function setzero(i){
     if (i<10)
@@ -847,9 +841,7 @@ show_date_time();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="heart">
     <i class="fa fa-heart"></i>
   </span>
@@ -1082,7 +1074,8 @@ show_date_time();
 
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
   <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-  
+
+
   <script type="text/javascript">
     var GUEST = ['nick','mail','link'];
     var guest = 'nick,mail,link';
@@ -1092,18 +1085,29 @@ show_date_time();
     new Valine({
         el: '#comments' ,
         verify: false,
-        notify: true,
+        notify: false,
         appId: 'YMMXqH0MkcPRGMzdbg0gNv58-gzGzoHsz',
         appKey: '4kakI7eBTjj8rGycy4eSciJp',
         placeholder: '有什么想对我说的呢，记得留下你的名字哦(;￢＿￢) ',
         avatar:'robohash',
         guest_info:guest,
         pageSize:'10' || 10,
-        enableQQ: ,
-        recordIP: true,
-        serverURLs: '',
     });
   </script>
+
+
+
+
+
+<!-- 今日诗词：随机返回一句古诗词名句的接口，宅到用来做 Valine 的 placeholder 显示内容 -->
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+    jinrishici.load(function(result) {
+        var jrsc_plac =  result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author;
+        document.getElementById("veditor").setAttribute("placeholder",jrsc_plac);
+    })
+</script>
+
 
 
 

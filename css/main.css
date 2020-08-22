@@ -2025,7 +2025,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffb047;
+  background: #8aff1f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3095,6 +3095,13 @@ div.post-block.tag .collection-title h2 {
   margin-left: 5px;
   font-size: 16px;
   transition-duration: 0.15s;
+}
+.v .veditor {
+  min-height: 8rem;
+}
+.v .vinput {
+  padding: 10px 15px;
+  text-align: center;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
