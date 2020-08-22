@@ -1,7 +1,7 @@
 var a_idx = 0;
 jQuery(document).ready(function($) {
   $("body").click(function(e) {
-    var a = new Array("不走", "走");
+    var a = new Array("不走", "走", "留下");
     var $i = $("<span/>").text(a[a_idx]);
     var x = e.pageX,
     y = e.pageY;
