@@ -9,7 +9,7 @@ var titleTime;
 document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
         $('[rel="shortcut icon"]').attr('href', "/TEP.png");
-        document.title = '走罢，走罢，外面的世界更精彩...';
+        document.title = '走罢，走罢，千万别回头...';
         //document.title = 'w(ﾟДﾟ)w 出BUG啦！！！！';
         clearTimeout(titleTime);
     }
