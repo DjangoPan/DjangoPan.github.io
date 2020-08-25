@@ -2025,7 +2025,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e32e93;
+  background: #12aaed;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2926,6 +2926,8 @@ img.img-topic {
   padding: 45px 36px 36px 36px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
   background-color: #fff;
+  opacity: 0.85;
+  border-radius: 60px;
 }
 .posts-expand .post-title {
   font-size: 26px;
