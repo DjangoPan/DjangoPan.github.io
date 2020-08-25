@@ -1,37 +1,1601 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon32.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon16.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="取证,内存,volatility," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一葉扁舟" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Volatility的基本介绍Volatility是一款基于GNU协议的开源框架，使用Python语言编写而成的内存取证工具集，可以分析内存中的各种数据。Volatility支持对32位或64位Wnidows、Linux、Mac、Android操作系统的RAM（随机存储器）数据进行提取与分析。 内存镜像的获取MoonSols DumpIt是一款同时支持Win32dd和Win64dd的内存副本获取工">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内存取证入门">
+<meta property="og:url" content="https://7h4mid4.cn/%E5%8F%96%E8%AF%81%E5%85%A5%E9%97%A8.html">
+<meta property="og:site_name" content="一葉扁舟">
+<meta property="og:description" content="Volatility的基本介绍Volatility是一款基于GNU协议的开源框架，使用Python语言编写而成的内存取证工具集，可以分析内存中的各种数据。Volatility支持对32位或64位Wnidows、Linux、Mac、Android操作系统的RAM（随机存储器）数据进行提取与分析。 内存镜像的获取MoonSols DumpIt是一款同时支持Win32dd和Win64dd的内存副本获取工">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-09-06T14:55:00.000Z">
+<meta property="article:modified_time" content="2019-09-07T06:07:43.000Z">
+<meta property="article:author" content="九月八">
+<meta property="article:tag" content="取证">
+<meta property="article:tag" content="内存">
+<meta property="article:tag" content="volatility">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://7h4mid4.cn/取证入门.html"/>
+
+
+
+
+
+
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #ff009e; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #ff009e, 0 0 5px #ff009e; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #ff009e;    /*上边框颜色*/
+        border-left-color: #ff009e;    /*左边框颜色*/
+    }
+</style>
+
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+  <title>内存取证入门 | 一葉扁舟</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+
+    <a target="_blank" rel="noopener" href="https://github.com/DjangoPan">     
+    <img style="position: absolute; top: 0;
+    left: 0; border: 0;" src=https://github.blog/wp-content/uploads/2008/12/forkme_left_white_ffffff.png?resize=149%2C149" alt="Fork me on GitHub" data-canonical-
+    src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
+    </a>
+
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一葉扁舟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">一葉扁舟誰念我，獨獨走，莫回頭。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            我的读书
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-movies">
+          <a href="/movies/he" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />
+            
+            我的电影
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://7h4mid4.cn/%E5%8F%96%E8%AF%81%E5%85%A5%E9%97%A8.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一葉扁舟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">内存取证入门</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-06T22:55:00+08:00">
+                2019-09-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-07T14:07:43+08:00">
+                2019-09-07
+              </time>
+            
+          </span>
+
+          
+
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/%E5%8F%96%E8%AF%81%E5%85%A5%E9%97%A8.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/%E5%8F%96%E8%AF%81%E5%85%A5%E9%97%A8.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i>
+            <span class="post-meta-item-text">
+              阅读次数&#58;
+            </span>            
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+   
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="Volatility的基本介绍"><a href="#Volatility的基本介绍" class="headerlink" title="Volatility的基本介绍"></a>Volatility的基本介绍</h3><p>Volatility是一款基于GNU协议的开源框架，使用Python语言编写而成的内存取证工具集，可以分析内存中的各种数据。Volatility支持对32位或64位Wnidows、Linux、Mac、Android操作系统的RAM（随机存储器）数据进行提取与分析。</p>
+<h3 id="内存镜像的获取"><a href="#内存镜像的获取" class="headerlink" title="内存镜像的获取"></a>内存镜像的获取</h3><p><code>MoonSols DumpIt</code>是一款同时支持Win32dd和Win64dd的内存副本获取工具。用户只需双击DumpIt.exe可执行程序，并在提示问题后面输入y（如图2.2所示），等待几分钟时间即可在当前目录下生成主机物理内存的副本（如图2.3所示），该副本文件是以*.raw为后缀的镜像文件。</p>
+<p>raw是未经处理的意思，即使用该工具对物理内存进行拷贝是按每一个bit进行深度复制，即按原样进行复制，这样可以避免丢失一些重要数据。</p>
+<p>拿到一个镜像文件，在cmd进入所在目录，输入:</p>
+<pre><code>    .\volatility  -f &lt;memdump.img&gt; imageinfo</code></pre>
+<h5 id="Suggested-profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。"><a href="#Suggested-profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。" class="headerlink" title="Suggested profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。"></a>Suggested profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过<code>imageinfo</code>命令获取。</h5><p>使用策略方法：</p>
+<pre><code>    .\volatility  -f &lt;memdump.img&gt; --profile=Win7SP1x64</code></pre>
+<h4 id="查看镜像信息："><a href="#查看镜像信息：" class="headerlink" title="查看镜像信息："></a>查看镜像信息：</h4><pre><code>    -f &lt;memdump.img&gt; imageinfo</code></pre>
+<h5 id="显示主机所使用的操作系统版本、服务包以及硬件结构-32位或64位-、页目录表的起始地址和该获取该内存镜像的时间等基本信息"><a href="#显示主机所使用的操作系统版本、服务包以及硬件结构-32位或64位-、页目录表的起始地址和该获取该内存镜像的时间等基本信息" class="headerlink" title="显示主机所使用的操作系统版本、服务包以及硬件结构(32位或64位)、页目录表的起始地址和该获取该内存镜像的时间等基本信息"></a>显示主机所使用的操作系统版本、服务包以及硬件结构(32位或64位)、页目录表的起始地址和该获取该内存镜像的时间等基本信息</h5><h4 id="查找内存中KPCR的-KPCR结构体信息："><a href="#查找内存中KPCR的-KPCR结构体信息：" class="headerlink" title="查找内存中KPCR的_KPCR结构体信息："></a>查找内存中KPCR的_KPCR结构体信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; kprcscan                        需要好几个小时。</code></pre>
+<p>在_KPCR的帮助下我们可以枚举机器上运行的进程列表。</p>
+<p>由于Windows需要支持多个CPU，因此Windows内核中为此定义了一套以处理器控制区(Processor Control Region)即KPCR为枢纽的数据结构，使每个CPU都有个KPCR。 其中KPCR这个结构中有一个域KPRCB(Kernel Processor Control Block)结构，这个结构扩展了KPCR，这两个结构用来保存<strong>与线程切换相关的全局信息。</strong></p>
+<p>具体的说，该命令可以显示每个处理器的详细信息，<strong>包括IDT（线程控制符）和GDT（全局段描述符表）地址，当前运行的线程和空闲线程，CPU数量、制造厂商及其速度，CR3寄存器或页目录表基地址的值等信息。</strong></p>
+<pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; kpcrscan</code></pre>
+<h4 id="查看进程："><a href="#查看进程：" class="headerlink" title="查看进程："></a>查看进程：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; pslist
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; pstree
+    以树的形式显示出来
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psxview</code></pre>
+<h5 id="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"><a href="#pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。" class="headerlink" title="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"></a>pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。</h5><h5 id="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"><a href="#psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。" class="headerlink" title="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"></a>psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。</h5><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan</code></pre>
+<h5 id="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"><a href="#显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。" class="headerlink" title="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"></a>显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。</h5><h4 id="查看用户SID："><a href="#查看用户SID：" class="headerlink" title="查看用户SID："></a>查看用户SID：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; getsids</code></pre>
+<h4 id="查看系统中的用户："><a href="#查看系统中的用户：" class="headerlink" title="查看系统中的用户："></a>查看系统中的用户：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K "SAM\Domains\Account\Users\Names"</code></pre>
+<h4 id="获取系统中最后登录用户"><a href="#获取系统中最后登录用户" class="headerlink" title="获取系统中最后登录用户"></a>获取系统中最后登录用户</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></pre>
+<h4 id="查看启动项："><a href="#查看启动项：" class="headerlink" title="查看启动项："></a>查看启动项：</h4><pre><code>     -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K "Microsoft\Windows\CurrentVersion\Run"</code></pre>
+<h4 id="查看动态链接库的信息："><a href="#查看动态链接库的信息：" class="headerlink" title="查看动态链接库的信息："></a>查看动态链接库的信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; dlllist [-p pid]</code></pre>
+<h5 id="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"><a href="#显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。" class="headerlink" title="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"></a>显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。</h5><h4 id="查看临时内存注册表信息："><a href="#查看临时内存注册表信息：" class="headerlink" title="查看临时内存注册表信息："></a>查看临时内存注册表信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hivelist
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; lsadump -y SYSTEM的virtualaddr -s SECURITY的virtualaddr
+
+    都是用来查看第二类注册表信息</code></pre>
+<h5 id="注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件-hive-”的分散文件组成。"><a href="#注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件-hive-”的分散文件组成。" class="headerlink" title="注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件(hive)”的分散文件组成。"></a>注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件(hive)”的分散文件组成。</h5><h5 id="注册表文件主要包括两类："><a href="#注册表文件主要包括两类：" class="headerlink" title="注册表文件主要包括两类："></a>注册表文件主要包括两类：</h5><h5 id="第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32-config文件夹下。一般在运行中使用regedit查看。"><a href="#第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32-config文件夹下。一般在运行中使用regedit查看。" class="headerlink" title="第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32\config文件夹下。一般在运行中使用regedit查看。"></a>第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32\config文件夹下。一般在运行中使用regedit查看。</h5><h5 id="第二类-易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。"><a href="#第二类-易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。" class="headerlink" title="第二类;易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。"></a>第二类;易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。</h5><h4 id="hivelist："><a href="#hivelist：" class="headerlink" title="hivelist："></a>hivelist：</h4><h5 id="定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。"><a href="#定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。" class="headerlink" title="定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。"></a>定位与硬盘上对应的注册表文件在内存中的<strong>虚拟地址</strong>和<strong>物理地址</strong>。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。</h5><h4 id="lsadump："><a href="#lsadump：" class="headerlink" title="lsadump："></a>lsadump：</h4><h5 id="使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。"><a href="#使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。" class="headerlink" title="使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。"></a>使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。</h5><h5 id="LSA-Local-Security-Authority-即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。"><a href="#LSA-Local-Security-Authority-即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。" class="headerlink" title="LSA(Local Security Authority)即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。"></a>LSA(Local Security Authority)即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。</h5><h5 id="使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数"><a href="#使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数" class="headerlink" title="使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数."></a>使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数.</h5><pre><code>    -f &lt;memdump.img&gt; --profile=&lt;prifile&gt; lsadump -y SYSTEM的virtualaddr -s SECURE的virtualaddr</code></pre>
+<h4 id="获取注册表信息以爆破密码："><a href="#获取注册表信息以爆破密码：" class="headerlink" title="获取注册表信息以爆破密码："></a>获取注册表信息以爆破密码：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hashdump -y SYSTEM的virtualaddr -s SAM的virtualaddr</code></pre>
+<h5 id="之后就能看到用户名和两个hash值，选后面那个hash值，用www-cmd5-com-搜索hash转文字，用NTLM来查SAM中的hash。"><a href="#之后就能看到用户名和两个hash值，选后面那个hash值，用www-cmd5-com-搜索hash转文字，用NTLM来查SAM中的hash。" class="headerlink" title="之后就能看到用户名和两个hash值，选后面那个hash值，用www.cmd5.com 搜索hash转文字，用NTLM来查SAM中的hash。"></a>之后就能看到用户名和两个hash值，选后面那个hash值，用<a target="_blank" rel="noopener" href="http://www.cmd5.com/">www.cmd5.com</a> 搜索hash转文字，用NTLM来查SAM中的hash。</h5><h4 id="查看历史命令："><a href="#查看历史命令：" class="headerlink" title="查看历史命令："></a>查看历史命令：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; cmdscan</code></pre>
+<h4 id="查看控制台命令："><a href="#查看控制台命令：" class="headerlink" title="查看控制台命令："></a>查看控制台命令：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; consoles</code></pre>
+<h4 id="查看网络连接（TCP连接）："><a href="#查看网络连接（TCP连接）：" class="headerlink" title="查看网络连接（TCP连接）："></a>查看网络连接（TCP连接）：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; connections           Vista前的系统用的
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; netscan                 Vista后的系统用的</code></pre>
+<h4 id="查看IE历史："><a href="#查看IE历史：" class="headerlink" title="查看IE历史："></a>查看IE历史：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; iehistory</code></pre>
+<h4 id="获取用户密码散列"><a href="#获取用户密码散列" class="headerlink" title="获取用户密码散列:"></a>获取用户密码散列:</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hashdump(-y systemadd –s samadd)</code></pre>
+<h4 id="获取内存中活跃的TCP连接"><a href="#获取内存中活跃的TCP连接" class="headerlink" title="获取内存中活跃的TCP连接"></a>获取内存中活跃的TCP连接</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; connections</code></pre>
+<h4 id="查看系统中已打开的文件（rootkit隐藏文件）"><a href="#查看系统中已打开的文件（rootkit隐藏文件）" class="headerlink" title="查看系统中已打开的文件（rootkit隐藏文件）"></a>查看系统中已打开的文件（rootkit隐藏文件）</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; filescan</code></pre>
+<h4 id="导出相关filescan的文件"><a href="#导出相关filescan的文件" class="headerlink" title="导出相关filescan的文件"></a>导出相关filescan的文件</h4><pre><code>    -f file_patched.dmp --profile=Win7SP1x86_23418 dumpfiles -D ./ -Q 0x000000000e080690</code></pre>
+<h4 id="显示在一个进程中打开的句柄"><a href="#显示在一个进程中打开的句柄" class="headerlink" title="显示在一个进程中打开的句柄"></a>显示在一个进程中打开的句柄</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; handles -p &lt;pid&gt; -t &lt;file&gt;</code></pre>
+<h4 id="显示内核中的驱动程序，包括已隐藏-链接的"><a href="#显示内核中的驱动程序，包括已隐藏-链接的" class="headerlink" title="显示内核中的驱动程序，包括已隐藏/链接的"></a>显示内核中的驱动程序，包括已隐藏/链接的</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; modules
+    查看内核驱动（不全）
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; modscan
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; driverscan</code></pre>
+<h4 id="查看服务"><a href="#查看服务" class="headerlink" title="查看服务"></a>查看服务</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; svcscan</code></pre>
+<h4 id="查看各组件时间线"><a href="#查看各组件时间线" class="headerlink" title="查看各组件时间线"></a>查看各组件时间线</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; timeliner
+    输出一般很多，建议输出到制定文件中</code></pre>
+<h4 id="查看系统或桌面执行文件的信息。"><a href="#查看系统或桌面执行文件的信息。" class="headerlink" title="查看系统或桌面执行文件的信息。"></a>查看系统或桌面执行文件的信息。</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; userassist
+
+   包括  ：名称、路径、执行次数、最后一次执行时间等</code></pre>
+<h4 id="将内存中的某个进程数据以-dmp-的格式保存出来"><a href="#将内存中的某个进程数据以-dmp-的格式保存出来" class="headerlink" title="将内存中的某个进程数据以 dmp 的格式保存出来"></a>将内存中的某个进程数据以 dmp 的格式保存出来</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; memdump -p [PID] -D [dump 出的文件保存的目录]
+    举例：
+    volatility -f mem.vmem --profile=WinXPSP2x86 memdump -p 1734 -D ctf/
+
+
+    hexdump 1734.dmp
+    二进制编辑器 hexeditor 将以上保存的 dmp 文件打开，并进行调查取证的工作。
+
+
+    你还可以使用 strings 这个工具将它的字符串打印出来。例：
+
+    strings 1736.dmp &gt; 1736.txt
+    strings 1608.dmp &gt; 1736.txt | grep shellcode</code></pre>
+<p>–cache选项的功能是使用缓存。<br>–dtb=DTB选项的功能是说明DTB(Directory Table Base)页目录表的基地址。<br>-k KPCR 选项的功能是说明一个指定的内核处理器控制区的虚拟地址。<br>Apihooks插件命令的功能是监测在进程和内核中的API钩子。<br>Bioskbd插件命令的功能是动态地从内存中读取键盘缓冲区的数据。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference">命令行指南</a></p>
+<p>附上一篇好文章，其中有一些典型的题目可以参考，日后感兴趣的可以做做。<br><a target="_blank" rel="noopener" href="http://shaobaobaoer.cn/archives/693/memory-forensics-tool-volatility-usage-and-practice">传送门</a></p>
+<p>另外加上一篇<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ECJTUACM-873284962/p/9473808.html">USB流量分析文章</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">
+    ---------------- The End ----------------
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的认可是我不断进步的动力</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/images/wechatpay.jpg" alt=" 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="/images/alipay.jpg" alt=" 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%8F%96%E8%AF%81/" rel="tag"># 取证</a>
+          
+            <a href="/tags/%E5%86%85%E5%AD%98/" rel="tag"># 内存</a>
+          
+            <a href="/tags/volatility/" rel="tag"># volatility</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+          <div style="color: rgba(0, 0, 0, 0.75); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/titled.html" rel="next" title="你藏了那么多，一定很辛苦吧">
+                <i class="fa fa-chevron-left"></i> 你藏了那么多，一定很辛苦吧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/%E8%AE%B0%E5%BD%95%E5%AE%89%E5%BE%BD%E6%9F%90%E4%B8%80%E6%AC%A1%E5%8F%96%E8%AF%81%E7%BB%83%E4%B9%A0.html" rel="prev" title="安徽取证大比武个人Writeup">
+                安徽取证大比武个人Writeup <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+            <a href="/">
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.jpeg"
+                alt="" />
+            </a>
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+
+
+
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/DjangoPan" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:328872348@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/DjangoPan" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://buuoj.cn/" title="BUUCTF" target="_blank">BUUCTF</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pwnable.kr/play.php" title="pwnable" target="_blank">pwnable</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://x.threatbook.cn/" title="微步在线" target="_blank">微步在线</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://fofa.so/" title="FOFA Pro" target="_blank">FOFA Pro</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.t00ls.net/" title="TOOLS" target="_blank">TOOLS</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.kanxue.com/" title="看雪学院" target="_blank">看雪学院</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27566770&auto=1&height=66"></iframe>
+
+
+<!--添加球形标签云-->
+
+<script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+<div class="widget-wrap">
+    <h3 class="widget-title"></h3>
+    <div id="myCanvasContainer" class="widget tagcloud">
+        <canvas width="250" height="250" id="resCanvas" style="width=100%">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CVE/" rel="tag">CVE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cowrie/" rel="tag">Cowrie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EXP/" rel="tag">EXP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dirtycow/" rel="tag">dirtycow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/" rel="tag">frp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwn/" rel="tag">pwn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwnable/" rel="tag">pwnable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/volatility/" rel="tag">volatility</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98/" rel="tag">内存</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%96%E8%AF%81/" rel="tag">取证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%80%E6%83%B3/" rel="tag">怀想</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8F%90%E6%9D%83/" rel="tag">提权</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/" rel="tag">文件描述符</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E8%8B%91/" rel="tag">文苑</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%8E%E6%96%87/" rel="tag">美文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%9C%E7%BD%90/" rel="tag">蜜罐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a><span class="tag-list-count">1</span></li></ul>
+        </canvas>
+    </div>
+</div>
+
+
+
+<div id="days"></div>
+    <script>
+    function show_date_time(){
+        window.setTimeout("show_date_time()", 1000);
+        BirthDay=new Date("10/11/2018 19:21:18");
+        today=new Date();
+        timeold=(today.getTime()-BirthDay.getTime());
+        sectimeold=timeold/1000
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000
+        e_daysold=timeold/msPerDay
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=setzero(Math.floor(e_hrsold));
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+        seconds=setzero(Math.floor((e_minsold-minsold)*60));
+        document.getElementById('days').innerHTML="此站已历经风雨"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+    }
+function setzero(i){
+    if (i<10)
+    {i="0" + i};
+    return i;
+}
+show_date_time();
+</script>
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Volatility%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Volatility的基本介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E9%95%9C%E5%83%8F%E7%9A%84%E8%8E%B7%E5%8F%96"><span class="nav-number">2.</span> <span class="nav-text">内存镜像的获取</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Suggested-profiles%EF%BC%9A%E7%AD%96%E7%95%A5%EF%BC%8C%E4%BC%9A%E5%91%8A%E8%AF%89%E4%BD%A0%E8%BF%99%E4%B8%AA%E5%86%85%E5%AD%98%E9%95%9C%E5%83%8F%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E4%BB%80%E4%B9%88%E7%AD%96%E7%95%A5%EF%BC%8C%E7%AD%96%E7%95%A5%E9%80%9A%E8%BF%87imageinfo%E5%91%BD%E4%BB%A4%E8%8E%B7%E5%8F%96%E3%80%82"><span class="nav-number">2.0.1.</span> <span class="nav-text">Suggested profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%95%9C%E5%83%8F%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">查看镜像信息：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E4%B8%BB%E6%9C%BA%E6%89%80%E4%BD%BF%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%89%88%E6%9C%AC%E3%80%81%E6%9C%8D%E5%8A%A1%E5%8C%85%E4%BB%A5%E5%8F%8A%E7%A1%AC%E4%BB%B6%E7%BB%93%E6%9E%84-32%E4%BD%8D%E6%88%9664%E4%BD%8D-%E3%80%81%E9%A1%B5%E7%9B%AE%E5%BD%95%E8%A1%A8%E7%9A%84%E8%B5%B7%E5%A7%8B%E5%9C%B0%E5%9D%80%E5%92%8C%E8%AF%A5%E8%8E%B7%E5%8F%96%E8%AF%A5%E5%86%85%E5%AD%98%E9%95%9C%E5%83%8F%E7%9A%84%E6%97%B6%E9%97%B4%E7%AD%89%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">显示主机所使用的操作系统版本、服务包以及硬件结构(32位或64位)、页目录表的起始地址和该获取该内存镜像的时间等基本信息</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%86%85%E5%AD%98%E4%B8%ADKPCR%E7%9A%84-KPCR%E7%BB%93%E6%9E%84%E4%BD%93%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">查找内存中KPCR的_KPCR结构体信息：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E8%BF%9B%E7%A8%8B%EF%BC%9A"><span class="nav-number">2.3.</span> <span class="nav-text">查看进程：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pslist%E5%8F%AF%E4%BB%A5%E6%9E%9A%E4%B8%BE%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E8%BF%9B%E7%A8%8B%EF%BC%8C%E8%BF%99%E6%9D%A1%E5%91%BD%E4%BB%A4%E9%80%9A%E8%BF%87%E9%81%8D%E5%8E%86PsActiveProcessHead%E6%8C%87%E9%92%88%E6%8C%87%E5%90%91%E7%9A%84%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E6%9E%9A%E4%B8%BE%E5%BD%93%E5%89%8D%E5%86%85%E5%AD%98%E4%B8%AD%E6%B4%BB%E8%B7%83%E7%9A%84%E6%89%80%E6%9C%89%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF%EF%BC%8C%E4%B8%BB%E8%A6%81%E5%8C%85%E6%8B%AC%E5%81%8F%E7%A7%BB%E5%9C%B0%E5%9D%80%E3%80%81%E8%BF%9B%E7%A8%8BID%E5%8F%B7%E3%80%81%E7%88%B6%E8%BF%9B%E7%A8%8BID%E5%8F%B7%E3%80%81%E7%BA%BF%E7%A8%8B%E6%95%B0%E9%87%8F%E3%80%81%E5%8F%A5%E6%9F%84%E6%95%B0%E9%87%8F%E3%80%81%E8%BF%9B%E7%A8%8B%E4%BC%9A%E8%AF%9DID%E5%8F%B7%E4%BB%A5%E5%8F%8A%E8%BF%9B%E7%A8%8B%E5%BC%80%E5%A7%8B%E5%92%8C%E9%80%80%E5%87%BA%E7%9A%84%E6%97%B6%E9%97%B4%E3%80%82"><span class="nav-number">2.3.1.</span> <span class="nav-text">pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#psscan%E5%91%BD%E4%BB%A4%E8%83%BD%E5%A4%9F%E9%80%9A%E8%BF%87%E5%86%85%E5%AD%98%E6%B1%A0%E6%A0%87%E7%AD%BE%E6%9F%A5%E6%89%BE%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9E%9A%E4%B8%BE%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E8%BF%9B%E7%A8%8B%EF%BC%8C%E8%BF%99%E6%9D%A1%E5%91%BD%E4%BB%A4%E4%B8%8D%E4%BB%85%E8%83%BD%E5%A4%9F%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E5%86%85%E5%AD%98%E4%B8%AD%E6%B4%BB%E8%B7%83%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%BF%A1%E6%81%AF%EF%BC%8C%E8%BF%98%E8%83%BD%E5%A4%9F%E6%9E%9A%E4%B8%BE%E4%BB%A5%E5%89%8D%E7%BB%88%E6%AD%A2%E7%9A%84%E8%BF%9B%E7%A8%8B%E5%92%8C%E8%A2%AB%E9%9A%90%E8%97%8F%E4%BB%A5%E5%8F%8A%E8%A2%ABrootkit%E7%A0%B4%E5%9D%8F%E7%9A%84%E6%9C%AA%E5%9C%A8%E6%B4%BB%E8%B7%83%E8%BF%9B%E7%A8%8B%E9%93%BE%E8%A1%A8%E4%B8%AD%E5%87%BA%E7%8E%B0%E7%9A%84%E8%BF%9B%E7%A8%8B%E3%80%82"><span class="nav-number">2.3.2.</span> <span class="nav-text">psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E7%9A%84%E6%97%B6%E9%97%B4%E9%83%BD%E6%98%AF%E4%B8%96%E7%95%8C%E7%BB%9F%E4%B8%80%E6%97%B6%E9%97%B4UTC%EF%BC%8C%E8%80%8C%E4%B8%AD%E5%9B%BD%E5%9C%A8%E4%B8%9C%E5%85%AB%E5%8C%BA%EF%BC%8C%E9%9C%80%E8%A6%81%E8%BD%AC%E6%8D%A2%E3%80%82"><span class="nav-number">2.3.3.</span> <span class="nav-text">显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%94%A8%E6%88%B7SID%EF%BC%9A"><span class="nav-number">2.4.</span> <span class="nav-text">查看用户SID：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E7%94%A8%E6%88%B7%EF%BC%9A"><span class="nav-number">2.5.</span> <span class="nav-text">查看系统中的用户：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%9C%80%E5%90%8E%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7"><span class="nav-number">2.6.</span> <span class="nav-text">获取系统中最后登录用户</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%90%AF%E5%8A%A8%E9%A1%B9%EF%BC%9A"><span class="nav-number">2.7.</span> <span class="nav-text">查看启动项：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E7%9A%84%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="nav-number">2.8.</span> <span class="nav-text">查看动态链接库的信息：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%88%97%E8%A1%A8%E5%8C%85%E6%8B%AC%EF%BC%9A%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E5%9C%B0%E5%9D%80%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E4%BB%A5%E5%8F%8A%E6%96%87%E4%BB%B6%E6%89%80%E5%9C%A8%E8%B7%AF%E5%BE%84%E3%80%82"><span class="nav-number">2.8.1.</span> <span class="nav-text">显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%B4%E6%97%B6%E5%86%85%E5%AD%98%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%A1%E6%81%AF%EF%BC%9A"><span class="nav-number">2.9.</span> <span class="nav-text">查看临时内存注册表信息：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%A4%A7%E6%96%87%E4%BB%B6%EF%BC%8C%E8%80%8C%E6%98%AF%E4%B8%80%E4%B8%AA%E9%9B%86%E5%90%88%EF%BC%8C%E7%94%B1%E7%A7%B0%E4%B8%BA%E2%80%9C%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%96%87%E4%BB%B6-hive-%E2%80%9D%E7%9A%84%E5%88%86%E6%95%A3%E6%96%87%E4%BB%B6%E7%BB%84%E6%88%90%E3%80%82"><span class="nav-number">2.9.1.</span> <span class="nav-text">注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件(hive)”的分散文件组成。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%96%87%E4%BB%B6%E4%B8%BB%E8%A6%81%E5%8C%85%E6%8B%AC%E4%B8%A4%E7%B1%BB%EF%BC%9A"><span class="nav-number">2.9.2.</span> <span class="nav-text">注册表文件主要包括两类：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%B1%BB%EF%BC%9A%E5%AD%98%E5%82%A8%E5%9C%A8%E7%A3%81%E7%9B%98%E4%B8%8A%E7%9A%84%E9%9D%99%E6%80%81%E6%95%B0%E6%8D%AE%EF%BC%8C%E8%BF%99%E7%B1%BB%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%96%87%E4%BB%B6%E4%B8%80%E8%88%AC%E8%A2%AB%E4%BF%9D%E5%AD%98%E5%9C%A8%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84system32-config%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E3%80%82%E4%B8%80%E8%88%AC%E5%9C%A8%E8%BF%90%E8%A1%8C%E4%B8%AD%E4%BD%BF%E7%94%A8regedit%E6%9F%A5%E7%9C%8B%E3%80%82"><span class="nav-number">2.9.3.</span> <span class="nav-text">第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32\config文件夹下。一般在运行中使用regedit查看。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%B1%BB-%E6%98%93%E5%A4%B1%E6%80%A7%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%95%B0%E6%8D%AE%EF%BC%8C%E8%BF%99%E7%B1%BB%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%96%87%E4%BB%B6%E6%98%AF%E7%94%B1Windows%E5%86%85%E6%A0%B8%E8%B4%9F%E8%B4%A3%E7%BB%B4%E6%8A%A4%E7%9A%84RAM%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%AE%83%E4%BB%AC%E5%9C%A8%E7%B3%BB%E7%BB%9F%E6%AF%8F%E6%AC%A1%E5%90%AF%E5%8A%A8%E7%9A%84%E6%97%B6%E5%80%99%E6%89%8D%E4%BC%9A%E8%A2%AB%E5%88%9B%E5%BB%BA%E3%80%82"><span class="nav-number">2.9.4.</span> <span class="nav-text">第二类;易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hivelist%EF%BC%9A"><span class="nav-number">2.10.</span> <span class="nav-text">hivelist：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%BD%8D%E4%B8%8E%E7%A1%AC%E7%9B%98%E4%B8%8A%E5%AF%B9%E5%BA%94%E7%9A%84%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%96%87%E4%BB%B6%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E5%92%8C%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E3%80%82%E7%89%B9%E5%88%AB%E6%98%AF%E5%BD%93%E4%BD%A0%E6%83%B3%E6%89%93%E5%8D%B0%E6%9F%90%E4%B8%AA%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%96%87%E4%BB%B6%E7%9A%84%E5%80%BC%E6%97%B6%EF%BC%8C%E5%B0%B1%E9%9C%80%E8%A6%81%E5%85%88%E8%BF%90%E8%A1%8C%E8%BF%99%E4%B8%AA%E5%91%BD%E4%BB%A4%E3%80%82"><span class="nav-number">2.10.1.</span> <span class="nav-text">定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lsadump%EF%BC%9A"><span class="nav-number">2.11.</span> <span class="nav-text">lsadump：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8lsadump%E5%91%BD%E4%BB%A4%E5%8F%AF%E4%BB%A5%E8%AF%BB%E5%8F%96%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%B8%AD%E7%9A%84%E4%B8%8E%E6%9C%AC%E5%9C%B0%E5%AE%89%E5%85%A8%E6%8E%88%E6%9D%83%E7%9B%B8%E5%85%B3%E7%9A%84%E7%A7%98%E5%AF%86%E6%95%B0%E6%8D%AE%E3%80%82"><span class="nav-number">2.11.1.</span> <span class="nav-text">使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LSA-Local-Security-Authority-%E5%8D%B3%E6%9C%AC%E5%9C%B0%E5%AE%89%E5%85%A8%E6%8E%88%E6%9D%83%E3%80%82Windows%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%B8%80%E4%B8%AA%E7%9B%B8%E5%BD%93%E9%87%8D%E8%A6%81%E7%9A%84%E6%9C%8D%E5%8A%A1%EF%BC%8C%E6%89%80%E6%9C%89%E5%AE%89%E5%85%A8%E8%AE%A4%E8%AF%81%E7%9B%B8%E5%85%B3%E7%9A%84%E5%A4%84%E7%90%86%E9%83%BD%E8%A6%81%E9%80%9A%E8%BF%87%E8%BF%99%E4%B8%AA%E6%9C%8D%E5%8A%A1%E3%80%82%E6%AF%94%E5%A6%82%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E7%9A%84%E7%BC%BA%E7%9C%81%E5%AF%86%E7%A0%81%E3%80%81%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%85%AC%E9%92%A5%E3%80%81Windows%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3%E4%BD%BF%E7%94%A8%E7%9A%84%E6%8E%88%E6%9D%83%E8%AF%81%E4%B9%A6%E7%AD%89%E4%BF%A1%E6%81%AF%E3%80%82"><span class="nav-number">2.11.2.</span> <span class="nav-text">LSA(Local Security Authority)即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%A5%E5%91%BD%E4%BB%A4%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E9%9C%80%E8%A6%81%E6%8A%8A%E4%B8%8A%E6%96%87%E6%8F%90%E5%88%B0%E7%9A%84SYSTEM%E6%B3%A8%E5%86%8C%E8%A1%A8%E7%9A%84%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E4%BD%9C%E4%B8%BA-y%E9%80%89%E9%A1%B9%E7%9A%84%E5%8F%82%E6%95%B0%E5%92%8CSECURITY%E6%B3%A8%E5%86%8C%E8%A1%A8%E6%96%87%E4%BB%B6%E7%9A%84%E5%9C%B0%E5%9D%80%E4%BD%9C%E4%B8%BA-s%E9%80%89%E9%A1%B9%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">2.11.3.</span> <span class="nav-text">使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数.</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%B3%A8%E5%86%8C%E8%A1%A8%E4%BF%A1%E6%81%AF%E4%BB%A5%E7%88%86%E7%A0%B4%E5%AF%86%E7%A0%81%EF%BC%9A"><span class="nav-number">2.12.</span> <span class="nav-text">获取注册表信息以爆破密码：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B9%8B%E5%90%8E%E5%B0%B1%E8%83%BD%E7%9C%8B%E5%88%B0%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E4%B8%A4%E4%B8%AAhash%E5%80%BC%EF%BC%8C%E9%80%89%E5%90%8E%E9%9D%A2%E9%82%A3%E4%B8%AAhash%E5%80%BC%EF%BC%8C%E7%94%A8www-cmd5-com-%E6%90%9C%E7%B4%A2hash%E8%BD%AC%E6%96%87%E5%AD%97%EF%BC%8C%E7%94%A8NTLM%E6%9D%A5%E6%9F%A5SAM%E4%B8%AD%E7%9A%84hash%E3%80%82"><span class="nav-number">2.12.1.</span> <span class="nav-text">之后就能看到用户名和两个hash值，选后面那个hash值，用www.cmd5.com 搜索hash转文字，用NTLM来查SAM中的hash。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">2.13.</span> <span class="nav-text">查看历史命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="nav-number">2.14.</span> <span class="nav-text">查看控制台命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%EF%BC%88TCP%E8%BF%9E%E6%8E%A5%EF%BC%89%EF%BC%9A"><span class="nav-number">2.15.</span> <span class="nav-text">查看网络连接（TCP连接）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8BIE%E5%8E%86%E5%8F%B2%EF%BC%9A"><span class="nav-number">2.16.</span> <span class="nav-text">查看IE历史：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E6%95%A3%E5%88%97"><span class="nav-number">2.17.</span> <span class="nav-text">获取用户密码散列:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%86%85%E5%AD%98%E4%B8%AD%E6%B4%BB%E8%B7%83%E7%9A%84TCP%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.18.</span> <span class="nav-text">获取内存中活跃的TCP连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%B7%B2%E6%89%93%E5%BC%80%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%88rootkit%E9%9A%90%E8%97%8F%E6%96%87%E4%BB%B6%EF%BC%89"><span class="nav-number">2.19.</span> <span class="nav-text">查看系统中已打开的文件（rootkit隐藏文件）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E7%9B%B8%E5%85%B3filescan%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">2.20.</span> <span class="nav-text">导出相关filescan的文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%9C%A8%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E4%B8%AD%E6%89%93%E5%BC%80%E7%9A%84%E5%8F%A5%E6%9F%84"><span class="nav-number">2.21.</span> <span class="nav-text">显示在一个进程中打开的句柄</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E5%86%85%E6%A0%B8%E4%B8%AD%E7%9A%84%E9%A9%B1%E5%8A%A8%E7%A8%8B%E5%BA%8F%EF%BC%8C%E5%8C%85%E6%8B%AC%E5%B7%B2%E9%9A%90%E8%97%8F-%E9%93%BE%E6%8E%A5%E7%9A%84"><span class="nav-number">2.22.</span> <span class="nav-text">显示内核中的驱动程序，包括已隐藏&#x2F;链接的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.23.</span> <span class="nav-text">查看服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%90%84%E7%BB%84%E4%BB%B6%E6%97%B6%E9%97%B4%E7%BA%BF"><span class="nav-number">2.24.</span> <span class="nav-text">查看各组件时间线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%88%96%E6%A1%8C%E9%9D%A2%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%A1%E6%81%AF%E3%80%82"><span class="nav-number">2.25.</span> <span class="nav-text">查看系统或桌面执行文件的信息。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%86%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%95%B0%E6%8D%AE%E4%BB%A5-dmp-%E7%9A%84%E6%A0%BC%E5%BC%8F%E4%BF%9D%E5%AD%98%E5%87%BA%E6%9D%A5"><span class="nav-number">2.26.</span> <span class="nav-text">将内存中的某个进程数据以 dmp 的格式保存出来</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">九月八</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">博客全站字数&#58;</span>
+    
+    <span title="博客全站字数">20k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--添加网站的运行时间-->
+<span id="sitetime"> <br></span>
+<script language="javascript">
+  function siteTime(){
+    window.setTimeout("siteTime()", 1000);
+    var seconds = 1000
+    var minutes = seconds * 60
+    var hours = minutes * 60
+    var days = hours * 24
+    var years = days * 365
+
+    var today = new Date()
+    var todayYear = today.getFullYear()
+    var todayMonth = today.getMonth()
+    var todayDate = today.getDate()
+    var todayHour = today.getHours()
+    var todayMinute = today.getMinutes()
+    var todaySecond = today.getSeconds()
+    var t1 = Date.UTC(2018,10,11,19,21,18)
+    var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond)
+    var diff = t2-t1
+
+    var diffYears = Math.floor(diff/years)
+    var diffDays = Math.floor((diff/days)-diffYears*365)
+    var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours)
+    var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes)
+    var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds)
+    document.getElementById("sitetime").innerHTML=" 我已在此等候你"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒<br>"
+  }
+  siteTime()
+</script>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      我的第 <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 位朋友，
+    </span>
+  
+
+  
+    <span class="site-pv">
+    历经 <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次回眸才与你相遇
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+
+  </div>
+
+
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'YMMXqH0MkcPRGMzdbg0gNv58-gzGzoHsz',
+        appKey: '4kakI7eBTjj8rGycy4eSciJp',
+        placeholder: '有什么想对我说的呢，记得留下你的名字哦(;￢＿￢) ',
+        avatar:'robohash',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+
+</script>
+<!-- 今日诗词：随机返回一句古诗词名句的接口，宅到用来做 Valine 的 placeholder 显示内容 -->
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+    jinrishici.load(function(result) {
+        var jrsc_plac =  result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author;
+        document.getElementById("veditor").setAttribute("placeholder",jrsc_plac);
+    })
+</script>
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  <script type="text/javascript">
+  wpac_init = window.wpac_init || [];
+  wpac_init.push({widget: 'Rating', id: 14339,
+    el: 'wpac-rating',
+    color: 'fc6423'
+  });
+  (function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = '//embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+  })();
+  </script>
+
+
+  
+
+  
+
+  
+
+
+  
+  
+  
+    <script src="/js/cursor/fireworks.js"></script>
+  
+
+
+
+
+  <script src="/js/src/activate-power-mode.min.js"></script>
+  <script>
+    POWERMODE.colorful = true;
+    POWERMODE.shake = false;
+    document.body.addEventListener('input', POWERMODE);
+  </script>
+
+
+<!-- 动态标题功能 -->
+<script type="text/javascript" src="/js/src/dytitle.js"></script>
+
+<!-- 代码块复制功能 -->
+<script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+<script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1.3,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"superSample":2,"width":180,"height":200,"position":"left"},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script><script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(n){n.imageLazyLoadSetting.processImages=o;var i=n.imageLazyLoadSetting.isSPA,r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function o(){i&&(r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")));for(var t,e,a=0;a<r.length;a++)t=r[a],e=void 0,0<=(e=t.getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(n.innerHeight||document.documentElement.clientHeight)&&function(){var t,e,n,i,o=r[a];t=o,e=function(){r=r.filter(function(t){return o!==t})},n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,e&&e()},n.src=i}()}o(),n.addEventListener("scroll",function(){var t,e;t=o,e=n,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(e)},500)})}(this);</script></body>
+</html>
