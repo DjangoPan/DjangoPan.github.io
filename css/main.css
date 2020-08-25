@@ -1790,42 +1790,6 @@ pre .javascript .function {
 .copy-success-message .message-content {
   font-size: 14px;
 }
-.post-widgets {
-  border-top: 1px solid #eee;
-  padding-top: 9px;
-  margin-top: 45px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.post-widgets .post-meta-divider {
-  height: 28px;
-  color: #999;
-}
-.wp_rating {
-  height: 20px;
-  margin-right: 10px;
-  text-align: center;
-  line-height: 20px;
-  padding-top: 6px;
-}
-.social-like {
-  font-size: 14px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-.vk_like {
-  width: 85px;
-  height: 21px;
-  padding-top: 7px;
-  align-self: center;
-}
-.fb_like {
-  height: 30px;
-  align-self: center;
-}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -2025,7 +1989,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #12aaed;
+  background: #4e0011;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2890,7 +2854,7 @@ embed {
   display: inline-block;
 }
 body {
-  background: url("https://source.unsplash.com/random/1920x1080?wallpapers");
+  background: url("https://source.unsplash.com/1920x1080/?white");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -3394,12 +3358,45 @@ div.post-block.tag .collection-title h2 {
 .highlight:hover .btn-copy {
   opacity: 1;
 }
-.v .veditor {
-  min-height: 8rem;
+#veditor {
+  background-image: url("https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: rgba(255,255,255,0);
+  resize: vertical;
 }
-.v .vinput {
-  padding: 10px 15px;
-  text-align: center;
+#veditor:focus {
+  background-position-y: 200px;
+  transition: all 0.2s ease-in-out 0s;
+}
+img.vimg {
+  transition: all 1s /* 旋转时间为 1s */;
+}
+img.vimg:hover {
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+}
+#comments .vcards .vcard {
+  padding: 15px 20px 0 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.12);
+  transition: all 0.3s;
+}
+#comments .vcards .vcard:hover {
+  box-shadow: 0 0 8px 3px rgba(0,0,0,0.12);
+}
+#comments .vcards .vcard .vh .vcard {
+  border: none;
+  box-shadow: none;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {

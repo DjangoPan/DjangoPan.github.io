@@ -277,7 +277,7 @@
       
         
         <li class="menu-item menu-item-movies">
-          <a href="/movies/he" rel="section">
+          <a href="/movies/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />
             
@@ -629,29 +629,19 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CTF/" rel="tag"># CTF</a>
+            <a href="/tags/CTF/" rel="tag"><i class="fa fa-tags"></i> CTF</a>
           
-            <a href="/tags/pwnable/" rel="tag"># pwnable</a>
+            <a href="/tags/pwnable/" rel="tag"><i class="fa fa-tags"></i> pwnable</a>
           
-            <a href="/tags/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/" rel="tag"># 文件描述符</a>
+            <a href="/tags/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/" rel="tag"><i class="fa fa-tags"></i> 文件描述符</a>
           
         </div>
       
 
       
+
+
       
-        <div class="post-widgets">
-        
-          <div class="wp_rating">
-          <div style="color: rgba(0, 0, 0, 0.75); font-size:13px; letter-spacing:3px">(&gt;看完记得五星好评哦亲&lt;)</div>
-            <div id="wpac-rating"></div>
-          </div>
-        
-
-        
-
-        
-        </div>
       
       
 
@@ -777,10 +767,6 @@
               </div>
             
 
-
-
-
-
             
               
               
@@ -867,10 +853,40 @@
             </div>
           
 
-          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27566770&auto=1&height=66"></iframe>
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+             <div class="links-of-blogroll-title">
+               <i class="fa fa-history fa-history" aria-hidden="true"></i>
+               近期文章
+             </div>
+             <ul class="links-of-blogroll-list">
+               
+               
+                 <li>
+                   <a href="/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html" title="MacOS开发环境的配置" target="_blank">MacOS开发环境的配置</a>
+                 </li>
+               
+                 <li>
+                   <a href="/1-2-%E5%B8%A6%E5%A3%B3%E7%A0%B4%E8%A7%A3%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%B3%A8%E5%86%8C%E7%A0%81.html" title="逆向1-2 带壳破解，获取注册码" target="_blank">逆向1-2 带壳破解，获取注册码</a>
+                 </li>
+               
+                 <li>
+                   <a href="/%E6%97%A7%E4%BA%8B%E5%A5%BD.html" title="记得旧事好" target="_blank">记得旧事好</a>
+                 </li>
+               
+                 <li>
+                   <a href="/%E8%AE%B0%E5%BD%95%E5%AE%89%E5%BE%BD%E6%9F%90%E4%B8%80%E6%AC%A1%E5%8F%96%E8%AF%81%E7%BB%83%E4%B9%A0.html" title="安徽取证大比武个人Writeup" target="_blank">安徽取证大比武个人Writeup</a>
+                 </li>
+               
+                 <li>
+                   <a href="/%E5%8F%96%E8%AF%81%E5%85%A5%E9%97%A8.html" title="内存取证入门" target="_blank">内存取证入门</a>
+                 </li>
+               
+             </ul>
+           </div>
+          
 
-
-<!--添加球形标签云-->
+          <!--添加球形标签云-->
 
 <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
 <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
@@ -885,6 +901,14 @@
 
 
 
+
+<!--添加网易云音乐模块-->
+<!--
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=27566770&auto=1&height=66"></iframe>
+-->
+
+
+<!--添加时间模块-->
 <div id="days"></div>
     <script>
     function show_date_time(){
@@ -911,6 +935,7 @@ function setzero(i){
 }
 show_date_time();
 </script>
+          
         </div>
       </section>
 
@@ -924,7 +949,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B0%E4%BD%8D%E3%80%82%E7%9B%B4%E6%8E%A5%E8%AF%BB%E6%BA%90%E7%A0%81%E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">到位。直接读源码就可以了。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%A7%A3%E8%AF%BB%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">关键参数解读：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#atoi-%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">atoi()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#read-%E5%87%BD%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">read()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9Aread%E6%97%B6fd%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A6%82%E6%9E%9C%E5%B0%8F%E4%BA%8E%E8%A6%81%E8%AF%BB%E5%8F%96%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%B0%B1%E4%BC%9A%E5%BC%95%E8%B5%B7%E9%98%BB%E5%A1%9E%E3%80%82"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E8%AF%BB%EF%BC%9A"><span class="nav-number">2.3.</span> <span class="nav-text">解读：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E8%AF%BB%E5%8F%96fd%E6%89%80%E6%8C%87%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B9%B6%E6%8A%8A%E5%85%B6%E4%B8%AD%E4%B8%80%E5%AE%9A%E9%87%8F%E7%9A%84%E5%AD%97%E7%AC%A6%EF%BC%88%E8%BF%99%E9%87%8C%E6%98%AF32%E4%B8%AA%EF%BC%89%E6%94%BE%E5%88%B0buf%E4%B8%AD%E3%80%82%E5%8F%AA%E8%A6%81%E6%9E%84%E9%80%A0%E5%87%BA%E5%86%85%E5%AE%B9%E4%B8%BA%E2%80%9CLETMEWIN-n%E2%80%9D%E7%9A%84%E6%96%87%E4%BB%B6%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E4%BA%86%E3%80%82%E4%BD%86%E6%98%AF%E5%A5%BD%E5%83%8F%E6%AF%94%E8%BE%83%E9%BA%BB%E7%83%A6%E3%80%82"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN\n”的文件就可以实现了。但是好像比较麻烦。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E9%A2%98%E7%9B%AE%E6%8F%90%E7%A4%BA%EF%BC%9A%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%EF%BC%88file-description%EF%BC%89"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.题目提示：文件描述符（file description）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%EF%BC%9A"><span class="nav-number">2.3.3.</span> <span class="nav-text">关于文件描述符：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fd-0%E6%97%B6%E7%9B%B4%E6%8E%A5%E5%B0%B1%E6%98%AFstandard-input%EF%BC%8C%E7%BE%8E%E6%BB%8B%E6%BB%8B%E3%80%82"><span class="nav-number">2.3.4.</span> <span class="nav-text">fd&#x3D;0时直接就是standard input，美滋滋。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%B0%B1%E6%98%AFint-fd-atoi-argv-1-0x1234%E7%9A%84%E5%80%BC%E4%B8%BA0%EF%BC%8C%E7%84%B6%E5%90%8E%E5%B8%A6%E4%B8%80%E4%B8%AA%E5%8F%82%E6%95%B0%E5%8D%B3%E5%8F%AF%E3%80%82"><span class="nav-number">2.3.5.</span> <span class="nav-text">直接就是int fd &#x3D; atoi( argv[1] ) - 0x1234的值为0，然后带一个参数即可。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%A6%E5%A4%96%EF%BC%8C%E6%B3%A8%E6%84%8F%EF%BC%9A0x1234%E4%B8%BA16%E8%BF%9B%E5%88%B6%E6%95%B0%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8F%82%E6%95%B0%E8%BE%93%E5%85%A5%E6%97%B6%E8%BE%93%E5%85%A50x1234%EF%BC%8Catoi-%E5%87%BD%E6%95%B0%E4%BC%9A%E5%B0%860x1234%E4%B8%AD%E7%9A%84x%E8%BD%AC%E4%B8%BA%E6%95%B4%E5%9E%8B%E6%95%B0%E5%AD%97%EF%BC%8C%E5%9B%A0%E6%AD%A4%E6%95%B0%E5%80%BC%E4%BC%9A%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%EF%BC%8C%E6%AD%A4%E6%97%B6%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E5%B0%860x1234%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8D%81%E8%BF%9B%E5%88%B6%E7%9A%844660%E5%86%8D%E8%BE%93%E5%85%A5%E2%80%9CLETMEWIN%E2%80%9D%E5%8D%B3%E5%8F%AF%E8%8E%B7%E5%BE%97flag%E3%80%82"><span class="nav-number">2.3.6.</span> <span class="nav-text">另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi()函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flag-mommy-I-think-I-know-what-a-file-descriptor-is"><span class="nav-number">2.4.</span> <span class="nav-text">flag:mommy! I think I know what a file descriptor is!!</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B0%E4%BD%8D%E3%80%82%E7%9B%B4%E6%8E%A5%E8%AF%BB%E6%BA%90%E7%A0%81%E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86%E3%80%82"><span class="nav-text">到位。直接读源码就可以了。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%8F%82%E6%95%B0%E8%A7%A3%E8%AF%BB%EF%BC%9A"><span class="nav-text">关键参数解读：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#atoi-%E5%87%BD%E6%95%B0"><span class="nav-text">atoi()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#read-%E5%87%BD%E6%95%B0"><span class="nav-text">read()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9Aread%E6%97%B6fd%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A6%82%E6%9E%9C%E5%B0%8F%E4%BA%8E%E8%A6%81%E8%AF%BB%E5%8F%96%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%B0%B1%E4%BC%9A%E5%BC%95%E8%B5%B7%E9%98%BB%E5%A1%9E%E3%80%82"><span class="nav-text">注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E8%AF%BB%EF%BC%9A"><span class="nav-text">解读：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E8%AF%BB%E5%8F%96fd%E6%89%80%E6%8C%87%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%8C%E5%B9%B6%E6%8A%8A%E5%85%B6%E4%B8%AD%E4%B8%80%E5%AE%9A%E9%87%8F%E7%9A%84%E5%AD%97%E7%AC%A6%EF%BC%88%E8%BF%99%E9%87%8C%E6%98%AF32%E4%B8%AA%EF%BC%89%E6%94%BE%E5%88%B0buf%E4%B8%AD%E3%80%82%E5%8F%AA%E8%A6%81%E6%9E%84%E9%80%A0%E5%87%BA%E5%86%85%E5%AE%B9%E4%B8%BA%E2%80%9CLETMEWIN-n%E2%80%9D%E7%9A%84%E6%96%87%E4%BB%B6%E5%B0%B1%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E4%BA%86%E3%80%82%E4%BD%86%E6%98%AF%E5%A5%BD%E5%83%8F%E6%AF%94%E8%BE%83%E9%BA%BB%E7%83%A6%E3%80%82"><span class="nav-text">1.读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN\n”的文件就可以实现了。但是好像比较麻烦。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E9%A2%98%E7%9B%AE%E6%8F%90%E7%A4%BA%EF%BC%9A%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%EF%BC%88file-description%EF%BC%89"><span class="nav-text">2.题目提示：文件描述符（file description）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%EF%BC%9A"><span class="nav-text">关于文件描述符：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fd-0%E6%97%B6%E7%9B%B4%E6%8E%A5%E5%B0%B1%E6%98%AFstandard-input%EF%BC%8C%E7%BE%8E%E6%BB%8B%E6%BB%8B%E3%80%82"><span class="nav-text">fd&#x3D;0时直接就是standard input，美滋滋。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%B0%B1%E6%98%AFint-fd-atoi-argv-1-0x1234%E7%9A%84%E5%80%BC%E4%B8%BA0%EF%BC%8C%E7%84%B6%E5%90%8E%E5%B8%A6%E4%B8%80%E4%B8%AA%E5%8F%82%E6%95%B0%E5%8D%B3%E5%8F%AF%E3%80%82"><span class="nav-text">直接就是int fd &#x3D; atoi( argv[1] ) - 0x1234的值为0，然后带一个参数即可。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%A6%E5%A4%96%EF%BC%8C%E6%B3%A8%E6%84%8F%EF%BC%9A0x1234%E4%B8%BA16%E8%BF%9B%E5%88%B6%E6%95%B0%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E5%9C%A8%E5%8F%82%E6%95%B0%E8%BE%93%E5%85%A5%E6%97%B6%E8%BE%93%E5%85%A50x1234%EF%BC%8Catoi-%E5%87%BD%E6%95%B0%E4%BC%9A%E5%B0%860x1234%E4%B8%AD%E7%9A%84x%E8%BD%AC%E4%B8%BA%E6%95%B4%E5%9E%8B%E6%95%B0%E5%AD%97%EF%BC%8C%E5%9B%A0%E6%AD%A4%E6%95%B0%E5%80%BC%E4%BC%9A%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%EF%BC%8C%E6%AD%A4%E6%97%B6%E5%BA%94%E8%AF%A5%E4%BD%BF%E7%94%A8%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E5%B0%860x1234%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%8D%81%E8%BF%9B%E5%88%B6%E7%9A%844660%E5%86%8D%E8%BE%93%E5%85%A5%E2%80%9CLETMEWIN%E2%80%9D%E5%8D%B3%E5%8F%AF%E8%8E%B7%E5%BE%97flag%E3%80%82"><span class="nav-text">另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi()函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flag-mommy-I-think-I-know-what-a-file-descriptor-is"><span class="nav-text">flag:mommy! I think I know what a file descriptor is!!</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1561,23 +1586,6 @@ show_date_time();
 
   
   
-  <script type="text/javascript">
-  wpac_init = window.wpac_init || [];
-  wpac_init.push({widget: 'Rating', id: 14339,
-    el: 'wpac-rating',
-    color: 'fc6423'
-  });
-  (function() {
-    if ('WIDGETPACK_LOADED' in window) return;
-    WIDGETPACK_LOADED = true;
-    var mc = document.createElement('script');
-    mc.type = 'text/javascript';
-    mc.async = true;
-    mc.src = '//embed.widgetpack.com/widget.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
-  })();
-  </script>
-
 
   
 
