@@ -1989,7 +1989,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4e0011;
+  background: #adc2cb;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3358,6 +3358,17 @@ div.post-block.tag .collection-title h2 {
 .highlight:hover .btn-copy {
   opacity: 1;
 }
+.v[data-class=v] .vcard {
+  width: 100%;
+  background-color: #fff;
+  opacity: 0.85;
+  overflow: hidden;
+}
+.v[data-class=v] .vwrap {
+  border-radius: 20px;
+  opacity: 0.85;
+  background-color: #fff;
+}
 #veditor {
   background-image: url("https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp");
   background-size: contain;
@@ -3385,6 +3396,7 @@ img.vimg:hover {
   -ms-transform: rotate(360deg);
 }
 #comments .vcards .vcard {
+  background-color: #fff;
   padding: 15px 20px 0 20px;
   border-radius: 10px;
   margin-bottom: 15px;
