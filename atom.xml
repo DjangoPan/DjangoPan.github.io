@@ -6,7 +6,7 @@
   <link href="https://7h4mid4.cn/atom.xml" rel="self"/>
   
   <link href="https://7h4mid4.cn/"/>
-  <updated>2020-08-22T23:01:51.758Z</updated>
+  <updated>2020-08-25T15:24:29.813Z</updated>
   <id>https://7h4mid4.cn/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://7h4mid4.cn/test/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html"/>
+    <id>https://7h4mid4.cn/test/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html</id>
+    <published>2020-08-25T15:24:11.430Z</published>
+    <updated>2020-08-25T15:24:29.813Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>MacOS开发环境的配置</title>
