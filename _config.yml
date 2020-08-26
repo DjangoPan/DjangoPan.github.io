@@ -44,6 +44,10 @@ highlight:
   auto_detect: true
   tab_replace:
 
+
+
+
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -89,8 +93,16 @@ deploy:
 - type: git
   repository: https://github.com/djangopan/djangopan.github.io.git
   branch: master
-  
-- type: baidu_url_submitter  
+- type: baidu_url_submitter
+
+# url: http://7h4mid4.cn
+# deploy:
+#   type: cos
+#   appId: 1258055330
+#   secretId: AKIDKRMIE1mlDPL0QXsvmDTFmb6wXuWunNDo
+#   secretKey: kHVEkkebR0TjlgNw9i01mGH6dKkwvZ0p
+#   bucket: myblog-1258055330
+#   region: ap-chengdu
 
 admin:
   deployCommand: './hexo-deploy.sh'
@@ -178,6 +190,7 @@ leancloud_counter_security:
   app_key: hq3rJD3JuB82JxP9wSI9W70e
   username: # Will be asked while deploying if is left blank
   password: # Recommmended to be left blank. Will be asked while deploying if is left blank
+
 
 
 

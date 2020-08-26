@@ -1,0 +1,10 @@
+{
+  "name" : "source",
+  "fileExtension" : ".md",
+  "autoUploadInsertedImageKey" : "博客图床-ap-chengdu",
+  "autoUploadInsertedImage" : true,
+  "folderType" : 11,
+  "mediaFloder" : "images",
+  "orderBy" : 0,
+  "newlinesToBR" : 0
+}
