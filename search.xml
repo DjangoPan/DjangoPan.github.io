@@ -125,11 +125,6 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/test/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id><a href="#" class="headerlink" title></a></h1>]]></content>
-  </entry>
-  <entry>
     <title>MacOS开发环境的配置</title>
     <url>/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>因为以后要转战MacOS了，虽然之前也用过一年的Ubuntu实体机，但是Windows的环境和MacOS的开发环境相差还是蛮大，所以一切都得从头开始了…<br>按照我的尿性，估计这种配环境的事以后还得干不少次，为了以后方便，这次把中间采的坑记录下来…</p>
@@ -851,9 +846,9 @@ exploit()</code></pre>
         <category>CTF</category>
       </categories>
       <tags>
+        <tag>CTF</tag>
         <tag>pwnable</tag>
         <tag>文件描述符</tag>
-        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
