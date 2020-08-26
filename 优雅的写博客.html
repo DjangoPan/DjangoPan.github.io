@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="渗透,CVE,dirtycow,提权," />
+  <meta name="keywords" content="hexo,总结," />
 
 
 
@@ -88,21 +88,23 @@
 
 
 
-<meta name="description" content="今天对脏牛复现学习一下，以便于以后的使用。 总览漏洞范围：Linux kernel &gt;&#x3D; 2.6.22 危害：低权限用户利用本漏洞在linux系统是实现本地提权远程入侵获得低权限之后，才能进一步提权。 影响范围：从 2007 年发布 2.6.22 版本开始，直到2016年10月18日为止，这中间发行的所有 Linux 系统都受影响。 查看方式：12uname -a&#x3D;&#x3D;&#x3D;&gt; Linux">
+<meta name="description" content="MarkDown语法总结 初步进阶最基本的语法略过，记录一下少见的语法： 文本居中标签作用：引用单行文本，作为文章开篇题词。 效果： 我不去想是否能够成功，既然选择了远方，便只顾风雨兼程。 使用： 123456789&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;&lt;!-- 其中 class&#x3D;&quot;blockquote-center&amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CVE2016-5195（dirty-cow）复现">
-<meta property="og:url" content="https://7h4mid4.cn/VE2016-5195%EF%BC%88dirty-cow%EF%BC%89%E5%A4%8D%E7%8E%B0.html">
+<meta property="og:title" content="优雅地写博客">
+<meta property="og:url" content="https://7h4mid4.cn/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html">
 <meta property="og:site_name" content="一葉扁舟">
-<meta property="og:description" content="今天对脏牛复现学习一下，以便于以后的使用。 总览漏洞范围：Linux kernel &gt;&#x3D; 2.6.22 危害：低权限用户利用本漏洞在linux系统是实现本地提权远程入侵获得低权限之后，才能进一步提权。 影响范围：从 2007 年发布 2.6.22 版本开始，直到2016年10月18日为止，这中间发行的所有 Linux 系统都受影响。 查看方式：12uname -a&#x3D;&#x3D;&#x3D;&gt; Linux">
+<meta property="og:description" content="MarkDown语法总结 初步进阶最基本的语法略过，记录一下少见的语法： 文本居中标签作用：引用单行文本，作为文章开篇题词。 效果： 我不去想是否能够成功，既然选择了远方，便只顾风雨兼程。 使用： 123456789&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;&lt;!-- 其中 class&#x3D;&quot;blockquote-center&amp;q">
 <meta property="og:locale">
-<meta property="article:published_time" content="2019-08-16T12:14:00.000Z">
-<meta property="article:modified_time" content="2019-08-16T12:15:14.000Z">
+<meta property="og:image" content="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984127556340.jpg">
+<meta property="og:image" content="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984128149960.jpg">
+<meta property="og:image" content="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984060068608.jpg">
+<meta property="article:published_time" content="2020-08-26T02:24:53.983Z">
+<meta property="article:modified_time" content="2020-08-26T06:50:13.101Z">
 <meta property="article:author" content="九月八">
-<meta property="article:tag" content="渗透">
-<meta property="article:tag" content="CVE">
-<meta property="article:tag" content="dirtycow">
-<meta property="article:tag" content="提权">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="总结">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984127556340.jpg">
 
 
 
@@ -132,7 +134,7 @@
 
 
 
-  <link rel="canonical" href="https://7h4mid4.cn/VE2016-5195（dirty-cow）复现.html"/>
+  <link rel="canonical" href="https://7h4mid4.cn/优雅的写博客.html"/>
 
 
 
@@ -167,7 +169,7 @@
         }
     })();
 </script>
-  <title>CVE2016-5195（dirty-cow）复现 | 一葉扁舟</title>
+  <title>优雅地写博客 | 一葉扁舟</title>
   
 
 
@@ -348,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://7h4mid4.cn/VE2016-5195%EF%BC%88dirty-cow%EF%BC%89%E5%A4%8D%E7%8E%B0.html">
+    <link itemprop="mainEntityOfPage" href="https://7h4mid4.cn/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -365,7 +367,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">CVE2016-5195（dirty-cow）复现</h2>
+          <h2 class="post-title" itemprop="name headline">优雅地写博客</h2>
         
 
         <div class="post-meta">
@@ -377,8 +379,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-16T20:14:00+08:00">
-                2019-08-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-26T10:24:53+08:00">
+                2020-08-26
               </time>
             
 
@@ -393,8 +395,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-16T20:15:14+08:00">
-                2019-08-16
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-26T14:50:13+08:00">
+                2020-08-26
               </time>
             
           </span>
@@ -412,8 +414,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%97%E9%80%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">渗透</span>
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
                   </a>
                 </span>
 
@@ -431,8 +433,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/VE2016-5195%EF%BC%88dirty-cow%EF%BC%89%E5%A4%8D%E7%8E%B0.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/VE2016-5195%EF%BC%88dirty-cow%EF%BC%89%E5%A4%8D%E7%8E%B0.html" itemprop="commentCount"></span>
+                <a href="/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -461,7 +463,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  265
+                  2.2k
                 </span>
               
 
@@ -477,7 +479,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -498,66 +500,118 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>今天对脏牛复现学习一下，以便于以后的使用。</p>
-<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><h4 id="漏洞范围："><a href="#漏洞范围：" class="headerlink" title="漏洞范围："></a>漏洞范围：</h4><p>Linux kernel &gt;= 2.6.22</p>
-<h4 id="危害："><a href="#危害：" class="headerlink" title="危害："></a>危害：</h4><p>低权限用户利用本漏洞在linux系统是实现本地提权<br>远程入侵获得低权限之后，才能进一步提权。</p>
-<h4 id="影响范围："><a href="#影响范围：" class="headerlink" title="影响范围："></a>影响范围：</h4><p>从 2007 年发布 2.6.22 版本开始，直到2016年10月18日为止，这中间发行的所有 Linux 系统都受影响。</p>
-<h5 id="查看方式："><a href="#查看方式：" class="headerlink" title="查看方式："></a>查看方式：</h5><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br><span class="line">===&gt; Linux AYxxxx <span class="number">2.6</span><span class="number">.32</span><span class="number">-431.23</span><span class="number">.3</span>.el6.x86_64 #<span class="number">1</span> SMP Thu Jul <span class="number">31</span> <span class="number">17</span>:<span class="number">20</span>:<span class="number">51</span> UTC <span class="number">2014</span> x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="MarkDown语法总结"><a href="#MarkDown语法总结" class="headerlink" title="MarkDown语法总结"></a>MarkDown语法总结</h2><hr>
+<h3 id="初步进阶"><a href="#初步进阶" class="headerlink" title="初步进阶"></a>初步进阶</h3><p>最基本的语法略过，记录一下少见的语法：</p>
+<h4 id="文本居中标签"><a href="#文本居中标签" class="headerlink" title="文本居中标签"></a>文本居中标签</h4><p>作用：引用单行文本，作为文章开篇题词。</p>
+<p>效果：</p>
+<blockquote class="blockquote-center">我不去想是否能够成功，既然选择了远方，便只顾风雨兼程。</blockquote>
+使用：
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;</span></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!-- 其中 class=&quot;blockquote-center&quot; 是必须的 --&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">blockquote</span> <span class="attr">class</span>=<span class="string">&quot;blockquote-center&quot;</span>&gt;</span>blah blah blah<span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="comment">&lt;!-- 标签方式 --&gt;</span></span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">centerquote</span> %&#125;</span><span class="xml">blah blah blah</span><span class="template-tag">&#123;% <span class="name">endcenterquote</span> %&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="comment">&lt;!-- 标签别名 --&gt;</span></span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">cq</span> %&#125;</span><span class="xml"> blah blah blah </span><span class="template-tag">&#123;% <span class="name">endcq</span> %&#125;</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="简单辨别："><a href="#简单辨别：" class="headerlink" title="简单辨别："></a>简单辨别：</h5><table>
-<thead>
-<tr>
-<th>系统</th>
-<th>版本</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Centos</td>
-<td>5.8</td>
-</tr>
-<tr>
-<td>CentOS</td>
-<td>5.1</td>
-</tr>
-<tr>
-<td>Centos</td>
-<td>6.5</td>
-</tr>
-<tr>
-<td>Centos</td>
-<td>7</td>
-</tr>
-<tr>
-<td>Centos</td>
-<td>7.2</td>
-</tr>
-<tr>
-<td>ubuntu</td>
-<td>12.04</td>
-</tr>
-<tr>
-<td>ubuntu</td>
-<td>14.04</td>
-</tr>
-<tr>
-<td>Debain</td>
-<td>6.0.9</td>
-</tr>
-<tr>
-<td>Debain</td>
-<td>7.5.0</td>
-</tr>
-<tr>
-<td>Debain</td>
-<td>8.0.4</td>
-</tr>
-</tbody></table>
-<h2 id="利用方式"><a href="#利用方式" class="headerlink" title="利用方式"></a>利用方式</h2><h3 id="本地编译dirtycow发送至目标机"><a href="#本地编译dirtycow发送至目标机" class="headerlink" title="本地编译dirtycow发送至目标机"></a>本地编译dirtycow发送至目标机</h3><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/</span>FireFart/dirtycow.git</span><br><span class="line"></span><br><span class="line">cd dirtycow</span><br><span class="line"></span><br><span class="line">gcc -pthread dirty.c -o dirty -lcrypt</span><br><span class="line"></span><br><span class="line">scp dirty test<span class="variable">@192</span>.<span class="number">168.165</span>.<span class="number">224</span><span class="symbol">:/home/test/dirty</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="代码块进阶用法"><a href="#代码块进阶用法" class="headerlink" title="代码块进阶用法"></a>代码块进阶用法</h4><p>效果：</p>
+<figure class="highlight plain"><figcaption><span>[hello world] [https://baidu.com] [链接地址]</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&quot;Hello world!&quot;);</span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">``` [language] [title] [url] [link text]</span><br><span class="line">code snippet</span><br><span class="line">```.</span><br></pre></td></tr></table></figure>
+<p>各参数含义：</p>
+<ul>
+<li>langugae：语言名称，引导渲染引擎正确解析并高亮显示关键字</li>
+<li>title：代码块标题，将会显示在左上角</li>
+<li>url：链接地址，如果没有指定 link text 则会在右上角显示 link</li>
+<li>link text：链接名称，指定 url 后有效，将会显示在右上角</li>
+</ul>
+<p>url 必须为有效链接地址才会以链接的形式显示在右上角，否则将作为标题显示在左上角。以 url 为分界，左侧除了第一个单词会被解析为 language，其他所有单词都会被解析为 title，而右侧的所有单词都会被解析为 link text。</p>
+<p>如果不想填写 title，可以在 language 和 url 之间添加至少三个空格。</p>
+<h4 id="note标签"><a href="#note标签" class="headerlink" title="note标签"></a>note标签</h4><p>作用：通过note标签为段落添加背景颜色<br>使用：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%<span class="built_in"> note </span>[class] %&#125;</span><br><span class="line">文本内容 (支持行内标签)</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="ssh连接后创建root用户"><a href="#ssh连接后创建root用户" class="headerlink" title="ssh连接后创建root用户"></a>ssh连接后创建root用户</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh <span class="symbol">test@</span><span class="number">192.168</span><span class="number">.165</span><span class="number">.224</span></span><br><span class="line"></span><br><span class="line">./dirty asdfg(root_user_passwd)</span><br><span class="line"><span class="comment">//waiting......</span></span><br><span class="line"></span><br><span class="line">su firefart</span><br></pre></td></tr></table></figure>
+<p>class种类包括default primary success info warning danger，也可以不指定 class。</p>
+<h4 id="lebal标签"><a href="#lebal标签" class="headerlink" title="lebal标签"></a>lebal标签</h4><p>作用：通过label标签为文字添加背景色<br>使用：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% label [<span class="class"><span class="keyword">class</span>]<span class="meta">@text</span>  %&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>Congratulations！！</p>
-<p>当然，更多的还是现场尝试，因为很多的系统已经修复漏洞。</p>
+<p>支持的 class 种类包括 default primary success info warning danger，默认使用 default 作为缺省。</p>
+<p>使用示例：</p>
+<figure class="highlight puppet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">I heard the echo, &#123;% label default@from the valleys and the heart %&#125;</span><br><span class="line">Open to the lonely soul <span class="keyword">of</span> &#123;% label info@sickle harvesting %&#125;</span><br><span class="line"><span class="keyword">Repeat</span> <span class="keyword">outrightly</span>, but also repeat the well-being of</span><br><span class="line"><span class="keyword">Eventually</span> &#123;% label warning@swaying <span class="keyword">in</span> the desert oasis %&#125;</span><br><span class="line">&#123;% label success@I believe %&#125; <span class="keyword">I</span> <span class="keyword">am</span></span><br><span class="line">&#123;% label primary@Born as the bright summer flowers %&#125;</span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">not</span> <span class="keyword">withered</span> <span class="keyword">undefeated</span> <span class="keyword">fiery</span> <span class="keyword">demon</span> <span class="keyword">rule</span></span><br><span class="line"><span class="keyword">Heart</span> <span class="keyword">rate</span> <span class="keyword">and</span> <span class="keyword">breathing</span> <span class="keyword">to</span> <span class="keyword">bear</span> &#123;% label danger@the load of the cumbersome %&#125;</span><br><span class="line"><span class="keyword">Bored</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p>I heard the echo, <span class="label default">from the valleys and the heart</span><br>Open to the lonely soul of <span class="label info">sickle harvesting</span><br>Repeat outrightly, but also repeat the well-being of<br>Eventually <span class="label warning">swaying in the desert oasis</span></p>
+<span class="label success">I believe</span> I am
+<span class="label primary">Born as the bright summer flowers</span>
+<p>Do not withered undefeated fiery demon rule<br>Heart rate and breathing to bear <span class="label danger">the load of the cumbersome</span><br>Bored</p>
+<h4 id="button按钮"><a href="#button按钮" class="headerlink" title="button按钮"></a>button按钮</h4><p>使用示例：</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">btn</span> #, 文本 %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">btn</span> #, 文本 &amp; 标题,, 标题 %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">btn</span> #, 文本 &amp; 图标, home %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">btn</span> #, 文本 &amp; 大图标 (固定宽度), home fa-fw fa-lg %&#125;</span></span><br></pre></td></tr></table></figure>
+<p>效果:</p>
+<a class="btn" href="#">文本</a>
+<a class="btn" href="#" title="标题">文本 & 标题</a>
+<a class="btn" href="#"><i class="fa fa-home"></i>文本 & 图标</a>
+<a class="btn" href="#"><i class="fa fa-home fa-fw fa-lg"></i>文本 & 大图标 (固定宽度)</a>
+
+<h4 id="引用站内链接"><a href="#引用站内链接" class="headerlink" title="引用站内链接"></a>引用站内链接</h4><p>语法:</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">post_path</span> hexo-writing-skills %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">post_link</span> hexo-writing-skills 链接标题 %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p>我是第一个标签：/titled.html</p>
+<p>我是第二个标签：<a href="/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html" title="我是链接">我是链接</a></p>
+<p>注意：第一个标签中使用中文会进行urlencode，不太美观。</p>
+<h3 id="插入多媒体"><a href="#插入多媒体" class="headerlink" title="插入多媒体"></a>插入多媒体</h3><h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p>直接使用Mweb，之前的方法和MWeb比起来，简直不是一个数量级的。<br>爽就一个字，我只说一次！<br>墙裂建议使用Mac的同学尝试一下。</p>
+<h4 id="插入网易云音乐"><a href="#插入网易云音乐" class="headerlink" title="插入网易云音乐"></a>插入网易云音乐</h4><p>在网页版网易云中找到想要插入的歌曲，点击生成外链播放器：</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984127556340.jpg"><br>根据自己的需求生成：</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984128149960.jpg"></p>
+<p>但是，hexo渲染的时候，默认是把播放器的宽度拉满整个页款，有点别扭。所以做以下修改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var SUPPORTED_PLAYERS &#x3D; [</span><br><span class="line">  &#39;www.youtube.com&#39;,</span><br><span class="line">  &#39;player.vimeo.com&#39;,</span><br><span class="line">  &#39;player.youku.com&#39;,</span><br><span class="line">  &#x2F;&#x2F;&#39;music.163.com&#39;,</span><br><span class="line">  &#39;www.tudou.com&#39;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>播放器变成左对齐固定宽度，居中播放请加一个<code>&lt;center&gt;&lt;/center&gt;</code>标签</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">frameborder</span>=<span class="string">&quot;no&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginwidth</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginheight</span>=<span class="string">&quot;0&quot;</span> <span class="attr">width</span>=<span class="string">330</span> <span class="attr">height</span>=<span class="string">86</span> <span class="attr">src</span>=<span class="string">&quot;//music.163.com/outchain/player?type=2&amp;id=27491508&amp;auto=1&amp;height=66&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=27491508&auto=1&height=66"></iframe>
+
+
+<p>上下有空行，可以尝试把html标签写到一行里面。</p>
+<h2 id="Mac端编辑环境"><a href="#Mac端编辑环境" class="headerlink" title="Mac端编辑环境"></a>Mac端编辑环境</h2><p>利用Mweb和腾讯云对象存储COS实现快速方便的编辑博客<br>对Mweb的设置如下：<br><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAMAAABOo35HAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC9UExURVlZWdPT07KysmRkZIWFhfT09JmZmWZmZm9vb39/fxkZGUxMTDMzM3p6epCQkKamppubm729venp6cjIyN7e3tbW1s/Pz8LCwnx8fLS0tFZWVoiIiI+Pj6GhoeTk5Glpabu7u93d3evr66CgoJSUlKqqqsnJyeDg4Hd3d8PDw+Xl5bi4uNHR0dvb26Ojo6urq+fn51hYWDg4OCgoKHBwcK2traenp0FBQe7u7vHx8U5OTre3t8zMzHV1df///7GrnpQAAAA/dFJOU///////////////////////////////////////////////////////////////////////////////////AI4mfBcAAAUGSURBVHja7NoJb6M4GMZxY0NCD64kve/pMZ2d3Z297+X7f6zFNmBAMUXa6URl/q9UJSWPUPzrizFWRUlNLgEBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYYIEFAVhggQUWWGBBABZYYIEFFlgQgAUWWGCBBRYEYIEFFlhggQUBWGCBBRZYYEEAFlhggQUWWBCABRZYYIEFFgRggQUWWGCBBQFYYIEFFlhgQQAWWGCBBRZYEIAFFlhggQUWBGCBBRZYn6cCIcRXgvX/h9qcIVBqDdbEM8RCxGCB9QqXYRwHYDHBgwXWl8eKZKiESHI3Ba1kWs3fKixcaJUl1YyeBm7Ocq+yLItUiVBGnXxenSHJolIKEcwHq6ikbOX1YGVzQCTN8LPmSLreghUl9sN4Uw7yajMrLC0TZ1ImzqY6FEop0+pIaEN5HaoOxVuwEqFyc4I46uSlzOLqgxlh6UaR9l3VYWl9Fdoxb1Q90KJtu41pwwFW/WHhTtW8i7TafLCqRsk6bsGw63L9qurXRmuIlbT9lDQnlXU+nBFW1Q2qnZbDprWa2tjR90LZFqx1/+Td/HpGWLlrLDvIwTcx6dQ1Vrntbig68cDms3JwbA5Y1azs1ger6sNV/bbIw1jU81MvNAGrl58RVn8ozW+btF08iGFoAlYvP3csfVur1gJBEIA1uBmue5dhZDOyO2epbmgCVi8/I6x0MMHH9pjsTfBhNzQBq5uPZoQlB0uH3DZG4EZqQ26fL3sZq5uf09Ih6qw3i/pm6BZO0qZX7rrUS68Xsbr5ZE4rePMk08pk9aUZugfqppvs6AM1Acvlo/StP+6EbW06z8hJqxbYp2BZPQUnFsLsKuhQdaHqn5ewbF7KXIn0jWO5MqOQ7RaNLPtbNMmmhimj0GUmYLl8Gs0Lq4wyPbTu1l2QKqHSouzs3OlDIslW5SQsnY/NXmFplyNvEuuLV/Tau9BzwiraDUSwXmysztYWWNtL1psXeumgIrDGaqXvBfUuvtqUYI3V2t1wk1e2msFluJJm6zDJXv/fIfjPP7DAAgsssCiwwAILLLDAosACCyywwAKLAgsssMACC6zt9fDz/v75tyOB+98PD2+ORgKffjw4OP1uJPDxl+Xy8v1I4MPF3t7VNyOB4/vF4uzdzrG+39f1kz/w66Guv/yBvw90KX/gZKkr8Qf+2dOV+gNHC12/7RxrabD2/a31bLAO/a11YbAO/K21MFhLf2s9Gqw9f2vdGqzFu11jnVusE2/gxmI9eQOnFuvYG7i0WH7uK4t15w2cWazrXWP9a7H8f/bQYvm/6IPF+sF/pVssf19Ii/WH/0K2WH/uGuvEWC39gSdj9Twy+Rqri5EZx1gt/IE7Y/XoD1wbq9vd3w1PlufnD2OBp+ebm/uxwPHF6emnscDR4vLy41jg7vHq6sNY4Pr27OyYdRaLUrDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssMCiwAILLLDAAosCCyywwAILLAossMACCyywKLDAAgsssL6u+k+AAQCR9eHtLKvLfwAAAABJRU5ErkJggg==" data-original="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984060068608.jpg"></p>
+<ol>
+<li>通过 文件-打开外部模式</li>
+<li>可以在偏好设置中勾选”启动时默认打开外部模式”</li>
+<li>在设置页面配置腾讯云Cos图床</li>
+<li>进入外部模式后, 点击左下角+, 引入文件夹, 把 /hexo/source/ 配置进去</li>
+<li>在 source文件夹下创建images文件夹, 同时将source的保存拖入的图片文件夹名称, 指定为images</li>
+</ol>
+<p><code>这样设置的好处是, 在MWeb编辑时, 把图片往文章拖拽或者粘贴, MWeb都会自动将图片保存在images目录, 发布时也会自动发布, 省心省事</code> </p>
+<h2 id="多设备同步编辑"><a href="#多设备同步编辑" class="headerlink" title="多设备同步编辑"></a>多设备同步编辑</h2><hr>
+<p>因为hexo的架构环境在本地, 在Github上发布的只是public文件夹,<br>所以如果想要在2台以上的电脑上同时来维护同一份博客,<br>就需要构建多设备同步的编辑环境.</p>
+<h3 id="构建思路"><a href="#构建思路" class="headerlink" title="构建思路"></a>构建思路</h3><ol>
+<li>假设在公司和家中分别有A,B两台电脑</li>
+<li>A电脑已经完成了本篇所讲述的hexo环境搭建,并且能把public文件夹网站文件发布到github的库master主分支</li>
+<li>此时只要把A电脑hexo文件夹下网站文件,保存到github的另外一个分支比如branch_name即可</li>
+<li>然后在B电脑将将分支branch_name的内容全部获取下来, 再更新内容时,将重新发布public文件夹并发布到master分支</li>
+<li>核心思路: 网站文件存在master分支, 所有源文件存在branch_name分支</li>
+</ol>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><h4 id="首先-假设A电脑已经完成了hexo搭建和github连接-进入根目录MyBlog"><a href="#首先-假设A电脑已经完成了hexo搭建和github连接-进入根目录MyBlog" class="headerlink" title="首先, 假设A电脑已经完成了hexo搭建和github连接, 进入根目录MyBlog"></a>首先, 假设A电脑已经完成了hexo搭建和github连接, 进入根目录MyBlog</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd MyBlog                                       </span><br><span class="line">git init <span class="comment">#git初始化                                     </span></span><br><span class="line">git remote add origin https:<span class="regexp">//gi</span>thub.com<span class="regexp">/djangopan/</span>djangopan.github.io.git <span class="comment">#添加仓库地址 </span></span><br><span class="line">git checkout -b hexo <span class="comment">#新建分支branch_name, 名称是hexo, 切换到新分支</span></span><br><span class="line">git add . <span class="comment">#添加所有本地文件到git                        </span></span><br><span class="line">git commit -m <span class="string">&quot;This is for Mac&quot;</span> <span class="comment">#git提交 </span></span><br><span class="line">git push origin hexo <span class="comment">#文件推送到hexo分支              </span></span><br></pre></td></tr></table></figure>
+
+<h4 id="然后-在B电脑部署git环境和node-js环境-在-目录下"><a href="#然后-在B电脑部署git环境和node-js环境-在-目录下" class="headerlink" title="然后, 在B电脑部署git环境和node.js环境, 在~目录下"></a>然后, 在B电脑部署git环境和node.js环境, 在~目录下</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b hexo https:<span class="regexp">//gi</span>thub.com<span class="regexp">/djangopan/</span>djangopan.github.io.git MyBlog <span class="comment"># clone分支hexo的内容, 也就是所有源文件</span></span><br></pre></td></tr></table></figure>
+
+<p>此时会在~目录上自动创建一个文件夹 MyBlog</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd MyBlog</span><br><span class="line">npm <span class="keyword">install</span> -g hexo-cli <span class="comment">#安装hexo,注意这里不需要hexo初始化,否则之前的hexo配置参数会重置</span></span><br><span class="line">npm <span class="keyword">install</span> <span class="comment">#安装依赖库</span></span><br><span class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">#安装git部署相关配置 </span></span><br></pre></td></tr></table></figure>
+
+<p>此时环境搭建完成。</p>
+<p>之后多方面写作可以直接这样简化：</p>
+<h4 id="在B电脑完成写作之后"><a href="#在B电脑完成写作之后" class="headerlink" title="在B电脑完成写作之后"></a>在B电脑完成写作之后</h4><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d # 重新生成public文件夹,并发布到 master分支</span><br><span class="line">git add . # 开始讲所有源文件的更新发布                      git commit -m <span class="string">&quot;This is for Windows&quot;</span>          git push origin hexo # 更新发布到hexo分支上 </span><br></pre></td></tr></table></figure>
+
+<h4 id="回到A电脑-用以下指令获取branch-name分支的更新"><a href="#回到A电脑-用以下指令获取branch-name分支的更新" class="headerlink" title="回到A电脑, 用以下指令获取branch_name分支的更新"></a>回到A电脑, 用以下指令获取branch_name分支的更新</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git pull https:<span class="regexp">//gi</span>thub.com<span class="regexp">/djangopan/</span>djangopan.github.io hexo <span class="comment"># 注意要&lt;远程&gt; &lt;分支名称&gt; 之间有一个空格 </span></span><br><span class="line">hexo g -d <span class="comment"># 重新生成public文件夹, 并发布到 master分支</span></span><br><span class="line">git add . <span class="comment"># 开始讲所有源文件的更新发布                      </span></span><br><span class="line">git commit -m <span class="string">&quot;This is for Mac&quot;</span>          </span><br><span class="line">git push origin hexo <span class="comment"># 更新发布到hexo分支上 </span></span><br></pre></td></tr></table></figure>
+
+<p>接下来就周而复始了。</p>
+<h3 id="补充-不利用github分支进行博客迁移"><a href="#补充-不利用github分支进行博客迁移" class="headerlink" title="[补充]不利用github分支进行博客迁移"></a>[补充]不利用github分支进行博客迁移</h3><p>迁移的文件有：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. 博客配置文件./_config.yml</span><br><span class="line"><span class="number">2</span>. 主题配置文件夹.<span class="regexp">/theme/</span></span><br><span class="line"><span class="number">3</span>. 文章及相关内容的文件夹.<span class="regexp">/source/</span></span><br><span class="line"><span class="number">4</span>. 模板文件夹.<span class="regexp">/scaffolds/</span></span><br><span class="line"><span class="number">5</span>. 记录博客所有的插件的文件./<span class="keyword">package</span>.json</span><br></pre></td></tr></table></figure>
+
+<p>在新Mac上配置hexo的基础环境并且重新部署：</p>
+<ol>
+<li>安装git，并生成密钥，保存到github账号中</li>
+<li>下载并安装Node.js（npm会自己跟着装好）</li>
+<li>使用npm安装hexo ，具体指令为npm install -g hexo-cli<br>❗️注意，安装完hexo之后不用hexo init</li>
+<li>npm install</li>
+</ol>
+<h2 id="生成ssh密钥来增加连接安全"><a href="#生成ssh密钥来增加连接安全" class="headerlink" title="生成ssh密钥来增加连接安全"></a>生成ssh密钥来增加连接安全</h2><hr>
+<p>避免每次修改博客同步都需要输入账号密码，建议添加ssh密钥。</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name <span class="string">&quot;username&quot;</span></span><br><span class="line">git<span class="built_in"> config </span>--global user.email <span class="string">&quot;email_address&quot;</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;email_address&quot;</span>  #通过这个命令在~/.ssh文件夹下创建公钥私钥文件</span><br><span class="line">cd ~/.ssh</span><br><span class="line">ls # 会看到至少2个文件 id_rsa(私钥文件) id_rsa.pub(公钥文件)</span><br></pre></td></tr></table></figure>
+
+<p>打开 id_rsa.pub 文件, 复制所有内容<br>进入Github - Setting - keys页面, 新建 new SSH Key, 标题随便写, 粘贴复制内容</p>
 
       
     </div>
@@ -604,18 +658,87 @@
     
 
     
+      <div>
+        <!-- JS库 clipboard 拷贝内容到粘贴板-->
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+
+<!-- JS库 sweetalert 显示提示信息-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<ul class="post-copyright">
+  <!-- 本文标题 -->
+  <li>
+    <strong>本文标题： </strong>
+    优雅地写博客
+  </li>
+
+  <!-- 本文作者 -->
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>
+    九月八
+  </li>
+
+  <!-- 创建时间 -->
+  <li>
+    <strong>创建于： </strong>
+    2020年08月26日10时08分
+  </li>
+
+  <!-- 修改时间 -->
+  <li>
+    <strong>更新于： </strong>
+    2020年08月26日14时08分
+  </li>
+
+  <!-- 引用链接 -->
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://7h4mid4.cn/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html" title="优雅地写博客"
+      >https://7h4mid4.cn/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html</a
+    >
+    <span class="copy-path" title="点击复制引用链接"
+      ><i
+        style="cursor: pointer"
+        class="fa fa-clipboard"
+        data-clipboard-text="[九月八's Blog | 优雅地写博客](https://7h4mid4.cn/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html)"
+        aria-label="post.copy_success"
+      ></i
+    ></span>
+  </li>
+
+  <!-- 版权声明 -->
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+<script>
+  var clipboard = new ClipboardJS(".fa-clipboard");
+  clipboard.on("success", function(target) {
+    var message = document.createElement("div");
+    message.innerHTML =
+      '<i class="fa fa-check-circle message-icon"></i><span class="message-content">' +
+      target.trigger.getAttribute("aria-label") +
+      "</span>";
+    swal({
+      content: message,
+      className: "copy-success-message",
+      timer: 1000,
+      button: false
+    });
+  });
+</script>
+      </div>
+    
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/%E6%B8%97%E9%80%8F/" rel="tag"><i class="fa fa-tags"></i> 渗透</a>
+            <a href="/tags/hexo/" rel="tag"><i class="fa fa-tags"></i> hexo</a>
           
-            <a href="/tags/CVE/" rel="tag"><i class="fa fa-tags"></i> CVE</a>
-          
-            <a href="/tags/dirtycow/" rel="tag"><i class="fa fa-tags"></i> dirtycow</a>
-          
-            <a href="/tags/%E6%8F%90%E6%9D%83/" rel="tag"><i class="fa fa-tags"></i> 提权</a>
+            <a href="/tags/%E6%80%BB%E7%BB%93/" rel="tag"><i class="fa fa-tags"></i> 总结</a>
           
         </div>
       
@@ -631,8 +754,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/pwnable%E7%B3%BB%E5%88%97-fd.html" rel="next" title="pwnable系列-fd">
-                <i class="fa fa-chevron-left"></i> pwnable系列-fd
+              <a href="/test/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -640,10 +763,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/%E7%94%A8pwn-exp%E8%84%9A%E6%9C%AC.html" rel="prev" title="通用pwn exp脚本">
-                通用pwn exp脚本 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -931,7 +1050,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">总览</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E8%8C%83%E5%9B%B4%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">漏洞范围：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%B1%E5%AE%B3%EF%BC%9A"><span class="nav-number">1.0.2.</span> <span class="nav-text">危害：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4%EF%BC%9A"><span class="nav-number">1.0.3.</span> <span class="nav-text">影响范围：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">查看方式：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%BE%A8%E5%88%AB%EF%BC%9A"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">简单辨别：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">利用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E7%BC%96%E8%AF%91dirtycow%E5%8F%91%E9%80%81%E8%87%B3%E7%9B%AE%E6%A0%87%E6%9C%BA"><span class="nav-number">2.1.</span> <span class="nav-text">本地编译dirtycow发送至目标机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh%E8%BF%9E%E6%8E%A5%E5%90%8E%E5%88%9B%E5%BB%BAroot%E7%94%A8%E6%88%B7"><span class="nav-number">2.2.</span> <span class="nav-text">ssh连接后创建root用户</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MarkDown%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">MarkDown语法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E6%AD%A5%E8%BF%9B%E9%98%B6"><span class="nav-number">1.1.</span> <span class="nav-text">初步进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%B1%85%E4%B8%AD%E6%A0%87%E7%AD%BE"><span class="nav-number">1.1.1.</span> <span class="nav-text">文本居中标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">代码块进阶用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#note%E6%A0%87%E7%AD%BE"><span class="nav-number">1.1.3.</span> <span class="nav-text">note标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lebal%E6%A0%87%E7%AD%BE"><span class="nav-number">1.1.4.</span> <span class="nav-text">lebal标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#button%E6%8C%89%E9%92%AE"><span class="nav-number">1.1.5.</span> <span class="nav-text">button按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E7%AB%99%E5%86%85%E9%93%BE%E6%8E%A5"><span class="nav-number">1.1.6.</span> <span class="nav-text">引用站内链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%A4%9A%E5%AA%92%E4%BD%93"><span class="nav-number">1.2.</span> <span class="nav-text">插入多媒体</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="nav-number">1.2.1.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90"><span class="nav-number">1.2.2.</span> <span class="nav-text">插入网易云音乐</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac%E7%AB%AF%E7%BC%96%E8%BE%91%E7%8E%AF%E5%A2%83"><span class="nav-number">2.</span> <span class="nav-text">Mac端编辑环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%AE%BE%E5%A4%87%E5%90%8C%E6%AD%A5%E7%BC%96%E8%BE%91"><span class="nav-number">3.</span> <span class="nav-text">多设备同步编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF"><span class="nav-number">3.1.</span> <span class="nav-text">构建思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.2.</span> <span class="nav-text">操作步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A6%96%E5%85%88-%E5%81%87%E8%AE%BEA%E7%94%B5%E8%84%91%E5%B7%B2%E7%BB%8F%E5%AE%8C%E6%88%90%E4%BA%86hexo%E6%90%AD%E5%BB%BA%E5%92%8Cgithub%E8%BF%9E%E6%8E%A5-%E8%BF%9B%E5%85%A5%E6%A0%B9%E7%9B%AE%E5%BD%95MyBlog"><span class="nav-number">3.2.1.</span> <span class="nav-text">首先, 假设A电脑已经完成了hexo搭建和github连接, 进入根目录MyBlog</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%84%B6%E5%90%8E-%E5%9C%A8B%E7%94%B5%E8%84%91%E9%83%A8%E7%BD%B2git%E7%8E%AF%E5%A2%83%E5%92%8Cnode-js%E7%8E%AF%E5%A2%83-%E5%9C%A8-%E7%9B%AE%E5%BD%95%E4%B8%8B"><span class="nav-number">3.2.2.</span> <span class="nav-text">然后, 在B电脑部署git环境和node.js环境, 在~目录下</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8B%E7%94%B5%E8%84%91%E5%AE%8C%E6%88%90%E5%86%99%E4%BD%9C%E4%B9%8B%E5%90%8E"><span class="nav-number">3.2.3.</span> <span class="nav-text">在B电脑完成写作之后</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E5%88%B0A%E7%94%B5%E8%84%91-%E7%94%A8%E4%BB%A5%E4%B8%8B%E6%8C%87%E4%BB%A4%E8%8E%B7%E5%8F%96branch-name%E5%88%86%E6%94%AF%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="nav-number">3.2.4.</span> <span class="nav-text">回到A电脑, 用以下指令获取branch_name分支的更新</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85-%E4%B8%8D%E5%88%A9%E7%94%A8github%E5%88%86%E6%94%AF%E8%BF%9B%E8%A1%8C%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB"><span class="nav-number">3.3.</span> <span class="nav-text">[补充]不利用github分支进行博客迁移</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90ssh%E5%AF%86%E9%92%A5%E6%9D%A5%E5%A2%9E%E5%8A%A0%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8"><span class="nav-number">4.</span> <span class="nav-text">生成ssh密钥来增加连接安全</span></a></li></ol></div>
             
 
           </div>

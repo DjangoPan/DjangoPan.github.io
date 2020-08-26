@@ -88,12 +88,12 @@
 
 
 
-<meta name="description" content="stackfrom pwn import * context.log_level &#x3D; &#39;debug&#39; io &#x3D; process(&quot;&quot;) code &#x3D; ELF(&quot;&quot;) #lib &#x3D; ELF(&quot;.&#x2F;bc.so.6&quot;) #r &#x3D; remote(&quot;&quot;) def debug():     print io.pid     pause() def gdb(script &#x3D; &#39;&#39;):     gdb.attac">
+<meta name="description" content="stackfrom pwn import * context.log_level &#x3D; &#39;debug&#39; io &#x3D; process(&quot;&quot;) code &#x3D; ELF(&quot;&quot;) #lib &#x3D; ELF(&quot;.&#x2F;bc.so.6&quot;) #r &#x3D; remote(&quot;&quot;) def debug():     print io.pid">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通用pwn exp脚本">
 <meta property="og:url" content="https://7h4mid4.cn/%E7%94%A8pwn-exp%E8%84%9A%E6%9C%AC.html">
 <meta property="og:site_name" content="一葉扁舟">
-<meta property="og:description" content="stackfrom pwn import * context.log_level &#x3D; &#39;debug&#39; io &#x3D; process(&quot;&quot;) code &#x3D; ELF(&quot;&quot;) #lib &#x3D; ELF(&quot;.&#x2F;bc.so.6&quot;) #r &#x3D; remote(&quot;&quot;) def debug():     print io.pid     pause() def gdb(script &#x3D; &#39;&#39;):     gdb.attac">
+<meta property="og:description" content="stackfrom pwn import * context.log_level &#x3D; &#39;debug&#39; io &#x3D; process(&quot;&quot;) code &#x3D; ELF(&quot;&quot;) #lib &#x3D; ELF(&quot;.&#x2F;bc.so.6&quot;) #r &#x3D; remote(&quot;&quot;) def debug():     print io.pid">
 <meta property="og:locale">
 <meta property="article:published_time" content="2019-08-18T05:07:00.000Z">
 <meta property="article:modified_time" content="2019-08-18T05:08:25.000Z">
@@ -459,7 +459,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  182
+                  178
                 </span>
               
 
@@ -497,40 +497,22 @@
 
       
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><pre><code>from pwn import *
-context.log_level = 'debug'
-io = process("")
-code = ELF("")
-#lib = ELF("./bc.so.6")
-#r = remote("")
+context.log_level = &#39;debug&#39;
+io = process(&quot;&quot;)
+code = ELF(&quot;&quot;)
+#lib = ELF(&quot;./bc.so.6&quot;)
+#r = remote(&quot;&quot;)
 def debug():
     print io.pid
     pause()
-def gdb(script = ''):
+def gdb(script = &#39;&#39;):
     gdb.attach(io, gdbscrippt = script)
 
 def exploit():
 
     io.interactive()
 exploit()</code></pre>
-<h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">'debug'</span></span><br><span class="line">io = process(<span class="string">"./"</span>)</span><br><span class="line"><span class="comment">#io = remote("",)</span></span><br><span class="line">libc = ELF(<span class="string">"./bc.so.6"</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">size</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'1'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Size:"</span>,str(size))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'4'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'2'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span>(<span class="params">num,content</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">"&gt;&gt; "</span>,<span class="string">'3'</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">"Input your id:"</span>,str(num))</span><br><span class="line">    io.sendlineafter(<span class="string">"Content:"</span>,content)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span>():</span></span><br><span class="line">    <span class="keyword">print</span> io.pid</span><br><span class="line">    pause()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span>(<span class="params">script=<span class="string">''</span></span>):</span></span><br><span class="line">    gdb.attach(io, gdbscript=script)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exploit</span>():</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>
+<h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">io = process(<span class="string">&quot;./&quot;</span>)</span><br><span class="line"><span class="comment">#io = remote(&quot;&quot;,)</span></span><br><span class="line">libc = ELF(<span class="string">&quot;./bc.so.6&quot;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">size</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Size:&quot;</span>,str(size))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;4&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span>(<span class="params">num,content</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Content:&quot;</span>,content)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span>():</span></span><br><span class="line">    <span class="keyword">print</span> io.pid</span><br><span class="line">    pause()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span>(<span class="params">script=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">    gdb.attach(io, gdbscript=script)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exploit</span>():</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -700,7 +682,7 @@ exploit()</code></pre>
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -711,7 +693,7 @@ exploit()</code></pre>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -722,7 +704,7 @@ exploit()</code></pre>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -813,6 +795,10 @@ exploit()</code></pre>
                
                
                  <li>
+                   <a href="/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html" title="优雅地写博客" target="_blank">优雅地写博客</a>
+                 </li>
+               
+                 <li>
                    <a href="/test/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html" title="" target="_blank"></a>
                  </li>
                
@@ -828,10 +814,6 @@ exploit()</code></pre>
                    <a href="/%E6%97%A7%E4%BA%8B%E5%A5%BD.html" title="记得旧事好" target="_blank">记得旧事好</a>
                  </li>
                
-                 <li>
-                   <a href="/%E8%AE%B0%E5%BD%95%E5%AE%89%E5%BE%BD%E6%9F%90%E4%B8%80%E6%AC%A1%E5%8F%96%E8%AF%81%E7%BB%83%E4%B9%A0.html" title="安徽取证大比武个人Writeup" target="_blank">安徽取证大比武个人Writeup</a>
-                 </li>
-               
              </ul>
            </div>
           
@@ -844,7 +826,7 @@ exploit()</code></pre>
     <h3 class="widget-title"></h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CVE/" rel="tag">CVE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cowrie/" rel="tag">Cowrie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EXP/" rel="tag">EXP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dirtycow/" rel="tag">dirtycow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/" rel="tag">frp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwn/" rel="tag">pwn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwnable/" rel="tag">pwnable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/volatility/" rel="tag">volatility</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98/" rel="tag">内存</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%96%E8%AF%81/" rel="tag">取证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%80%E6%83%B3/" rel="tag">怀想</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8F%90%E6%9D%83/" rel="tag">提权</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/" rel="tag">文件描述符</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E8%8B%91/" rel="tag">文苑</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%8E%E6%96%87/" rel="tag">美文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%9C%E7%BD%90/" rel="tag">蜜罐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CVE/" rel="tag">CVE</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cowrie/" rel="tag">Cowrie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EXP/" rel="tag">EXP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dirtycow/" rel="tag">dirtycow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/" rel="tag">frp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwn/" rel="tag">pwn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pwnable/" rel="tag">pwnable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/volatility/" rel="tag">volatility</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E5%AD%98/" rel="tag">内存</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag">内网穿透</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%96%E8%AF%81/" rel="tag">取证</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%80%E6%83%B3/" rel="tag">怀想</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8F%90%E6%9D%83/" rel="tag">提权</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/" rel="tag">文件描述符</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%87%E8%8B%91/" rel="tag">文苑</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%97%E9%80%8F/" rel="tag">渗透</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag">环境配置</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A0%B4%E8%A7%A3/" rel="tag">破解</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BE%8E%E6%96%87/" rel="tag">美文</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%9C%9C%E7%BD%90/" rel="tag">蜜罐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%86%E5%90%91/" rel="tag">逆向</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>
@@ -899,7 +881,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#stack"><span class="nav-text">stack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#heap"><span class="nav-text">heap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#stack"><span class="nav-number">1.</span> <span class="nav-text">stack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#heap"><span class="nav-number">2.</span> <span class="nav-text">heap</span></a></li></ol></div>
             
 
           </div>
@@ -934,7 +916,7 @@ show_date_time();
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">20.1k</span>
+    <span title="博客全站字数">21.9k</span>
   
 </div>
 

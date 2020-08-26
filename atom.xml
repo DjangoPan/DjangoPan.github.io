@@ -6,7 +6,7 @@
   <link href="https://7h4mid4.cn/atom.xml" rel="self"/>
   
   <link href="https://7h4mid4.cn/"/>
-  <updated>2020-08-25T15:24:29.813Z</updated>
+  <updated>2020-08-26T06:50:13.101Z</updated>
   <id>https://7h4mid4.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>优雅地写博客</title>
+    <link href="https://7h4mid4.cn/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html"/>
+    <id>https://7h4mid4.cn/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html</id>
+    <published>2020-08-26T02:24:53.983Z</published>
+    <updated>2020-08-26T06:50:13.101Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    <category term="hexo" scheme="https://7h4mid4.cn/categories/hexo/"/>
+    
+    
+    <category term="hexo" scheme="https://7h4mid4.cn/tags/hexo/"/>
+    
+    <category term="总结" scheme="https://7h4mid4.cn/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title></title>
@@ -290,11 +314,11 @@
     <category term="CTF" scheme="https://7h4mid4.cn/categories/%E5%AD%A6%E4%B9%A0/CTF/"/>
     
     
-    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
-    
     <category term="pwnable" scheme="https://7h4mid4.cn/tags/pwnable/"/>
     
     <category term="文件描述符" scheme="https://7h4mid4.cn/tags/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/"/>
+    
+    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
     
   </entry>
   
