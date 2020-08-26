@@ -358,9 +358,9 @@
         <category>CTF</category>
       </categories>
       <tags>
+        <tag>CTF</tag>
         <tag>pwnable</tag>
         <tag>文件描述符</tag>
-        <tag>CTF</tag>
       </tags>
   </entry>
   <entry>
@@ -399,6 +399,130 @@
         <tag>美文</tag>
         <tag>文苑</tag>
         <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>内存取证入门</title>
+    <url>/%E5%8F%96%E8%AF%81%E5%85%A5%E9%97%A8.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="Volatility的基本介绍"><a href="#Volatility的基本介绍" class="headerlink" title="Volatility的基本介绍"></a>Volatility的基本介绍</h3><p>Volatility是一款基于GNU协议的开源框架，使用Python语言编写而成的内存取证工具集，可以分析内存中的各种数据。Volatility支持对32位或64位Wnidows、Linux、Mac、Android操作系统的RAM（随机存储器）数据进行提取与分析。</p>
+<h3 id="内存镜像的获取"><a href="#内存镜像的获取" class="headerlink" title="内存镜像的获取"></a>内存镜像的获取</h3><p><code>MoonSols DumpIt</code>是一款同时支持Win32dd和Win64dd的内存副本获取工具。用户只需双击DumpIt.exe可执行程序，并在提示问题后面输入y（如图2.2所示），等待几分钟时间即可在当前目录下生成主机物理内存的副本（如图2.3所示），该副本文件是以*.raw为后缀的镜像文件。</p>
+<p>raw是未经处理的意思，即使用该工具对物理内存进行拷贝是按每一个bit进行深度复制，即按原样进行复制，这样可以避免丢失一些重要数据。</p>
+<p>拿到一个镜像文件，在cmd进入所在目录，输入:</p>
+<pre><code>    .\volatility  -f &lt;memdump.img&gt; imageinfo</code></pre>
+<h5 id="Suggested-profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。"><a href="#Suggested-profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。" class="headerlink" title="Suggested profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。"></a>Suggested profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过<code>imageinfo</code>命令获取。</h5><p>使用策略方法：</p>
+<pre><code>    .\volatility  -f &lt;memdump.img&gt; --profile=Win7SP1x64</code></pre>
+<h4 id="查看镜像信息："><a href="#查看镜像信息：" class="headerlink" title="查看镜像信息："></a>查看镜像信息：</h4><pre><code>    -f &lt;memdump.img&gt; imageinfo</code></pre>
+<h5 id="显示主机所使用的操作系统版本、服务包以及硬件结构-32位或64位-、页目录表的起始地址和该获取该内存镜像的时间等基本信息"><a href="#显示主机所使用的操作系统版本、服务包以及硬件结构-32位或64位-、页目录表的起始地址和该获取该内存镜像的时间等基本信息" class="headerlink" title="显示主机所使用的操作系统版本、服务包以及硬件结构(32位或64位)、页目录表的起始地址和该获取该内存镜像的时间等基本信息"></a>显示主机所使用的操作系统版本、服务包以及硬件结构(32位或64位)、页目录表的起始地址和该获取该内存镜像的时间等基本信息</h5><h4 id="查找内存中KPCR的-KPCR结构体信息："><a href="#查找内存中KPCR的-KPCR结构体信息：" class="headerlink" title="查找内存中KPCR的_KPCR结构体信息："></a>查找内存中KPCR的_KPCR结构体信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; kprcscan                        需要好几个小时。</code></pre>
+<p>在_KPCR的帮助下我们可以枚举机器上运行的进程列表。</p>
+<p>由于Windows需要支持多个CPU，因此Windows内核中为此定义了一套以处理器控制区(Processor Control Region)即KPCR为枢纽的数据结构，使每个CPU都有个KPCR。 其中KPCR这个结构中有一个域KPRCB(Kernel Processor Control Block)结构，这个结构扩展了KPCR，这两个结构用来保存<strong>与线程切换相关的全局信息。</strong></p>
+<p>具体的说，该命令可以显示每个处理器的详细信息，<strong>包括IDT（线程控制符）和GDT（全局段描述符表）地址，当前运行的线程和空闲线程，CPU数量、制造厂商及其速度，CR3寄存器或页目录表基地址的值等信息。</strong></p>
+<pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; kpcrscan</code></pre>
+<h4 id="查看进程："><a href="#查看进程：" class="headerlink" title="查看进程："></a>查看进程：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; pslist
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; pstree
+    以树的形式显示出来
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psxview</code></pre>
+<h5 id="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"><a href="#pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。" class="headerlink" title="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"></a>pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。</h5><h5 id="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"><a href="#psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。" class="headerlink" title="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"></a>psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。</h5><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan</code></pre>
+<h5 id="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"><a href="#显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。" class="headerlink" title="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"></a>显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。</h5><h4 id="查看用户SID："><a href="#查看用户SID：" class="headerlink" title="查看用户SID："></a>查看用户SID：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; getsids</code></pre>
+<h4 id="查看系统中的用户："><a href="#查看系统中的用户：" class="headerlink" title="查看系统中的用户："></a>查看系统中的用户：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;SAM\Domains\Account\Users\Names&quot;</code></pre>
+<h4 id="获取系统中最后登录用户"><a href="#获取系统中最后登录用户" class="headerlink" title="获取系统中最后登录用户"></a>获取系统中最后登录用户</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></pre>
+<h4 id="查看启动项："><a href="#查看启动项：" class="headerlink" title="查看启动项："></a>查看启动项：</h4><pre><code>     -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;Microsoft\Windows\CurrentVersion\Run&quot;</code></pre>
+<h4 id="查看动态链接库的信息："><a href="#查看动态链接库的信息：" class="headerlink" title="查看动态链接库的信息："></a>查看动态链接库的信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; dlllist [-p pid]</code></pre>
+<h5 id="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"><a href="#显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。" class="headerlink" title="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"></a>显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。</h5><h4 id="查看临时内存注册表信息："><a href="#查看临时内存注册表信息：" class="headerlink" title="查看临时内存注册表信息："></a>查看临时内存注册表信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hivelist
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; lsadump -y SYSTEM的virtualaddr -s SECURITY的virtualaddr
+
+    都是用来查看第二类注册表信息</code></pre>
+<h5 id="注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件-hive-”的分散文件组成。"><a href="#注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件-hive-”的分散文件组成。" class="headerlink" title="注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件(hive)”的分散文件组成。"></a>注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件(hive)”的分散文件组成。</h5><h5 id="注册表文件主要包括两类："><a href="#注册表文件主要包括两类：" class="headerlink" title="注册表文件主要包括两类："></a>注册表文件主要包括两类：</h5><h5 id="第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32-config文件夹下。一般在运行中使用regedit查看。"><a href="#第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32-config文件夹下。一般在运行中使用regedit查看。" class="headerlink" title="第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32\config文件夹下。一般在运行中使用regedit查看。"></a>第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32\config文件夹下。一般在运行中使用regedit查看。</h5><h5 id="第二类-易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。"><a href="#第二类-易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。" class="headerlink" title="第二类;易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。"></a>第二类;易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。</h5><h4 id="hivelist："><a href="#hivelist：" class="headerlink" title="hivelist："></a>hivelist：</h4><h5 id="定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。"><a href="#定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。" class="headerlink" title="定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。"></a>定位与硬盘上对应的注册表文件在内存中的<strong>虚拟地址</strong>和<strong>物理地址</strong>。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。</h5><h4 id="lsadump："><a href="#lsadump：" class="headerlink" title="lsadump："></a>lsadump：</h4><h5 id="使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。"><a href="#使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。" class="headerlink" title="使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。"></a>使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。</h5><h5 id="LSA-Local-Security-Authority-即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。"><a href="#LSA-Local-Security-Authority-即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。" class="headerlink" title="LSA(Local Security Authority)即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。"></a>LSA(Local Security Authority)即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。</h5><h5 id="使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数"><a href="#使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数" class="headerlink" title="使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数."></a>使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数.</h5><pre><code>    -f &lt;memdump.img&gt; --profile=&lt;prifile&gt; lsadump -y SYSTEM的virtualaddr -s SECURE的virtualaddr</code></pre>
+<h4 id="获取注册表信息以爆破密码："><a href="#获取注册表信息以爆破密码：" class="headerlink" title="获取注册表信息以爆破密码："></a>获取注册表信息以爆破密码：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hashdump -y SYSTEM的virtualaddr -s SAM的virtualaddr</code></pre>
+<h5 id="之后就能看到用户名和两个hash值，选后面那个hash值，用www-cmd5-com-搜索hash转文字，用NTLM来查SAM中的hash。"><a href="#之后就能看到用户名和两个hash值，选后面那个hash值，用www-cmd5-com-搜索hash转文字，用NTLM来查SAM中的hash。" class="headerlink" title="之后就能看到用户名和两个hash值，选后面那个hash值，用www.cmd5.com 搜索hash转文字，用NTLM来查SAM中的hash。"></a>之后就能看到用户名和两个hash值，选后面那个hash值，用<a href="http://www.cmd5.com/">www.cmd5.com</a> 搜索hash转文字，用NTLM来查SAM中的hash。</h5><h4 id="查看历史命令："><a href="#查看历史命令：" class="headerlink" title="查看历史命令："></a>查看历史命令：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; cmdscan</code></pre>
+<h4 id="查看控制台命令："><a href="#查看控制台命令：" class="headerlink" title="查看控制台命令："></a>查看控制台命令：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; consoles</code></pre>
+<h4 id="查看网络连接（TCP连接）："><a href="#查看网络连接（TCP连接）：" class="headerlink" title="查看网络连接（TCP连接）："></a>查看网络连接（TCP连接）：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; connections           Vista前的系统用的
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; netscan                 Vista后的系统用的</code></pre>
+<h4 id="查看IE历史："><a href="#查看IE历史：" class="headerlink" title="查看IE历史："></a>查看IE历史：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; iehistory</code></pre>
+<h4 id="获取用户密码散列"><a href="#获取用户密码散列" class="headerlink" title="获取用户密码散列:"></a>获取用户密码散列:</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hashdump(-y systemadd –s samadd)</code></pre>
+<h4 id="获取内存中活跃的TCP连接"><a href="#获取内存中活跃的TCP连接" class="headerlink" title="获取内存中活跃的TCP连接"></a>获取内存中活跃的TCP连接</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; connections</code></pre>
+<h4 id="查看系统中已打开的文件（rootkit隐藏文件）"><a href="#查看系统中已打开的文件（rootkit隐藏文件）" class="headerlink" title="查看系统中已打开的文件（rootkit隐藏文件）"></a>查看系统中已打开的文件（rootkit隐藏文件）</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; filescan</code></pre>
+<h4 id="导出相关filescan的文件"><a href="#导出相关filescan的文件" class="headerlink" title="导出相关filescan的文件"></a>导出相关filescan的文件</h4><pre><code>    -f file_patched.dmp --profile=Win7SP1x86_23418 dumpfiles -D ./ -Q 0x000000000e080690</code></pre>
+<h4 id="显示在一个进程中打开的句柄"><a href="#显示在一个进程中打开的句柄" class="headerlink" title="显示在一个进程中打开的句柄"></a>显示在一个进程中打开的句柄</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; handles -p &lt;pid&gt; -t &lt;file&gt;</code></pre>
+<h4 id="显示内核中的驱动程序，包括已隐藏-链接的"><a href="#显示内核中的驱动程序，包括已隐藏-链接的" class="headerlink" title="显示内核中的驱动程序，包括已隐藏/链接的"></a>显示内核中的驱动程序，包括已隐藏/链接的</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; modules
+    查看内核驱动（不全）
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; modscan
+    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; driverscan</code></pre>
+<h4 id="查看服务"><a href="#查看服务" class="headerlink" title="查看服务"></a>查看服务</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; svcscan</code></pre>
+<h4 id="查看各组件时间线"><a href="#查看各组件时间线" class="headerlink" title="查看各组件时间线"></a>查看各组件时间线</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; timeliner
+    输出一般很多，建议输出到制定文件中</code></pre>
+<h4 id="查看系统或桌面执行文件的信息。"><a href="#查看系统或桌面执行文件的信息。" class="headerlink" title="查看系统或桌面执行文件的信息。"></a>查看系统或桌面执行文件的信息。</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; userassist
+
+   包括  ：名称、路径、执行次数、最后一次执行时间等</code></pre>
+<h4 id="将内存中的某个进程数据以-dmp-的格式保存出来"><a href="#将内存中的某个进程数据以-dmp-的格式保存出来" class="headerlink" title="将内存中的某个进程数据以 dmp 的格式保存出来"></a>将内存中的某个进程数据以 dmp 的格式保存出来</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; memdump -p [PID] -D [dump 出的文件保存的目录]
+    举例：
+    volatility -f mem.vmem --profile=WinXPSP2x86 memdump -p 1734 -D ctf/
+
+
+    hexdump 1734.dmp
+    二进制编辑器 hexeditor 将以上保存的 dmp 文件打开，并进行调查取证的工作。
+
+
+    你还可以使用 strings 这个工具将它的字符串打印出来。例：
+
+    strings 1736.dmp &gt; 1736.txt
+    strings 1608.dmp &gt; 1736.txt | grep shellcode</code></pre>
+<p>–cache选项的功能是使用缓存。<br>–dtb=DTB选项的功能是说明DTB(Directory Table Base)页目录表的基地址。<br>-k KPCR 选项的功能是说明一个指定的内核处理器控制区的虚拟地址。<br>Apihooks插件命令的功能是监测在进程和内核中的API钩子。<br>Bioskbd插件命令的功能是动态地从内存中读取键盘缓冲区的数据。</p>
+<p><a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference">命令行指南</a></p>
+<p>附上一篇好文章，其中有一些典型的题目可以参考，日后感兴趣的可以做做。<br><a href="http://shaobaobaoer.cn/archives/693/memory-forensics-tool-volatility-usage-and-practice">传送门</a></p>
+<p>另外加上一篇<a href="https://www.cnblogs.com/ECJTUACM-873284962/p/9473808.html">USB流量分析文章</a></p>
+]]></content>
+      <tags>
+        <tag>取证</tag>
+        <tag>内存</tag>
+        <tag>volatility</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记得旧事好</title>
+    <url>/%E6%97%A7%E4%BA%8B%E5%A5%BD.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="/images/pasted-38.png" alt="upload successful"></p>
+<pre><code>                              《记得旧时好》（陈白沙）</code></pre>
+<p>记得旧时好，跟随爹爹去吃茶，门前磨螺壳，巷口弄泥沙，而今人长大，心事乱如麻；</p>
+<p>记得旧时遥，喜看阿婆纺线纱，瓦凹泡新茧，院内惹雏鸭，而今人长大，心绪淡若茶；</p>
+<p>记得旧时小，爱卷丫小衣襟角，檐底蹲蚁巢，树上共攀枣，而今人长大，心情恍比潮；</p>
+<p>记得旧时淘，总嫌先生讲乖巧，车马混鱼龙，睁眼乐妖娆，而今人长大，心思飘成草；</p>
+<p>记得旧时闹，偏要哥哥教捉虾，墙角挖青苔，梢头斗知了，而今人长大，心湖荡起潮；</p>
+<p>想如今，天高海阔音信杳杳，沧桑岁月间抹不平凄凉寂寥。</p>
+]]></content>
+      <categories>
+        <category>那些花儿</category>
+      </categories>
+      <tags>
+        <tag>怀想</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>通用pwn exp脚本</title>
+    <url>/%E7%94%A8pwn-exp%E8%84%9A%E6%9C%AC.html</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><pre><code>from pwn import *
+context.log_level = &#39;debug&#39;
+io = process(&quot;&quot;)
+code = ELF(&quot;&quot;)
+#lib = ELF(&quot;./bc.so.6&quot;)
+#r = remote(&quot;&quot;)
+def debug():
+    print io.pid
+    pause()
+def gdb(script = &#39;&#39;):
+    gdb.attach(io, gdbscrippt = script)
+
+def exploit():
+
+    io.interactive()
+exploit()</code></pre>
+<h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">io = process(<span class="string">&quot;./&quot;</span>)</span><br><span class="line"><span class="comment">#io = remote(&quot;&quot;,)</span></span><br><span class="line">libc = ELF(<span class="string">&quot;./bc.so.6&quot;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">size</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Size:&quot;</span>,str(size))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;4&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span>(<span class="params">num,content</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Content:&quot;</span>,content)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span>():</span></span><br><span class="line">    <span class="keyword">print</span> io.pid</span><br><span class="line">    pause()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span>(<span class="params">script=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">    gdb.attach(io, gdbscript=script)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exploit</span>():</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>pwn</category>
+      </categories>
+      <tags>
+        <tag>pwn</tag>
+        <tag>EXP</tag>
       </tags>
   </entry>
   <entry>
@@ -542,130 +666,6 @@
       <tags>
         <tag>hexo</tag>
         <tag>总结</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>内存取证入门</title>
-    <url>/%E5%8F%96%E8%AF%81%E5%85%A5%E9%97%A8.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="Volatility的基本介绍"><a href="#Volatility的基本介绍" class="headerlink" title="Volatility的基本介绍"></a>Volatility的基本介绍</h3><p>Volatility是一款基于GNU协议的开源框架，使用Python语言编写而成的内存取证工具集，可以分析内存中的各种数据。Volatility支持对32位或64位Wnidows、Linux、Mac、Android操作系统的RAM（随机存储器）数据进行提取与分析。</p>
-<h3 id="内存镜像的获取"><a href="#内存镜像的获取" class="headerlink" title="内存镜像的获取"></a>内存镜像的获取</h3><p><code>MoonSols DumpIt</code>是一款同时支持Win32dd和Win64dd的内存副本获取工具。用户只需双击DumpIt.exe可执行程序，并在提示问题后面输入y（如图2.2所示），等待几分钟时间即可在当前目录下生成主机物理内存的副本（如图2.3所示），该副本文件是以*.raw为后缀的镜像文件。</p>
-<p>raw是未经处理的意思，即使用该工具对物理内存进行拷贝是按每一个bit进行深度复制，即按原样进行复制，这样可以避免丢失一些重要数据。</p>
-<p>拿到一个镜像文件，在cmd进入所在目录，输入:</p>
-<pre><code>    .\volatility  -f &lt;memdump.img&gt; imageinfo</code></pre>
-<h5 id="Suggested-profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。"><a href="#Suggested-profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。" class="headerlink" title="Suggested profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过imageinfo命令获取。"></a>Suggested profiles：策略，会告诉你这个内存镜像可以使用什么策略，策略通过<code>imageinfo</code>命令获取。</h5><p>使用策略方法：</p>
-<pre><code>    .\volatility  -f &lt;memdump.img&gt; --profile=Win7SP1x64</code></pre>
-<h4 id="查看镜像信息："><a href="#查看镜像信息：" class="headerlink" title="查看镜像信息："></a>查看镜像信息：</h4><pre><code>    -f &lt;memdump.img&gt; imageinfo</code></pre>
-<h5 id="显示主机所使用的操作系统版本、服务包以及硬件结构-32位或64位-、页目录表的起始地址和该获取该内存镜像的时间等基本信息"><a href="#显示主机所使用的操作系统版本、服务包以及硬件结构-32位或64位-、页目录表的起始地址和该获取该内存镜像的时间等基本信息" class="headerlink" title="显示主机所使用的操作系统版本、服务包以及硬件结构(32位或64位)、页目录表的起始地址和该获取该内存镜像的时间等基本信息"></a>显示主机所使用的操作系统版本、服务包以及硬件结构(32位或64位)、页目录表的起始地址和该获取该内存镜像的时间等基本信息</h5><h4 id="查找内存中KPCR的-KPCR结构体信息："><a href="#查找内存中KPCR的-KPCR结构体信息：" class="headerlink" title="查找内存中KPCR的_KPCR结构体信息："></a>查找内存中KPCR的_KPCR结构体信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; kprcscan                        需要好几个小时。</code></pre>
-<p>在_KPCR的帮助下我们可以枚举机器上运行的进程列表。</p>
-<p>由于Windows需要支持多个CPU，因此Windows内核中为此定义了一套以处理器控制区(Processor Control Region)即KPCR为枢纽的数据结构，使每个CPU都有个KPCR。 其中KPCR这个结构中有一个域KPRCB(Kernel Processor Control Block)结构，这个结构扩展了KPCR，这两个结构用来保存<strong>与线程切换相关的全局信息。</strong></p>
-<p>具体的说，该命令可以显示每个处理器的详细信息，<strong>包括IDT（线程控制符）和GDT（全局段描述符表）地址，当前运行的线程和空闲线程，CPU数量、制造厂商及其速度，CR3寄存器或页目录表基地址的值等信息。</strong></p>
-<pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; kpcrscan</code></pre>
-<h4 id="查看进程："><a href="#查看进程：" class="headerlink" title="查看进程："></a>查看进程：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; pslist
-    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; pstree
-    以树的形式显示出来
-    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan
-    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psxview</code></pre>
-<h5 id="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"><a href="#pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。" class="headerlink" title="pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。"></a>pslist可以枚举系统中的进程，这条命令通过遍历PsActiveProcessHead指针指向的双向链表枚举当前内存中活跃的所有进程信息，主要包括偏移地址、进程ID号、父进程ID号、线程数量、句柄数量、进程会话ID号以及进程开始和退出的时间。</h5><h5 id="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"><a href="#psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。" class="headerlink" title="psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。"></a>psscan命令能够通过内存池标签查找的方式枚举系统中的所有进程，这条命令不仅能够显示当前内存中活跃的进程信息，还能够枚举以前终止的进程和被隐藏以及被rootkit破坏的未在活跃进程链表中出现的进程。</h5><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; psscan</code></pre>
-<h5 id="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"><a href="#显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。" class="headerlink" title="显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。"></a>显示的时间都是世界统一时间UTC，而中国在东八区，需要转换。</h5><h4 id="查看用户SID："><a href="#查看用户SID：" class="headerlink" title="查看用户SID："></a>查看用户SID：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; getsids</code></pre>
-<h4 id="查看系统中的用户："><a href="#查看系统中的用户：" class="headerlink" title="查看系统中的用户："></a>查看系统中的用户：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;SAM\Domains\Account\Users\Names&quot;</code></pre>
-<h4 id="获取系统中最后登录用户"><a href="#获取系统中最后登录用户" class="headerlink" title="获取系统中最后登录用户"></a>获取系统中最后登录用户</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon</code></pre>
-<h4 id="查看启动项："><a href="#查看启动项：" class="headerlink" title="查看启动项："></a>查看启动项：</h4><pre><code>     -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; printkey -K &quot;Microsoft\Windows\CurrentVersion\Run&quot;</code></pre>
-<h4 id="查看动态链接库的信息："><a href="#查看动态链接库的信息：" class="headerlink" title="查看动态链接库的信息："></a>查看动态链接库的信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; dlllist [-p pid]</code></pre>
-<h5 id="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"><a href="#显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。" class="headerlink" title="显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。"></a>显示列表包括：动态链接库文件的基地址、文件大小以及文件所在路径。</h5><h4 id="查看临时内存注册表信息："><a href="#查看临时内存注册表信息：" class="headerlink" title="查看临时内存注册表信息："></a>查看临时内存注册表信息：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hivelist
-    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; lsadump -y SYSTEM的virtualaddr -s SECURITY的virtualaddr
-
-    都是用来查看第二类注册表信息</code></pre>
-<h5 id="注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件-hive-”的分散文件组成。"><a href="#注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件-hive-”的分散文件组成。" class="headerlink" title="注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件(hive)”的分散文件组成。"></a>注册表不是一个简单的大文件，而是一个集合，由称为“注册表文件(hive)”的分散文件组成。</h5><h5 id="注册表文件主要包括两类："><a href="#注册表文件主要包括两类：" class="headerlink" title="注册表文件主要包括两类："></a>注册表文件主要包括两类：</h5><h5 id="第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32-config文件夹下。一般在运行中使用regedit查看。"><a href="#第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32-config文件夹下。一般在运行中使用regedit查看。" class="headerlink" title="第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32\config文件夹下。一般在运行中使用regedit查看。"></a>第一类：存储在磁盘上的静态数据，这类注册表文件一般被保存在操作系统的system32\config文件夹下。一般在运行中使用regedit查看。</h5><h5 id="第二类-易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。"><a href="#第二类-易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。" class="headerlink" title="第二类;易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。"></a>第二类;易失性注册表数据，这类注册表文件是由Windows内核负责维护的RAM中的数据，它们在系统每次启动的时候才会被创建。</h5><h4 id="hivelist："><a href="#hivelist：" class="headerlink" title="hivelist："></a>hivelist：</h4><h5 id="定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。"><a href="#定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。" class="headerlink" title="定位与硬盘上对应的注册表文件在内存中的虚拟地址和物理地址。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。"></a>定位与硬盘上对应的注册表文件在内存中的<strong>虚拟地址</strong>和<strong>物理地址</strong>。特别是当你想打印某个注册表文件的值时，就需要先运行这个命令。</h5><h4 id="lsadump："><a href="#lsadump：" class="headerlink" title="lsadump："></a>lsadump：</h4><h5 id="使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。"><a href="#使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。" class="headerlink" title="使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。"></a>使用lsadump命令可以读取注册表中的与本地安全授权相关的秘密数据。</h5><h5 id="LSA-Local-Security-Authority-即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。"><a href="#LSA-Local-Security-Authority-即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。" class="headerlink" title="LSA(Local Security Authority)即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。"></a>LSA(Local Security Authority)即本地安全授权。Windows系统中一个相当重要的服务，所有安全认证相关的处理都要通过这个服务。比如系统自动登录的缺省密码、远程桌面协议的公钥、Windows数据保护应用程序编程接口使用的授权证书等信息。</h5><h5 id="使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数"><a href="#使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数" class="headerlink" title="使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数."></a>使用该命令的时候，需要把上文提到的SYSTEM注册表的虚拟地址作为-y选项的参数和SECURITY注册表文件的地址作为-s选项的参数.</h5><pre><code>    -f &lt;memdump.img&gt; --profile=&lt;prifile&gt; lsadump -y SYSTEM的virtualaddr -s SECURE的virtualaddr</code></pre>
-<h4 id="获取注册表信息以爆破密码："><a href="#获取注册表信息以爆破密码：" class="headerlink" title="获取注册表信息以爆破密码："></a>获取注册表信息以爆破密码：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hashdump -y SYSTEM的virtualaddr -s SAM的virtualaddr</code></pre>
-<h5 id="之后就能看到用户名和两个hash值，选后面那个hash值，用www-cmd5-com-搜索hash转文字，用NTLM来查SAM中的hash。"><a href="#之后就能看到用户名和两个hash值，选后面那个hash值，用www-cmd5-com-搜索hash转文字，用NTLM来查SAM中的hash。" class="headerlink" title="之后就能看到用户名和两个hash值，选后面那个hash值，用www.cmd5.com 搜索hash转文字，用NTLM来查SAM中的hash。"></a>之后就能看到用户名和两个hash值，选后面那个hash值，用<a href="http://www.cmd5.com/">www.cmd5.com</a> 搜索hash转文字，用NTLM来查SAM中的hash。</h5><h4 id="查看历史命令："><a href="#查看历史命令：" class="headerlink" title="查看历史命令："></a>查看历史命令：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; cmdscan</code></pre>
-<h4 id="查看控制台命令："><a href="#查看控制台命令：" class="headerlink" title="查看控制台命令："></a>查看控制台命令：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; consoles</code></pre>
-<h4 id="查看网络连接（TCP连接）："><a href="#查看网络连接（TCP连接）：" class="headerlink" title="查看网络连接（TCP连接）："></a>查看网络连接（TCP连接）：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; connections           Vista前的系统用的
-    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; netscan                 Vista后的系统用的</code></pre>
-<h4 id="查看IE历史："><a href="#查看IE历史：" class="headerlink" title="查看IE历史："></a>查看IE历史：</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; iehistory</code></pre>
-<h4 id="获取用户密码散列"><a href="#获取用户密码散列" class="headerlink" title="获取用户密码散列:"></a>获取用户密码散列:</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; hashdump(-y systemadd –s samadd)</code></pre>
-<h4 id="获取内存中活跃的TCP连接"><a href="#获取内存中活跃的TCP连接" class="headerlink" title="获取内存中活跃的TCP连接"></a>获取内存中活跃的TCP连接</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; connections</code></pre>
-<h4 id="查看系统中已打开的文件（rootkit隐藏文件）"><a href="#查看系统中已打开的文件（rootkit隐藏文件）" class="headerlink" title="查看系统中已打开的文件（rootkit隐藏文件）"></a>查看系统中已打开的文件（rootkit隐藏文件）</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; filescan</code></pre>
-<h4 id="导出相关filescan的文件"><a href="#导出相关filescan的文件" class="headerlink" title="导出相关filescan的文件"></a>导出相关filescan的文件</h4><pre><code>    -f file_patched.dmp --profile=Win7SP1x86_23418 dumpfiles -D ./ -Q 0x000000000e080690</code></pre>
-<h4 id="显示在一个进程中打开的句柄"><a href="#显示在一个进程中打开的句柄" class="headerlink" title="显示在一个进程中打开的句柄"></a>显示在一个进程中打开的句柄</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; handles -p &lt;pid&gt; -t &lt;file&gt;</code></pre>
-<h4 id="显示内核中的驱动程序，包括已隐藏-链接的"><a href="#显示内核中的驱动程序，包括已隐藏-链接的" class="headerlink" title="显示内核中的驱动程序，包括已隐藏/链接的"></a>显示内核中的驱动程序，包括已隐藏/链接的</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; modules
-    查看内核驱动（不全）
-    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; modscan
-    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; driverscan</code></pre>
-<h4 id="查看服务"><a href="#查看服务" class="headerlink" title="查看服务"></a>查看服务</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; svcscan</code></pre>
-<h4 id="查看各组件时间线"><a href="#查看各组件时间线" class="headerlink" title="查看各组件时间线"></a>查看各组件时间线</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; timeliner
-    输出一般很多，建议输出到制定文件中</code></pre>
-<h4 id="查看系统或桌面执行文件的信息。"><a href="#查看系统或桌面执行文件的信息。" class="headerlink" title="查看系统或桌面执行文件的信息。"></a>查看系统或桌面执行文件的信息。</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; userassist
-
-   包括  ：名称、路径、执行次数、最后一次执行时间等</code></pre>
-<h4 id="将内存中的某个进程数据以-dmp-的格式保存出来"><a href="#将内存中的某个进程数据以-dmp-的格式保存出来" class="headerlink" title="将内存中的某个进程数据以 dmp 的格式保存出来"></a>将内存中的某个进程数据以 dmp 的格式保存出来</h4><pre><code>    -f &lt;memdump.img&gt;  --profile=&lt;prifile&gt; memdump -p [PID] -D [dump 出的文件保存的目录]
-    举例：
-    volatility -f mem.vmem --profile=WinXPSP2x86 memdump -p 1734 -D ctf/
-
-
-    hexdump 1734.dmp
-    二进制编辑器 hexeditor 将以上保存的 dmp 文件打开，并进行调查取证的工作。
-
-
-    你还可以使用 strings 这个工具将它的字符串打印出来。例：
-
-    strings 1736.dmp &gt; 1736.txt
-    strings 1608.dmp &gt; 1736.txt | grep shellcode</code></pre>
-<p>–cache选项的功能是使用缓存。<br>–dtb=DTB选项的功能是说明DTB(Directory Table Base)页目录表的基地址。<br>-k KPCR 选项的功能是说明一个指定的内核处理器控制区的虚拟地址。<br>Apihooks插件命令的功能是监测在进程和内核中的API钩子。<br>Bioskbd插件命令的功能是动态地从内存中读取键盘缓冲区的数据。</p>
-<p><a href="https://github.com/volatilityfoundation/volatility/wiki/Command-Reference">命令行指南</a></p>
-<p>附上一篇好文章，其中有一些典型的题目可以参考，日后感兴趣的可以做做。<br><a href="http://shaobaobaoer.cn/archives/693/memory-forensics-tool-volatility-usage-and-practice">传送门</a></p>
-<p>另外加上一篇<a href="https://www.cnblogs.com/ECJTUACM-873284962/p/9473808.html">USB流量分析文章</a></p>
-]]></content>
-      <tags>
-        <tag>取证</tag>
-        <tag>内存</tag>
-        <tag>volatility</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>记得旧事好</title>
-    <url>/%E6%97%A7%E4%BA%8B%E5%A5%BD.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="/images/pasted-38.png" alt="upload successful"></p>
-<pre><code>                              《记得旧时好》（陈白沙）</code></pre>
-<p>记得旧时好，跟随爹爹去吃茶，门前磨螺壳，巷口弄泥沙，而今人长大，心事乱如麻；</p>
-<p>记得旧时遥，喜看阿婆纺线纱，瓦凹泡新茧，院内惹雏鸭，而今人长大，心绪淡若茶；</p>
-<p>记得旧时小，爱卷丫小衣襟角，檐底蹲蚁巢，树上共攀枣，而今人长大，心情恍比潮；</p>
-<p>记得旧时淘，总嫌先生讲乖巧，车马混鱼龙，睁眼乐妖娆，而今人长大，心思飘成草；</p>
-<p>记得旧时闹，偏要哥哥教捉虾，墙角挖青苔，梢头斗知了，而今人长大，心湖荡起潮；</p>
-<p>想如今，天高海阔音信杳杳，沧桑岁月间抹不平凄凉寂寥。</p>
-]]></content>
-      <categories>
-        <category>那些花儿</category>
-      </categories>
-      <tags>
-        <tag>怀想</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>通用pwn exp脚本</title>
-    <url>/%E7%94%A8pwn-exp%E8%84%9A%E6%9C%AC.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h2 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h2><pre><code>from pwn import *
-context.log_level = &#39;debug&#39;
-io = process(&quot;&quot;)
-code = ELF(&quot;&quot;)
-#lib = ELF(&quot;./bc.so.6&quot;)
-#r = remote(&quot;&quot;)
-def debug():
-    print io.pid
-    pause()
-def gdb(script = &#39;&#39;):
-    gdb.attach(io, gdbscrippt = script)
-
-def exploit():
-
-    io.interactive()
-exploit()</code></pre>
-<h2 id="heap"><a href="#heap" class="headerlink" title="heap"></a>heap</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">io = process(<span class="string">&quot;./&quot;</span>)</span><br><span class="line"><span class="comment">#io = remote(&quot;&quot;,)</span></span><br><span class="line">libc = ELF(<span class="string">&quot;./bc.so.6&quot;</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">size</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Size:&quot;</span>,str(size))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;4&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">num</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span>(<span class="params">num,content</span>):</span></span><br><span class="line">    io.sendlineafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Input your id:&quot;</span>,str(num))</span><br><span class="line">    io.sendlineafter(<span class="string">&quot;Content:&quot;</span>,content)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug</span>():</span></span><br><span class="line">    <span class="keyword">print</span> io.pid</span><br><span class="line">    pause()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dbg</span>(<span class="params">script=<span class="string">&#x27;&#x27;</span></span>):</span></span><br><span class="line">    gdb.attach(io, gdbscript=script)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">exploit</span>():</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>pwn</category>
-      </categories>
-      <tags>
-        <tag>pwn</tag>
-        <tag>EXP</tag>
       </tags>
   </entry>
   <entry>

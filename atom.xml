@@ -6,7 +6,7 @@
   <link href="https://7h4mid4.cn/atom.xml" rel="self"/>
   
   <link href="https://7h4mid4.cn/"/>
-  <updated>2020-08-26T07:12:14.516Z</updated>
+  <updated>2020-08-26T07:13:59.257Z</updated>
   <id>https://7h4mid4.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://7h4mid4.cn/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html"/>
     <id>https://7h4mid4.cn/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html</id>
     <published>2020-08-26T02:24:53.983Z</published>
-    <updated>2020-08-26T07:12:14.516Z</updated>
+    <updated>2020-08-26T07:13:59.257Z</updated>
     
     
       
@@ -296,11 +296,11 @@
     <category term="CTF" scheme="https://7h4mid4.cn/categories/%E5%AD%A6%E4%B9%A0/CTF/"/>
     
     
+    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
+    
     <category term="pwnable" scheme="https://7h4mid4.cn/tags/pwnable/"/>
     
     <category term="文件描述符" scheme="https://7h4mid4.cn/tags/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/"/>
-    
-    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
     
   </entry>
   
