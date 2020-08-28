@@ -6,7 +6,7 @@
   <link href="https://7h4mid4.cn/atom.xml" rel="self"/>
   
   <link href="https://7h4mid4.cn/"/>
-  <updated>2020-08-26T07:13:59.257Z</updated>
+  <updated>2020-08-28T03:30:01.706Z</updated>
   <id>https://7h4mid4.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>adb基本使用技巧</title>
+    <link href="https://7h4mid4.cn/adb%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.html"/>
+    <id>https://7h4mid4.cn/adb%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7.html</id>
+    <published>2020-08-27T09:07:35.163Z</published>
+    <updated>2020-08-28T03:30:01.706Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    <category term="Android" scheme="https://7h4mid4.cn/categories/Android/"/>
+    
+    <category term="adb" scheme="https://7h4mid4.cn/categories/Android/adb/"/>
+    
+    
+    <category term="逆向" scheme="https://7h4mid4.cn/tags/%E9%80%86%E5%90%91/"/>
+    
+    <category term="Android" scheme="https://7h4mid4.cn/tags/Android/"/>
+    
+    <category term="adb" scheme="https://7h4mid4.cn/tags/adb/"/>
+    
+  </entry>
   
   <entry>
     <title>优雅地写博客</title>
@@ -296,11 +324,11 @@
     <category term="CTF" scheme="https://7h4mid4.cn/categories/%E5%AD%A6%E4%B9%A0/CTF/"/>
     
     
-    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
-    
     <category term="pwnable" scheme="https://7h4mid4.cn/tags/pwnable/"/>
     
     <category term="文件描述符" scheme="https://7h4mid4.cn/tags/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/"/>
+    
+    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
     
   </entry>
   
