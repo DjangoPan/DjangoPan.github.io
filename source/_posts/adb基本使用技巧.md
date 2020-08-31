@@ -1,6 +1,6 @@
 title: adb基本使用技巧
 author: 九月八
-date: 2020年8月26日 10:24:51
+date: 2020-08-26 10:24:51
 categories: 
   - Android
   - adb

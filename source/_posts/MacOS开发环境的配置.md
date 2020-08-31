@@ -1,4 +1,4 @@
-title: MacOS开发环境的配置
+    title: MacOS开发环境的配置
 author: 九月八
 date: 2020-08-23 06:22:46
 categories: 
@@ -166,7 +166,7 @@ brew install python
 
 根据安装路径的一些问题：
 
-配置   ~/.bash_profile
+配置   ~/.zshrc
 
 ➜  ~ cat ~/.bash_profile
 # Setup System PATH
@@ -200,6 +200,17 @@ alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
 which Python
 which python2
 which python3
+
+查看pip 、pip3的真实文件位置
+
+pip --version
+pip3 --version
+
+查看pip安装的模块位置
+
+python3
+import requests
+requests
 
 调用python的时候默认使用的￥PATH中的从左到右的顺序调用。
 
