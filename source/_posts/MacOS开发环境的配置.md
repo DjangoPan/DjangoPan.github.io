@@ -1,4 +1,4 @@
-    title: MacOS开发环境的配置
+title: MacOS开发环境的配置
 author: 九月八
 date: 2020-08-23 06:22:46
 categories: 
