@@ -6,7 +6,7 @@
   <link href="https://7h4mid4.cn/atom.xml" rel="self"/>
   
   <link href="https://7h4mid4.cn/"/>
-  <updated>2020-08-29T03:31:45.545Z</updated>
+  <updated>2020-08-31T07:54:00.180Z</updated>
   <id>https://7h4mid4.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://7h4mid4.cn/Xpath%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0.html"/>
     <id>https://7h4mid4.cn/Xpath%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0.html</id>
     <published>2020-08-29T02:05:23.000Z</published>
-    <updated>2020-08-29T03:31:45.545Z</updated>
+    <updated>2020-08-31T07:54:00.180Z</updated>
     
     
       
@@ -91,6 +91,30 @@
     <category term="hexo" scheme="https://7h4mid4.cn/tags/hexo/"/>
     
     <category term="总结" scheme="https://7h4mid4.cn/tags/%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MacOS开发环境的配置</title>
+    <link href="https://7h4mid4.cn/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html"/>
+    <id>https://7h4mid4.cn/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html</id>
+    <published>2020-08-22T22:22:46.000Z</published>
+    <updated>2020-08-31T07:52:11.180Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://7h4mid4.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="环境配置" scheme="https://7h4mid4.cn/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    
+    <category term="macOS" scheme="https://7h4mid4.cn/tags/macOS/"/>
     
   </entry>
   
@@ -326,11 +350,11 @@
     <category term="CTF" scheme="https://7h4mid4.cn/categories/%E5%AD%A6%E4%B9%A0/CTF/"/>
     
     
-    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
-    
     <category term="pwnable" scheme="https://7h4mid4.cn/tags/pwnable/"/>
     
     <category term="文件描述符" scheme="https://7h4mid4.cn/tags/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6/"/>
+    
+    <category term="CTF" scheme="https://7h4mid4.cn/tags/CTF/"/>
     
   </entry>
   

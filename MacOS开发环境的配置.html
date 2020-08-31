@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="内网穿透,frp,linux," />
+  <meta name="keywords" content="环境配置,macOS," />
 
 
 
@@ -88,19 +88,18 @@
 
 
 
-<meta name="description" content="介绍：在学校常驻一台ubuntu18.04的台式机（IP地址：192.168.165.225），笔记本里有一台kali的虚拟机（IP地址：192.168.165.226），为了能在宿舍里和家里用ssh远程操作时时学习，故学习frp实现内网穿透。 环境： 阿里云服务器：公网IP地址：47.101.209.132操作系统：Centos 7.0   Ubuntu18.04：内网IP地址：192.168.">
+<meta name="description" content="说明因为以后要转战MacOS了，虽然之前也用过一年的Ubuntu实体机，但是Windows的环境和MacOS的开发环境相差还是蛮大，所以一切都得从头开始了…按照我的尿性，估计这种配环境的事以后还得干不少次，为了以后方便，这次把中间采的坑记录下来… Home_Brew安装过程有点烦，安装之后还要考虑换源或者走代理的方式。 安装过程： 123456789101112131415161718192021">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用frp实现内网穿透">
-<meta property="og:url" content="https://7h4mid4.cn/frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">
+<meta property="og:title" content="MacOS开发环境的配置">
+<meta property="og:url" content="https://7h4mid4.cn/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html">
 <meta property="og:site_name" content="一葉扁舟">
-<meta property="og:description" content="介绍：在学校常驻一台ubuntu18.04的台式机（IP地址：192.168.165.225），笔记本里有一台kali的虚拟机（IP地址：192.168.165.226），为了能在宿舍里和家里用ssh远程操作时时学习，故学习frp实现内网穿透。 环境： 阿里云服务器：公网IP地址：47.101.209.132操作系统：Centos 7.0   Ubuntu18.04：内网IP地址：192.168.">
+<meta property="og:description" content="说明因为以后要转战MacOS了，虽然之前也用过一年的Ubuntu实体机，但是Windows的环境和MacOS的开发环境相差还是蛮大，所以一切都得从头开始了…按照我的尿性，估计这种配环境的事以后还得干不少次，为了以后方便，这次把中间采的坑记录下来… Home_Brew安装过程有点烦，安装之后还要考虑换源或者走代理的方式。 安装过程： 123456789101112131415161718192021">
 <meta property="og:locale">
-<meta property="article:published_time" content="2019-08-13T05:18:00.000Z">
-<meta property="article:modified_time" content="2019-08-18T15:43:11.000Z">
+<meta property="article:published_time" content="2020-08-22T22:22:46.000Z">
+<meta property="article:modified_time" content="2020-08-31T07:52:11.180Z">
 <meta property="article:author" content="九月八">
-<meta property="article:tag" content="内网穿透">
-<meta property="article:tag" content="frp">
-<meta property="article:tag" content="linux">
+<meta property="article:tag" content="环境配置">
+<meta property="article:tag" content="macOS">
 <meta name="twitter:card" content="summary">
 
 
@@ -131,7 +130,7 @@
 
 
 
-  <link rel="canonical" href="https://7h4mid4.cn/frp实现内网穿透.html"/>
+  <link rel="canonical" href="https://7h4mid4.cn/MacOS开发环境的配置.html"/>
 
 
 
@@ -166,7 +165,7 @@
         }
     })();
 </script>
-  <title>使用frp实现内网穿透 | 一葉扁舟</title>
+  <title>MacOS开发环境的配置 | 一葉扁舟</title>
   
 
 
@@ -347,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://7h4mid4.cn/frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html">
+    <link itemprop="mainEntityOfPage" href="https://7h4mid4.cn/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -364,7 +363,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">使用frp实现内网穿透</h2>
+          <h2 class="post-title" itemprop="name headline">MacOS开发环境的配置</h2>
         
 
         <div class="post-meta">
@@ -376,8 +375,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-13T13:18:00+08:00">
-                2019-08-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-23T06:22:46+08:00">
+                2020-08-23
               </time>
             
 
@@ -392,8 +391,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-08-18T23:43:11+08:00">
-                2019-08-18
+              <time title="更新于" itemprop="dateModified" datetime="2020-08-31T15:52:11+08:00">
+                2020-08-31
               </time>
             
           </span>
@@ -430,8 +429,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/frp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.html" itemprop="commentCount"></span>
+                <a href="/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -460,7 +459,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  601
+                  1.8k
                 </span>
               
 
@@ -476,7 +475,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  8
                 </span>
               
             </div>
@@ -497,79 +496,35 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="介绍："><a href="#介绍：" class="headerlink" title="介绍："></a>介绍：</h3><p>在学校常驻一台ubuntu18.04的台式机（IP地址：192.168.165.225），笔记本里有一台kali的虚拟机（IP地址：192.168.165.226），为了能在宿舍里和家里用ssh远程操作时时学习，故学习<strong>frp</strong>实现内网穿透。</p>
-<h3 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h3><ul>
-<li><strong>阿里云服务器：</strong><br>公网IP地址：47.101.209.132<br>操作系统：Centos 7.0</li>
-</ul>
-<ul>
-<li><p><strong>Ubuntu18.04：</strong><br>内网IP地址：192.168.165.225<br>操作系统：Ubuntu 18.04</p>
-<ul>
-<li><strong>kali虚拟机：</strong><br>内网IP地址：192.168.165.226<br>操作系统：Kali</li>
-</ul>
-</li>
-</ul>
-<h3 id="frp实现原理："><a href="#frp实现原理：" class="headerlink" title="frp实现原理："></a>frp实现原理：</h3><p>   <a target="_blank" rel="noopener" href="https://github.com/fatedier/frp">frp官方文档</a></p>
-<h3 id="搭建过程："><a href="#搭建过程：" class="headerlink" title="搭建过程："></a>搭建过程：</h3><h4 id="阿里云服务器端："><a href="#阿里云服务器端：" class="headerlink" title="阿里云服务器端："></a>阿里云服务器端：</h4><h5 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h5><pre><code>    wget https://github.com/fatedier/frp/releases/download/v0.28.2/frp_0.28.2_linux_amd64.tar.gz
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>因为以后要转战MacOS了，虽然之前也用过一年的Ubuntu实体机，但是Windows的环境和MacOS的开发环境相差还是蛮大，所以一切都得从头开始了…<br>按照我的尿性，估计这种配环境的事以后还得干不少次，为了以后方便，这次把中间采的坑记录下来…</p>
+<h3 id="Home-Brew"><a href="#Home-Brew" class="headerlink" title="Home_Brew"></a>Home_Brew</h3><p>安装过程有点烦，安装之后还要考虑换源或者走代理的方式。</p>
+<p>安装过程：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">xcode-select --install</span><br><span class="line"></span><br><span class="line">第一种方法：</span><br><span class="line"></span><br><span class="line">首先用的是官方的安装方法，但是总是连接不上，或者下载到一半就断开，因为节点在国外的原因；</span><br><span class="line">http<span class="variable">s:</span>//brew.<span class="keyword">sh</span>/index_zh-<span class="keyword">cn</span>.html</span><br><span class="line"></span><br><span class="line">安装脚本：</span><br><span class="line">/bin/bash -<span class="keyword">c</span> <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">实际上如果卡在git clone的某一个部分，可以把终端命令停下来，然后尝试一下：</span><br><span class="line"></span><br><span class="line">git clone gi<span class="variable">t:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">/bin/bash -<span class="keyword">c</span> <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">下载失败报错之后尝试</span><br><span class="line">第二种办法：</span><br><span class="line"></span><br><span class="line">为了防止出错，先把之前安装到一半的brew卸载了：</span><br><span class="line">/usr/bin/<span class="keyword">ruby</span> -<span class="keyword">e</span> <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">curl -fsSL http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/Homebrew/install/master/install.<span class="keyword">sh</span> &gt;&gt; brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">vim</span> brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">将文件中的</span><br><span class="line">BREW_REPO=<span class="string">&quot;https://github.com/Homebrew/brew&quot;</span></span><br><span class="line">改为</span><br><span class="line">BREW_REPO=<span class="string">&quot;https://mirrors.ustc.edu.cn/brew.git&quot;</span></span><br><span class="line">CORE_TAP_REPO=<span class="string">&quot;https://mirrors.ustc.edu.cn/homebrew-core.git&quot;</span></span><br><span class="line"></span><br><span class="line">运行：</span><br><span class="line">/bin/bash brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">如果出现下面这种下载速度慢或者卡住的情况，把终端停掉，使用浏览器打开那个链接进行下载，比如这里是 http<span class="variable">s:</span>//homebrew.bintray.<span class="keyword">com</span>/bottles-portable-<span class="keyword">ruby</span>/portable-<span class="keyword">ruby</span>-<span class="number">2.6</span>.<span class="number">3</span>.mavericks.bottle.tar.gz，下载完成后将该文件放进 /Users/$你的用户名/Library/Caches/Homebrew 中。</span><br><span class="line"></span><br><span class="line">==&gt; Downloading http<span class="variable">s:</span>//homebrew.bintray.<span class="keyword">com</span>/bottles-portable-<span class="keyword">ruby</span>/portable-<span class="keyword">ruby</span>-<span class="number">2.6</span>.<span class="number">3</span>.mavericks.bottle.tar.gz</span><br><span class="line">############### <span class="number">21.6</span>%</span><br><span class="line"></span><br><span class="line">重新运行安装指令。</span><br><span class="line"></span><br><span class="line">/bin/bash brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">如果安装过程中卡在了 Clone 什么的地方不动了，则停掉终端，运行下列指令。</span><br><span class="line"></span><br><span class="line">git clone gi<span class="variable">t:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/homebrew-core.git/ /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core --depth=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">执行完上述指令，再重新运行安装指令。</span><br><span class="line"></span><br><span class="line">/bin/bash brew_install.<span class="keyword">sh</span></span><br><span class="line"></span><br><span class="line">安装完成。</span><br><span class="line"></span><br><span class="line">第三种方法：</span><br><span class="line"></span><br><span class="line">利用中科大的源：</span><br><span class="line"></span><br><span class="line">/usr/bin/<span class="keyword">ruby</span> -<span class="keyword">e</span> <span class="string">&quot;$(curl -fsSL https://cdn.jsdelivr.net/gh/ineo6/homebrew-install/install)&quot;</span></span><br><span class="line">如果命令执行中卡在下面信息：</span><br><span class="line"></span><br><span class="line">==&gt; Tapping homebrew/core</span><br><span class="line">Cloning into <span class="string">&#x27;/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core&#x27;</span>...</span><br><span class="line"></span><br><span class="line">请Control + C中断脚本执行如下命令：</span><br><span class="line"></span><br><span class="line"><span class="keyword">cd</span> <span class="string">&quot;$(brew --repo)/Library/Taps/&quot;</span></span><br><span class="line"><span class="built_in">mkdir</span> homebrew &amp;&amp; <span class="keyword">cd</span> homebrew</span><br><span class="line">git clone gi<span class="variable">t:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/homebrew-core.git</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">打开新的终端：</span><br><span class="line">brew doctor</span><br></pre></td></tr></table></figure>
 
-    sudo tar -zxvf frp_0.28.2_linux_amd64.tar.gz               --解压
+<p>常用的Brew的一些命令：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew install &lt;package name&gt; <span class="regexp">//</span>安装一个包</span><br><span class="line">brew upgrate &lt;package name&gt; <span class="regexp">//</span>更新一个包</span><br><span class="line">brew update <span class="regexp">//</span>更新 Homebrew 在服务器端上的包目录</span><br><span class="line">brew upgrade <span class="regexp">//</span>以本地目录更新本地的包</span><br><span class="line">brew list --versions <span class="regexp">//</span>查看安装过的包版本</span><br></pre></td></tr></table></figure>
 
-    sudo mv frp_0.28.2_linux_amd64 frp_0.28.2           --重命名为frp_0.28.2     
-
-    sudo rm -rf frp_0.28.2_linux_amd64.tar.gz           --删除相关的压缩包</code></pre>
-<h5 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h5><pre><code>    sudo ./frps -c ./frps.ini               --后台启动为 sudo ./frps -c ./frps.ini &amp;</code></pre>
-<h5 id="设置开机启动和后台运行"><a href="#设置开机启动和后台运行" class="headerlink" title="设置开机启动和后台运行"></a>设置开机启动和后台运行</h5><p> <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29726869/article/details/82871700">实现开机自启动的三种办法</a></p>
-<p> 编辑开机启动文件：</p>
-<pre><code>    vi /etc/systemd/system/frps.service</code></pre>
-<p>在文件中写入：</p>
-<pre><code>    [Unit]
-    Description=frps daemon
-    After=syslog.target  network.target
-    Wants=network.target
-
-     [Service]
-     Type=simple
-     ExecStart=绝对路径/frps -c 绝对路径/frps.ini 
-     Restart= always
-     RestartSec=1min
-
-    [Install]
-    WantedBy=multi-user.target</code></pre>
-<p> 实现开机启动和后台启动：</p>
-<pre><code>    systemctl start frps            --启动frps
-    systemctl enable frps           --设置为开机启动</code></pre>
-<h4 id="Ubuntu18-04-Kali"><a href="#Ubuntu18-04-Kali" class="headerlink" title="Ubuntu18.04 || Kali"></a>Ubuntu18.04 || Kali</h4><h5 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h5><pre><code>    wget https://github.com/fatedier/frp/releases/download/v0.28.2/frp_0.28.2_linux_amd64.tar.gz
-
-    sudo tar -zxvf frp_0.28.2_linux_amd64.tar.gz               --解压
-
-    sudo mv frp_0.28.2_linux_amd64 frp_0.28.2           --重命名为frp_0.28.2     
-
-    sudo rm -rf frp_0.28.2_linux_amd64.tar.gz           --删除相关的压缩包     </code></pre>
-<h5 id="编辑客户端配置文件"><a href="#编辑客户端配置文件" class="headerlink" title="编辑客户端配置文件"></a>编辑客户端配置文件</h5><pre><code>    sudo vim frpc.ini       --编辑客户端配置文件</code></pre>
-<p>写入：</p>
-<pre><code>    frpc.ini[common]server_addr = x.x.x.x               --服务器IP地址
-    server_port = 7000
-
-    [ssh]                                               --名字随便取
-    type = tcp
-    local_ip = 127.0.0.1
-    local_port = 22
-    remote_port = 6000
+<h3 id="Brew-cask"><a href="#Brew-cask" class="headerlink" title="Brew_cask"></a>Brew_cask</h3><p>brew 装的主要是 command line tool。<br>brew cask装的大多是有gui界面的app以及驱动，brew cask是brew的一个官方源。<br>brew cask 是 已经编译好了的应用包 （.dmg/.pkg），仅仅是下载解压，放在统一的目录中（/opt/homebrew-cask/Caskroom）</p>
+<p>brew_cask 原理：<br>之前，是用软链接的方式将应用链接到 Application 文件夹，有人说这样的方式会导致 Spotlight 无法检索到。但现在，它是将应用直接移动到 Application 文件夹，这与我们自己去官网下载应用再安装是完全一致的，后续更新或卸载也按平常的方式即可。</p>
+<p>当然，也可以用 brew cask uninstall 应用名称 的方式，这种方式才会删除路径 /usr/local/Caskroom 中保留的应用信息文件，这样当我们用命令 brew cask list 查询已安装列表时，已卸载的应用才不会仍显示。也就是说，如果按照平常的方式，比如直接移到废纸篓，那么还需手动删除 Caskroom 中的应用信息文件。当然，不删除也没啥影响，因为一般没必要查看已安装列表，已安装应用在 Launchpad 中查看就好。</p>
+<p>二者并无竞争关系，所以也不存在你说的更推荐brew cask。brew装的东西比较偏向开发，而brew cask装的东西会相对生活化一些。</p>
+<p>大体安装步骤是：xcode—homebrew—homebrew cask</p>
+<p>接下来安装Brew_cask:</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">brew </span><span class="string">tap </span><span class="string">homebrew/</span><span class="string">cask-cask </span> // 添加 <span class="string">Github </span>上的 <span class="string">caskroom/</span><span class="string">cask </span>库</span><br><span class="line"><span class="string">brew </span><span class="string">install </span><span class="string">brew-cask </span> // 安装 <span class="string">brew-cask</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">如</span>果遇到卡在克隆界面：</span><br><span class="line"></span><br><span class="line"><span class="string">cd </span><span class="string">&quot;$(brew --repo)/Library/Taps/&quot;</span></span><br><span class="line"><span class="string">cd </span><span class="string">homebrew</span></span><br><span class="line"><span class="string">git </span><span class="string">clone </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-cask.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">brew </span><span class="string">update </span>&amp;&amp; <span class="string">brew </span><span class="string">upgrade </span><span class="string">brew-cask </span>&amp;&amp; <span class="string">brew </span><span class="string">cleanup </span>// 更新</span><br><span class="line"></span><br><span class="line">更换中科大源：</span><br><span class="line"></span><br><span class="line"><span class="string">git </span>-C <span class="string">&quot;$(brew --repo)&quot;</span> <span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">brew.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git </span>-C <span class="string">&quot;$(brew --repo homebrew/core)&quot;</span> <span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-core.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">git </span>-C <span class="string">&quot;$(brew --repo homebrew/cask)&quot;</span> <span class="string">remote </span><span class="built_in">set-url</span> <span class="string">origin </span><span class="string">https:</span>//<span class="string">mirrors.</span><span class="string">ustc.</span><span class="string">edu.</span><span class="string">cn/</span><span class="string">homebrew-cask.</span><span class="string">git</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">brew </span><span class="string">update</span></span><br></pre></td></tr></table></figure>
 
 
-    [web]
-    type = http #
-    local_port = 8081 
-    custom_domains = repo.iwi.com               --据说必须要有，但自己没有web穿透的需求，没试过。</code></pre>
-<h5 id="启动："><a href="#启动：" class="headerlink" title="启动："></a>启动：</h5><pre><code>    sudo ./frpc -c ./frpc.ini               --后台启动为 sudo ./frpc -c ./frpc.ini &amp;</code></pre>
-<h5 id="设置开机和后台启动"><a href="#设置开机和后台启动" class="headerlink" title="设置开机和后台启动"></a>设置开机和后台启动</h5><pre><code>    因为ubuntu18.04的开机启动项和之前版本发生了较大的变化，所以这方面的知识还有待学习。
+<h3 id="Python3"><a href="#Python3" class="headerlink" title="Python3"></a>Python3</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="keyword">install</span> python</span><br><span class="line"></span><br><span class="line">根据安装路径的一些问题：</span><br><span class="line"></span><br><span class="line">配置   ~/.zshrc</span><br><span class="line"></span><br><span class="line">➜  ~ cat ~/.bash_profile</span><br><span class="line"><span class="comment"># Setup System PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python 2.7</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">PATH</span>=<span class="string">&quot;/System/Library/Frameworks/Python.framework/Versions/2.7/bin:$PATH&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pip</span></span><br><span class="line"><span class="comment"># /usr/local/bin/目录下的pip指向Python2.7，所以不修改系统路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Python 3.8</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">PATH</span>=<span class="string">&quot;/usr/local/Cellar/python@3.8/3.8.5/bin:$PATH&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># pip3</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">PATH</span>=<span class="string">&quot;/usr/local/Cellar/python@3.8/3.8.5/bin:$PATH&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Alias Command</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">alias</span> python=<span class="string">&#x27;python2&#x27;</span></span><br><span class="line"><span class="keyword">alias</span> python3=<span class="string">&#x27;python3.8&#x27;</span></span><br><span class="line"><span class="keyword">alias</span> python2=<span class="string">&#x27;python2&#x27;</span></span><br><span class="line"><span class="keyword">alias</span> subl=<span class="string">&quot;&#x27;/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl&#x27;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">删除 /usr/<span class="keyword">local</span>/<span class="keyword">bin</span>/目录下的pip3 和 pip3<span class="number">.8</span>   因为该目录下的这三个pip全部指向的是：python2的 pip。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">查看Python的安装路径：</span><br><span class="line"></span><br><span class="line">which Python</span><br><span class="line">which python2</span><br><span class="line">which python3</span><br><span class="line"></span><br><span class="line">查看pip 、pip3的真实文件位置</span><br><span class="line"></span><br><span class="line">pip <span class="comment">--version</span></span><br><span class="line">pip3 <span class="comment">--version</span></span><br><span class="line"></span><br><span class="line">查看pip安装的模块位置</span><br><span class="line"></span><br><span class="line">python3</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">requests</span><br><span class="line"></span><br><span class="line">调用python的时候默认使用的￥<span class="keyword">PATH</span>中的从左到右的顺序调用。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="on-my-zsh的安装"><a href="#on-my-zsh的安装" class="headerlink" title="on_my_zsh的安装"></a>on_my_zsh的安装</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">参考官方网站的安装方式：</span><br><span class="line"></span><br><span class="line"><span class="comment"># curl</span></span><br><span class="line">sh -c <span class="string">&quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># wegt </span></span><br><span class="line">sh -c <span class="string">&quot;$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)&quot;</span></span><br><span class="line"></span><br><span class="line">重启终端，查看当前终端：</span><br><span class="line">echo <span class="variable">$SHELL</span></span><br><span class="line">查看已有终端：</span><br><span class="line">cat <span class="regexp">/etc/</span>shell</span><br><span class="line">更换终端：</span><br><span class="line">chsh -s <span class="regexp">/bin/</span>zsh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">主题的更换：</span><br><span class="line">查看自带主题：</span><br><span class="line">ls .oh-my-zsh/themes</span><br><span class="line">这里选择的是自带的默认主题，因为这个最好看。。。。</span><br><span class="line"></span><br><span class="line">常用的插件安装：</span><br><span class="line"></span><br><span class="line">incr:</span><br><span class="line">自动补全命令</span><br><span class="line">wget http:<span class="regexp">//mim</span>osa-pudica.net<span class="regexp">/src/i</span>ncr-<span class="number">0.2</span>.zsh</span><br><span class="line">mkdir ~<span class="regexp">/.oh-my-zsh/</span>plugins/incr</span><br><span class="line">mv incr-<span class="number">0.2</span>.zsh ~<span class="regexp">/.oh-my-zsh/</span>plugins/incr</span><br><span class="line">echo <span class="string">&#x27;source ~/.oh-my-zsh/plugins/incr/incr*.zsh&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zsh-autosuggestions：</span><br><span class="line">根据历史命令自动补全插件</span><br><span class="line"></span><br><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zsh-users/</span>zsh-autosuggestions <span class="variable">$ZSH_CUSTOM</span><span class="regexp">/plugins/</span>zsh-autosuggestions</span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 加入插件列表</span></span><br><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  zsh-autosuggestions</span><br><span class="line">)</span><br><span class="line">执行：</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line">autojump:</span><br><span class="line">目录跳转插件：</span><br><span class="line"></span><br><span class="line">brew install autojump</span><br><span class="line">echo <span class="string">&#x27;[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] &amp;&amp; . $(brew --prefix)/etc/profile.d/autojump.sh&#x27;</span> &gt;&gt; ~/.zshrc</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line">例如：jo te <span class="regexp">//</span>打开Finder</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">zsh-syntax-highlighting</span><br><span class="line">可执行代码自动高亮：主要用于提高颜值</span><br><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zsh-users/</span>zsh-syntax-highlighting.git <span class="variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span><span class="regexp">/plugins/</span>zsh-syntax-highlighting</span><br><span class="line">vim ~/.zshrc</span><br><span class="line"><span class="comment"># 加入插件列表</span></span><br><span class="line">plugins=(</span><br><span class="line">  git</span><br><span class="line">  zsh-autosuggestions</span><br><span class="line">  zsh-syntax-highlighting</span><br><span class="line">)</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
-    kali的方法和服务器端一致。</code></pre>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dahuzix/article/details/80785691">在Ubuntu18.04中调整rc.local启动项</a></p>
-<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><ul>
-<li>记得开放阿里云安全组策略</li>
-<li>客户端和服务器端需要使用相同的frp版本</li>
-</ul>
+<h3 id="Home-brew-走代理："><a href="#Home-brew-走代理：" class="headerlink" title="Home_brew 走代理："></a>Home_brew 走代理：</h3><p>在  ~/.zshrc  里面添加：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># where proxy</span></span><br><span class="line">proxy () &#123;</span><br><span class="line">  <span class="builtin-name">export</span> <span class="attribute">all_proxy</span>=socks5://localhost:port</span><br><span class="line">  echo <span class="string">&quot;HTTP Proxy on&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># where noproxy</span></span><br><span class="line">noproxy () &#123;</span><br><span class="line">  unset all_proxy</span><br><span class="line">  echo <span class="string">&quot;HTTP Proxy off&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">执行；</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br><span class="line">测试：</span><br><span class="line">curl cip.cc</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Sublime-Text3-插件："><a href="#Sublime-Text3-插件：" class="headerlink" title="Sublime Text3 插件："></a>Sublime Text3 插件：</h3><p>安装过程不言，插件列表如下：</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">AutoFileName</span><br><span class="line"><span class="keyword">JsFormat</span></span><br><span class="line"><span class="keyword">SublimeCodeIntel</span></span><br><span class="line"><span class="keyword">ConvertToUTF8</span></span><br><span class="line"><span class="keyword">BracketHighlight</span></span><br><span class="line"><span class="keyword">markdown </span>preview</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -616,16 +571,87 @@
     
 
     
+      <div>
+        <!-- JS库 clipboard 拷贝内容到粘贴板-->
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+
+<!-- JS库 sweetalert 显示提示信息-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<ul class="post-copyright">
+  <!-- 本文标题 -->
+  <li>
+    <strong>本文标题： </strong>
+    MacOS开发环境的配置
+  </li>
+
+  <!-- 本文作者 -->
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>
+    九月八
+  </li>
+
+  <!-- 创建时间 -->
+  <li>
+    <strong>创建于： </strong>
+    2020年08月23日06时08分
+  </li>
+
+  <!-- 修改时间 -->
+  <li>
+    <strong>更新于： </strong>
+    2020年08月31日15时08分
+  </li>
+
+  <!-- 引用链接 -->
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://7h4mid4.cn/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html" title="MacOS开发环境的配置"
+      >https://7h4mid4.cn/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html</a
+    >
+    <span class="copy-path" title="点击复制引用链接"
+      ><i
+        style="cursor: pointer"
+        class="fa fa-clipboard"
+        data-clipboard-text="[九月八's Blog | MacOS开发环境的配置](https://7h4mid4.cn/MacOS%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E9%85%8D%E7%BD%AE.html)"
+        aria-label="post.copy_success"
+      ></i
+    ></span>
+  </li>
+
+  <!-- 版权声明 -->
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+<script>
+  var clipboard = new ClipboardJS(".fa-clipboard");
+  clipboard.on("success", function(target) {
+    var message = document.createElement("div");
+    message.innerHTML =
+      '<i class="fa fa-check-circle message-icon"></i><span class="message-content">' +
+      target.trigger.getAttribute("aria-label") +
+      "</span>";
+    swal({
+      content: message,
+      className: "copy-success-message",
+      timer: 1000,
+      button: false
+    });
+  });
+</script>
+      </div>
+    
 
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"><i class="fa fa-tags"></i> 内网穿透</a>
+            <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag"><i class="fa fa-tags"></i> 环境配置</a>
           
-            <a href="/tags/frp/" rel="tag"><i class="fa fa-tags"></i> frp</a>
-          
-            <a href="/tags/linux/" rel="tag"><i class="fa fa-tags"></i> linux</a>
+            <a href="/tags/macOS/" rel="tag"><i class="fa fa-tags"></i> macOS</a>
           
         </div>
       
@@ -641,14 +667,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/1-2-%E5%B8%A6%E5%A3%B3%E7%A0%B4%E8%A7%A3%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%B3%A8%E5%86%8C%E7%A0%81.html" rel="next" title="逆向1-2 带壳破解，获取注册码">
+                <i class="fa fa-chevron-left"></i> 逆向1-2 带壳破解，获取注册码
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/pwnable%E7%B3%BB%E5%88%97-fd.html" rel="prev" title="pwnable系列-fd">
-                pwnable系列-fd <i class="fa fa-chevron-right"></i>
+              <a href="/%E4%BC%98%E9%9B%85%E7%9A%84%E5%86%99%E5%8D%9A%E5%AE%A2.html" rel="prev" title="优雅地写博客">
+                优雅地写博客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -937,7 +967,7 @@ show_date_time();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">介绍：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">环境：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#frp%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">frp实现原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">搭建过程：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%EF%BC%9A"><span class="nav-number">4.1.</span> <span class="nav-text">阿里云服务器端：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD"><span class="nav-number">4.1.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">4.1.2.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%E5%92%8C%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C"><span class="nav-number">4.1.3.</span> <span class="nav-text">设置开机启动和后台运行</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ubuntu18-04-Kali"><span class="nav-number">4.2.</span> <span class="nav-text">Ubuntu18.04 || Kali</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.2.2.</span> <span class="nav-text">编辑客户端配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%EF%BC%9A"><span class="nav-number">4.2.3.</span> <span class="nav-text">启动：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%92%8C%E5%90%8E%E5%8F%B0%E5%90%AF%E5%8A%A8"><span class="nav-number">4.2.4.</span> <span class="nav-text">设置开机和后台启动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">5.</span> <span class="nav-text">注意点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Home-Brew"><span class="nav-number">2.</span> <span class="nav-text">Home_Brew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Brew-cask"><span class="nav-number">3.</span> <span class="nav-text">Brew_cask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python3"><span class="nav-number">4.</span> <span class="nav-text">Python3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#on-my-zsh%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">5.</span> <span class="nav-text">on_my_zsh的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Home-brew-%E8%B5%B0%E4%BB%A3%E7%90%86%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">Home_brew 走代理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sublime-Text3-%E6%8F%92%E4%BB%B6%EF%BC%9A"><span class="nav-number">7.</span> <span class="nav-text">Sublime Text3 插件：</span></a></li></ol></div>
             
 
           </div>
