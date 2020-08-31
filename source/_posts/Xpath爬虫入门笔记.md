@@ -11,7 +11,7 @@ keywords:
 description: 
 password: 
 top: 
-summary_img: /images/summary002.jpg
+summary_img: /summary/summary002.jpg
 copyright: true
 
 ---
