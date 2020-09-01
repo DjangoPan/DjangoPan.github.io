@@ -95,7 +95,7 @@ deploy:
   branch: master
 - type: baidu_url_submitter
 
-- type: cos-cdn
+  type: cos
   cloud: tencent
   bucket: myblog-1258055330
   region: ap-chengdu
