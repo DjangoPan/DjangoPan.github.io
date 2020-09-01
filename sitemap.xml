@@ -235,6 +235,20 @@
   </url>
   
   <url>
+    <loc>https://7h4mid4.cn/tags/Android/</loc>
+    <lastmod>2020-09-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://7h4mid4.cn/tags/adb/</loc>
+    <lastmod>2020-09-01</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://7h4mid4.cn/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</loc>
     <lastmod>2020-09-01</lastmod>
     <changefreq>daily</changefreq>
@@ -250,20 +264,6 @@
   
   <url>
     <loc>https://7h4mid4.cn/tags/linux/</loc>
-    <lastmod>2020-09-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://7h4mid4.cn/tags/Android/</loc>
-    <lastmod>2020-09-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://7h4mid4.cn/tags/adb/</loc>
     <lastmod>2020-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -340,14 +340,14 @@
   </url>
   
   <url>
-    <loc>https://7h4mid4.cn/tags/EXP/</loc>
+    <loc>https://7h4mid4.cn/tags/%E6%80%80%E6%83%B3/</loc>
     <lastmod>2020-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://7h4mid4.cn/tags/%E6%80%80%E6%83%B3/</loc>
+    <loc>https://7h4mid4.cn/tags/EXP/</loc>
     <lastmod>2020-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
