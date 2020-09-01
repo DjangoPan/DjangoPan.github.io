@@ -33,6 +33,7 @@
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-renderer-swig": "^1.1.0",
     "hexo-server": "^0.3.3",
+    "hexo-static-cos": "0.0.2",
     "hexo-tag-aplayer": "^3.0.4",
     "hexo-tag-cloud": "^2.1.2",
     "hexo-tag-dplayer": "^0.3.3",

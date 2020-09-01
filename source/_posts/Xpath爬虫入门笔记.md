@@ -16,9 +16,12 @@ copyright: true
 
 ---
 
+<blockquote class="blockquote-center"></blockquote>
+
+
 ## 安装lxml模块
 
-## 简单实例
+## 简单操作实例
 
 ### 实例一：
 
@@ -49,6 +52,59 @@ from lxml import etree
 html = etree.parse('./test.html', etree.HTMLParser())
 result = etree.tostring(html)
 print(result.decode('utf-8'))
+```
+
+注意：字符类型的问题：
+
+```
+from lxml import etree
+
+text = '''
+<div>
+    <ul>
+         <li class="item-0"><a href="link1.html">first item</a></li>
+         <li class="item-1"><a href="link2.html">second item</a></li>
+         <li class="item-inactive"><a href="link3.html">third item</a></li>
+         <li class="item-1"><a href="link4.html">fourth item</a></li>
+         <li class="item-0"><a href="link5.html">fifth item</a>
+     </ul>
+ </div>
+ '''
+
+
+#(1)
+html = etree.HTML(text)  
+#调用HTML类进行初始化，构造一个节点对象，一个XPath解析对象，（顺便也修正了HTML字符串）
+#type(html):    <class 'lxml.etree._Element'>
+#lxml 使用etree._Element和 etree._ElementTree来分别代表树中的节点和树
+
+
+#(2)
+html2 = etree.parse(r"C:\Users\byqpz\Desktop\html.html",etree.HTMLParser()) 
+#读取html文件进行解析
+#构造一个节点树对象，一个XPath解析对象
+#type(html2):   <class 'lxml.etree._ElementTree'>
+
+'''
+result = etree.tostring(html)  #调用tostring()方法可以输出修正后的HTML代码，但结果是bytes类型                               
+                               #type(result)：<class 'bytes'>
+
+                             
+
+
+print(result.decode('utf-8'))  #这里用decode()方法将其转成str类型
+                               #type(result.decode('utf-8'))：<class 'str'>
+
+
+#或 str()方法
+print(str(result,encoding='utf-8'))
+
+print(type(result))  #两种方法都不会改变result
+'''
+
+
+print(html.xpath('//li/@class'))  # ['item-0', 'item-1', 'item-inactive', 'item-1', 'item-0']
+
 ```
 
 ### 选取所有符合要求的节点
@@ -303,4 +359,60 @@ print(result)
 [<Element span at 0x103429b00>]
 [<Element a at 0x103429ac0>]
 [<Element li at 0x103429980>, <Element li at 0x103429900>, <Element li at 0x103429a00>, <Element li at 0x103429a40>]
+```
+
+
+## 爬取
+
+爬取`https://www.marinaweishaupt.com`中的图片并下载保存在指定文件夹中
+
+```
+import requests
+import random
+import os
+import time
+from lxml import etree
+
+
+# 声明常量
+url = 'https://www.marinaweishaupt.com/'
+header = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"}
+http_proxy = {
+				"http": "127.0.0.1:4780", 
+				"https": "127.0.0.1:4780",
+				}
+
+# 获取网页
+response = requests.get(url, headers = header, proxies = http_proxy).text
+# html = etree.parse('./test.htm', etree.HTMLParser())
+# print(type(response))
+# html = etree.tostring(response)
+html = etree.HTML(response)
+# print(type(html))
+# print(html)
+
+imgs = html.xpath('/html/body/div[1]/section/div//div//div//div/div/div/figure/div/img/@data-src')
+number = 1
+# print(imgs)
+
+# 开始下载
+for img in imgs:
+	print(img)
+
+	img_path ='/Users/django/Desktop/summary/'
+	# 判断文件夹是否存在
+	if os.path.exists(img_path)==False:
+		os.makedirs(img_path)
+	html = requests.get(img)
+	img_name = img_path + str(number)+'.jpeg'
+	
+	with open(img_name,'wb') as file:
+		file.write(html.content)
+		file.flush()
+	print('第%d张图片下载完成'%(number))
+	time.sleep(1)
+	# 循环抓取时，避免太快，设置间隔1秒
+	number = number + 1
+print('抓取完成')
+
 ```

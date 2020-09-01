@@ -104,6 +104,22 @@ deploy:
 #   bucket: myblog-1258055330
 #   region: ap-chengdu
 
+# qcloudcos
+qcloudcos:
+  enable: true # 是否开启对象储存
+  domain: myblog-1258055330.file.myqcloud.com # 对象储存或 CDN 域名，无需填写 http/https
+  onlypost: false # 是否只替换文章内资源
+  priority: 10 # 插件执行优先级，数值越小越先执行，默认为 10
+  img: true # 是否替换 html img 标签，下列项目同理
+  link: true
+  script: true
+  audio: true
+  video: true
+  source: true
+  track: true
+  area: true
+
+
 admin:
   deployCommand: './hexo-deploy.sh'
 
