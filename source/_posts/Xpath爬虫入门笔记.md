@@ -16,8 +16,9 @@ copyright: true
 
 ---
 
-<blockquote class="blockquote-center"></blockquote>
+<blockquote class="blockquote-center">现在是冬天，一切都睡着。将来大地会醒过来的。你只要跟大地一样，像它那样的有耐性就是了。</blockquote>
 
+因为想爬取一些有创意的图片作为博客文章的头图，所以自然而然就想到了爬虫，就试着把之前学习的爬虫捡起来，以此记录一下。
 
 ## 安装lxml模块
 

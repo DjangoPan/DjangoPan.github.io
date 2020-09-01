@@ -95,18 +95,19 @@ deploy:
   branch: master
 - type: baidu_url_submitter
 
-# url: http://7h4mid4.cn
-# deploy:
-#   type: cos
-#   appId: 1258055330
-#   secretId: AKIDKRMIE1mlDPL0QXsvmDTFmb6wXuWunNDo
-#   secretKey: kHVEkkebR0TjlgNw9i01mGH6dKkwvZ0p
-#   bucket: myblog-1258055330
-#   region: ap-chengdu
+- type: cos-cdn
+  cloud: tencent
+  bucket: myblog-1258055330
+  region: ap-chengdu
+  cdnEnable: true
+  deleteExtraFiles: true
+  updatePosts: true
+  secretId: AKIDKRMIE1mlDPL0QXsvmDTFmb6wXuWunNDo
+  secretKey: kHVEkkebR0TjlgNw9i01mGH6dKkwvZ0p
 
 # qcloudcos
 qcloudcos:
-  enable: true # 是否开启对象储存
+  enable: false # 是否开启对象储存
   domain: myblog-1258055330.file.myqcloud.com # 对象储存或 CDN 域名，无需填写 http/https
   onlypost: false # 是否只替换文章内资源
   priority: 10 # 插件执行优先级，数值越小越先执行，默认为 10
