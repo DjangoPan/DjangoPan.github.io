@@ -3,9 +3,9 @@
   <entry>
     <title>Xpath爬虫入门笔记</title>
     <url>/Xpath%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote class="blockquote-center"></blockquote>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><blockquote class="blockquote-center">现在是冬天，一切都睡着。将来大地会醒过来的。你只要跟大地一样，像它那样的有耐性就是了。</blockquote>
 
-
+<p>因为想爬取一些有创意的图片作为博客文章的头图，所以自然而然就想到了爬虫，就试着把之前学习的爬虫捡起来，以此记录一下。</p>
 <h2 id="安装lxml模块"><a href="#安装lxml模块" class="headerlink" title="安装lxml模块"></a>安装lxml模块</h2><h2 id="简单操作实例"><a href="#简单操作实例" class="headerlink" title="简单操作实例"></a>简单操作实例</h2><h3 id="实例一："><a href="#实例一：" class="headerlink" title="实例一："></a>实例一：</h3><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml import etree</span><br><span class="line"></span><br><span class="line"><span class="built_in">text</span> = &#x27;&#x27;&#x27;</span><br><span class="line">&lt;<span class="keyword">div</span>&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">         &lt;li <span class="built_in">class</span>=<span class="string">&quot;item-0&quot;</span>&gt;&lt;a href=<span class="string">&quot;https://ask.hellobi.com/link1.html&quot;</span>&gt;<span class="keyword">first</span> <span class="built_in">item</span>&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li <span class="built_in">class</span>=<span class="string">&quot;item-1&quot;</span>&gt;&lt;a href=<span class="string">&quot;https://ask.hellobi.com/link2.html&quot;</span>&gt;<span class="keyword">second</span> <span class="built_in">item</span>&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li <span class="built_in">class</span>=<span class="string">&quot;item-inactive&quot;</span>&gt;&lt;a href=<span class="string">&quot;https://ask.hellobi.com/link3.html&quot;</span>&gt;<span class="keyword">third</span> <span class="built_in">item</span>&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li <span class="built_in">class</span>=<span class="string">&quot;item-1&quot;</span>&gt;&lt;a href=<span class="string">&quot;https://ask.hellobi.com/link4.html&quot;</span>&gt;<span class="keyword">fourth</span> <span class="built_in">item</span>&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li <span class="built_in">class</span>=<span class="string">&quot;item-0&quot;</span>&gt;&lt;a href=<span class="string">&quot;https://ask.hellobi.com/link5.html&quot;</span>&gt;<span class="keyword">fifth</span> <span class="built_in">item</span>&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line"> &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&#x27;&#x27;&#x27; <span class="comment"># 声明一段text文本</span></span><br><span class="line">html = etree.HTML(<span class="built_in">text</span>) <span class="comment">#调用 HTML 类进行初始化,返回一个Xpath解析对象</span></span><br><span class="line"><span class="literal">result</span> = etree.tostring(html) <span class="comment">#调用Etree的自动修正模块</span></span><br><span class="line">print(<span class="literal">result</span>.decode(&#x27;utf<span class="number">-8</span>&#x27;)) <span class="comment">#将bytes转化为str类型</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="对文本文件进行Xpath解析："><a href="#对文本文件进行Xpath解析：" class="headerlink" title="对文本文件进行Xpath解析："></a>对文本文件进行Xpath解析：</h3><figure class="highlight moonscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(<span class="string">&#x27;./test.html&#x27;</span>, etree.HTMLParser())</span><br><span class="line">result = etree.<span class="built_in">tostring</span>(html)</span><br><span class="line"><span class="built_in">print</span>(result.decode(<span class="string">&#x27;utf-8&#x27;</span>))</span><br></pre></td></tr></table></figure>
@@ -299,46 +299,46 @@
     <title>逆向1-2 带壳破解，获取注册码</title>
     <url>/1-2-%E5%B8%A6%E5%A3%B3%E7%A0%B4%E8%A7%A3%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%B3%A8%E5%86%8C%E7%A0%81.html</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>首先使用查壳软件PEiD v0.98，查看下我们要破解的软件是否加壳了：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-101.png" alt="upload successful"></p>
+<p><img src="/images/pasted-101.png" alt="upload successful"></p>
 <p>可以看到软件使用ASPack 2.12进行了加壳。虽然ASP压缩壳是可以直接用esp定律脱壳的。但是本次我们暂时不进行脱壳，直接破解，获取软件的注册码。</p>
 <p>注意加壳的软件修改之后是不能保存的，只能通过脱壳之后在保存，或者是使用打补丁的方式。</p>
 <p>运行软件：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-81.png" alt="upload successful"></p>
+<p><img src="/images/pasted-81.png" alt="upload successful"></p>
 <p>软件标题栏提示为购买用户，点击购买，输入用户名和注册码：lzx，1111111111111111111111，然后点击注册验证，软件提示重启软件进行验证：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-82.png" alt="upload successful"></p>
+<p><img src="/images/pasted-82.png" alt="upload successful"></p>
 <p>能够得出的结论是，这是一款重启验证软件，本次我们输入用户名和注册码之后，软件会先将这两个参数存储，在软件重启的时候，会读取这两个值，进行验证。注意，这两个值可能存在软件安装目录的文件夹下，或者是被写入到注册表中。然后点击确定，软件退出。<br>使用OD载入软件，提示软件代码段可能被压缩，证明软件被加了壳：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-83.png" alt="upload successful"></p>
+<p><img src="/images/pasted-83.png" alt="upload successful"></p>
 <p>点击确定或者取消进入OD，接着，F9运行软件，然后Ctrl+G，跟随表达式到“0X00401000”处：</p>
 <p>注意：401000是该程序的基址，不是所有的程序都是在0X401000处，但是大部分的文件基址都是在这里。<br>windows7系统的程序是默认开启了基址随机化，另外，针对dll和exe两种文件格式，他们的基址也是不一样的。</p>
 <p>如何寻找一个基址：ALT+M，找到打开文件的PE文件头所在，单击进入就是此时的文件基址。</p>
 <p>如何关闭给定程序的基址随机化：使用LoadPE打开文件，“特征值”，“重定位已分离”，确定保存。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-84.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-85.png" alt="upload successful"></p>
+<p><img src="/images/pasted-84.png" alt="upload successful"></p>
+<p><img src="/images/pasted-85.png" alt="upload successful"></p>
 <p>加壳程序包括解码和未解码两部分，要是出现了上图的情况，说明程序已解码，只需要在反汇编窗口中右键-&gt;分析-&gt;从模块中删除分析：<br>未解码的汇编语句显示的是： add  byte  XXXXXXX</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-86.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-87.png" alt="upload successful"></p>
+<p><img src="/images/pasted-86.png" alt="upload successful"></p>
+<p><img src="/images/pasted-87.png" alt="upload successful"></p>
 <p>到上图所示的界面，基本上就能判断程序已经加压缩了，脱去了壳。<br>脱去壳之后，就来到了代码段，选择搜索字符串，智能搜索，关键字：未购买</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-88.png" alt="upload successful"></p>
+<p><img src="/images/pasted-88.png" alt="upload successful"></p>
 <p>双击未购买用户，转入反汇编窗口，查找代码上文的内容，看没有关键跳和关键CALL，很巧，找到一个读取注册表的代码：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-89.png" alt="upload successful"></p>
+<p><img src="/images/pasted-89.png" alt="upload successful"></p>
 <p>在注册表出下断点，初步判断软件在重启的时候，在这个代码处读取注册表中的数据，也就是用户输入的用户名和注册码。下断点之后，重新载入程序，程序会提示断点丢失，这是因为程序加了壳的缘故，不要紧，断点在B标签中能够查看到。而这就是不脱壳调试的技巧所在。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-90.png" alt="upload successful"></p>
+<p><img src="/images/pasted-90.png" alt="upload successful"></p>
 <p>然后设置API断点，菜单栏-&gt;插件-&gt;API断点设置工具-&gt;常用断点设置：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-91.png" alt="upload successful"></p>
+<p><img src="/images/pasted-91.png" alt="upload successful"></p>
 <p>GetStartupInfoA：程序已经解码，但是还没有运行起来。</p>
 <p>这个断点会在程序解码之后，但是还没有运行起来的时候中断。这个时候程序还没有进行注册码的判断，所以在这个时候设置断点。然后F9运行程序，程序在断点处停下：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-92.png" alt="upload successful"></p>
+<p><img src="/images/pasted-92.png" alt="upload successful"></p>
 <p>切换到断点窗口：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-94.png" alt="upload successful"></p>
+<p><img src="/images/pasted-94.png" alt="upload successful"></p>
 <p>将之前的读取注册表的断点激活，禁止掉初始化的断点。<br>然后F9运行程序，程序停在了读取注册表的地方：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-95.png" alt="upload successful"></p>
+<p><img src="/images/pasted-95.png" alt="upload successful"></p>
 <p>然后我们单步执行F8，注意观察CPU寄存器和堆栈窗口中的数据，能够看到读取的我们之前填入的用户名和注册码，以及软件根据我们用户名生成的正确的注册码：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-96.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-97.png" alt="upload successful"></p>
+<p><img src="/images/pasted-96.png" alt="upload successful"></p>
+<p><img src="/images/pasted-97.png" alt="upload successful"></p>
 <p>继续向下执行：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-98.png" alt="upload successful"></p>
+<p><img src="/images/pasted-98.png" alt="upload successful"></p>
 <p>这个注册码就是对应我们用户名正确的注册码了，记录下来，等会进入软件进行注册。<br>程序后面就是进行注册码的对比了，会有关键CALL和关键跳，但是程序加了壳，我们无法保存修改，所以暂时不用这种方法，（加壳程序可以通过打补丁的方式爆破），我们使用正确的注册码使用软件。<br>关闭OD，使用之前的用户名和现在正确的注册码进行注册：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-100.png" alt="upload successful"></p>
+<p><img src="/images/pasted-100.png" alt="upload successful"></p>
 <p>总结：<br>1.很多软件都会加壳，使用PEiD v0.98进行查壳；<br>2.软件未脱壳的情况下，需要先F9运行软件，让加壳的程序解码之后，才能做后面的下断点，动态调试之类操作；<br>3.很多软件都使用重启验证的方式，这些信息一般会存在软件的安装目录的配置文件中或者是注册表中；<br>4.找到读取注册表或者配置文件的代码段，单步执行，注意观察CPU寄存器窗口和堆栈窗口，软件会根据用户名生成正确的注册码，注意多单步运行几次，记录下所有敏感的字符串。</p>
 ]]></content>
       <categories>
@@ -352,7 +352,7 @@
   <entry>
     <title>记得旧事好</title>
     <url>/%E6%97%A7%E4%BA%8B%E5%A5%BD.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-38.png" alt="upload successful"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="/images/pasted-38.png" alt="upload successful"></p>
 <pre><code>                              《记得旧时好》（陈白沙）</code></pre>
 <p>记得旧时好，跟随爹爹去吃茶，门前磨螺壳，巷口弄泥沙，而今人长大，心事乱如麻；</p>
 <p>记得旧时遥，喜看阿婆纺线纱，瓦凹泡新茧，院内惹雏鸭，而今人长大，心绪淡若茶；</p>
@@ -393,19 +393,19 @@
 <p><code>crontab -uroot -l 0,30 8-20 * * * chmod 755 /var/opt/gl/bac.sh 1,31 8-20 * * * /var/opt/dl/bac.sh</code></p>
 <h5 id="解答："><a href="#解答：" class="headerlink" title="解答："></a>解答：</h5><p>系统类型是：Centos7 64位<br>版本号是：3.10.0-693.el7.x86_64<br>定时任务情况是：每天的8点到12点0分和30分改变/var/opt/gl/bac.sh的权限为755,1分和31分执行该文件。</p>
 <h5 id="2分别列出运行的网站服务类型，监听端口，网页文件所在位置，网站访问日志位置；（5分）"><a href="#2分别列出运行的网站服务类型，监听端口，网页文件所在位置，网站访问日志位置；（5分）" class="headerlink" title="2分别列出运行的网站服务类型，监听端口，网页文件所在位置，网站访问日志位置；（5分）"></a>2分别列出运行的网站服务类型，监听端口，网页文件所在位置，网站访问日志位置；（5分）</h5><p><code>netstat -antp netstat -ano</code></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-11.png" alt="upload successful"></p>
+<p><img src="/images/pasted-11.png" alt="upload successful"></p>
 <p>nginx的默认配置文件是：/etc/nginx/nginx.conf<br>nginx的默认子配置文件是：/etc/nginx/conf.d/*.conf</p>
-<h6 id="可以在默认配置文件中查看子配置文件的位置，可以在子配置文件中查看监听端口号、域名（服务名）、访问日志位置、网站根目录、网站首页文件"><a href="#可以在默认配置文件中查看子配置文件的位置，可以在子配置文件中查看监听端口号、域名（服务名）、访问日志位置、网站根目录、网站首页文件" class="headerlink" title="可以在默认配置文件中查看子配置文件的位置，可以在子配置文件中查看监听端口号、域名（服务名）、访问日志位置、网站根目录、网站首页文件"></a>可以在默认配置文件中查看子配置文件的位置，可以在子配置文件中查看<code>监听端口号、域名（服务名）、访问日志位置、网站根目录、网站首页文件</code></h6><p><code>less /etc/nginx/conf.d/*.conf</code><br><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-12.png" alt="upload successful"></p>
+<h6 id="可以在默认配置文件中查看子配置文件的位置，可以在子配置文件中查看监听端口号、域名（服务名）、访问日志位置、网站根目录、网站首页文件"><a href="#可以在默认配置文件中查看子配置文件的位置，可以在子配置文件中查看监听端口号、域名（服务名）、访问日志位置、网站根目录、网站首页文件" class="headerlink" title="可以在默认配置文件中查看子配置文件的位置，可以在子配置文件中查看监听端口号、域名（服务名）、访问日志位置、网站根目录、网站首页文件"></a>可以在默认配置文件中查看子配置文件的位置，可以在子配置文件中查看<code>监听端口号、域名（服务名）、访问日志位置、网站根目录、网站首页文件</code></h6><p><code>less /etc/nginx/conf.d/*.conf</code><br><img src="/images/pasted-12.png" alt="upload successful"></p>
 <p>然而实际上答案不是这个，因为：<br>1.当你访问/usr/share/nginx/之后发现，里面只有两个nginx的默认文件；<br>2.参考上面的crontab之后，会发现这个目录有古怪，进去发现是一个网站的根目录，自然让人生疑。<br>3.使用<code>ps -ef | grep nginx</code>查看nginx进程调用的文件时发现，nginx没有使用默认的配置文件，而是另外选了<code>/etc/nginx/nginx.conf</code></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-13.png" alt="upload successful"></p>
+<p><img src="/images/pasted-13.png" alt="upload successful"></p>
 <p>然后查看该配置文件，发现其中包含了另一个配置文件<code>/etc/nginx/conf.site.d/mm.conf</code></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-14.png" alt="upload successful"></p>
+<p><img src="/images/pasted-14.png" alt="upload successful"></p>
 <p>查看 mm.conf：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-15.png" alt="upload successful"></p>
+<p><img src="/images/pasted-15.png" alt="upload successful"></p>
 <p>其实这题也是做到后面第5题才发现的错误，大意疏忽了。</p>
 <h5 id="解答：-1"><a href="#解答：-1" class="headerlink" title="解答："></a>解答：</h5><p>网站服务类型是：nginx<br>监听端口是：80<br>网页文件所在位置是：/var/opt/gl/<br>网站访问日志：/var/log/nginx/access.log</p>
 <h5 id="3-分别列出网站服务器中运行什么数据库，数据库配置文件所在位置，监听端口，有哪些账号，密码分别是什么？（10分）"><a href="#3-分别列出网站服务器中运行什么数据库，数据库配置文件所在位置，监听端口，有哪些账号，密码分别是什么？（10分）" class="headerlink" title="3.分别列出网站服务器中运行什么数据库，数据库配置文件所在位置，监听端口，有哪些账号，密码分别是什么？（10分）"></a>3.分别列出网站服务器中运行什么数据库，数据库配置文件所在位置，监听端口，有哪些账号，密码分别是什么？（10分）</h5><p><code>netstat -antp</code>查看当前使用的端口情况。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-11.png" alt="upload successful"></p>
+<p><img src="/images/pasted-11.png" alt="upload successful"></p>
 <p><code>my.cnf</code>是mysql启动时加载的配置文件，一般会放在mysql的安装目录中，用户也可以放在其他目录加载。<br>运用 <code>find / -name my.cnf</code>可以列出所有的数据库配置文件。</p>
 <p>查看当前运行的mysql进程是否使用指定配置文件：<code>ps -aux | grep mysql</code>或者是<code>ps -ef | grep mysql 查看进程使用的文件</code></p>
 <p>如果没有设置使用指定目录的my.cnf，mysql启动时会读取安装目录根目录及默认目录下的my.cnf文件。<br>查看mysql默认读取my.cnf的目录：<code>mysql --help | grep &#39;my.cnf</code></p>
@@ -419,106 +419,106 @@
 <p>成功进入数据库后，直接输入</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">use</span> mysql;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">user</span>,host,<span class="keyword">password</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
 
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-16.png" alt="upload successful"></p>
+<p><img src="/images/pasted-16.png" alt="upload successful"></p>
 <p>C6B2B8EC628390A22B99AB0609E5E70A0F962E9F</p>
 <p>23AE809DDACAF96AF0FD78ED04B6A265E05AA257 </p>
 <p>使用MD5爆破得：<br>root：123<br>sae_user：ming</p>
 <h5 id="解答：-2"><a href="#解答：-2" class="headerlink" title="解答："></a>解答：</h5><p>网站服务器运行数据库：mysqld<br>数据库配置文件所在位置：/etc/my.cnf<br>监听端口：3306<br>账号和密码是：root : 123、sae_user : ming</p>
 <h5 id="4-尝试启动访问该网站并固定网站首页，简述该网站登录密码的获取方式。（10分）"><a href="#4-尝试启动访问该网站并固定网站首页，简述该网站登录密码的获取方式。（10分）" class="headerlink" title="4.尝试启动访问该网站并固定网站首页，简述该网站登录密码的获取方式。（10分）"></a>4.尝试启动访问该网站并固定网站首页，简述该网站登录密码的获取方式。（10分）</h5><p><code>ifconfig</code>查看Centos的IP地址为：192.168.213.136<br>由上可知：nginx的监听端口是80。<br>直接在宿主机浏览器输入：192.168.213.136:80<br>如下图：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-17.png" alt="upload successful"></p>
+<p><img src="/images/pasted-17.png" alt="upload successful"></p>
 <p>查询数据库mysite：<br>破解MD5值得到<code>admin：admin</code><br>尝试登陆：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-18.png" alt="upload successful"></p>
+<p><img src="/images/pasted-18.png" alt="upload successful"></p>
 <h5 id="解答：-3"><a href="#解答：-3" class="headerlink" title="解答："></a>解答：</h5><p>利用之前解密的root账户登录进数据库，在mysite库中获取admin密码为admin，登录成功。</p>
 <h5 id="5-嫌疑人使用的笔记本中，能够确认的与本次入侵相关的痕迹最早是在什么时间？（5分）"><a href="#5-嫌疑人使用的笔记本中，能够确认的与本次入侵相关的痕迹最早是在什么时间？（5分）" class="headerlink" title="5.嫌疑人使用的笔记本中，能够确认的与本次入侵相关的痕迹最早是在什么时间？（5分）"></a>5.嫌疑人使用的笔记本中，能够确认的与本次入侵相关的痕迹最早是在什么时间？（5分）</h5><p>使用取证大师：<br>其实也是可以尝试仿真，qemu格式转化，反正是备赛，权当复习一下。但是火眼仿真是真的香。</p>
 <p>恢复虚拟机快照，使用last 查看服务器最近登录记录，近期均为本机登录，使用lastb查看登录失败记录，未见异常。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-47.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-48.png" alt="upload successful"></p>
+<p><img src="/images/pasted-47.png" alt="upload successful"></p>
+<p><img src="/images/pasted-48.png" alt="upload successful"></p>
 <p>注意：是从嫌疑人的电脑中，实际上查看嫌疑人的电脑的浏览记录中可以翻到相关的写马记录：</p>
 <h5 id="解答：-4"><a href="#解答：-4" class="headerlink" title="解答："></a>解答：</h5><p>最早的时候是2018年1月4号15:37:21。</p>
 <h5 id="6-一个疑似被用于入侵的存储设备在现场没被找到，列出可能名称和序列号。（5分）"><a href="#6-一个疑似被用于入侵的存储设备在现场没被找到，列出可能名称和序列号。（5分）" class="headerlink" title="6.一个疑似被用于入侵的存储设备在现场没被找到，列出可能名称和序列号。（5分）"></a>6.一个疑似被用于入侵的存储设备在现场没被找到，列出可能名称和序列号。（5分）</h5><p>根据取证大师里的USB设备连接相关的记录可以发现：<br>该计算机曾经连接过两个可疑的USB大储量设备，结合陈某是6月24号左右离职的，所以，大概率是一个金士顿的USB移动存储设备。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-19.png" alt="upload successful"></p>
+<p><img src="/images/pasted-19.png" alt="upload successful"></p>
 <h5 id="解答：-5"><a href="#解答：-5" class="headerlink" title="解答："></a>解答：</h5><p>可能的设备名称和对应的序列号是<code>Kingston DataTraveler 2.0 USB Device</code>和<code>1ee045c2-784b-11e7-a2f6-000c29f17239</code></p>
 <h5 id="7．服务器中history命令没有响应，分析其可能原因并列出相关线索。（10分）"><a href="#7．服务器中history命令没有响应，分析其可能原因并列出相关线索。（10分）" class="headerlink" title="7．服务器中history命令没有响应，分析其可能原因并列出相关线索。（10分）"></a>7．服务器中history命令没有响应，分析其可能原因并列出相关线索。（10分）</h5><p>因为之前看到crontab中的命令，执行的命令中有一条是将history命令记录文件移动到<code>/var/opt/gl/save</code>下的隐藏文件<code>.his备份</code>中。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-20.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-35.png" alt="upload successful"></p>
+<p><img src="/images/pasted-20.png" alt="upload successful"></p>
+<p><img src="/images/pasted-35.png" alt="upload successful"></p>
 <p>注意到权限问题，这是值得思考</p>
 <p>查看备份文件：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-21.png" alt="upload successful"></p>
+<p><img src="/images/pasted-21.png" alt="upload successful"></p>
 <h5 id="解答：-6"><a href="#解答：-6" class="headerlink" title="解答："></a>解答：</h5><p>因为嫌疑人已经把历史命令备份到了相关的文件中，线索如上。</p>
 <h5 id="8-嫌疑人是否通过命令行方式管理过数据库？找到相关线索。（5分）"><a href="#8-嫌疑人是否通过命令行方式管理过数据库？找到相关线索。（5分）" class="headerlink" title="8.嫌疑人是否通过命令行方式管理过数据库？找到相关线索。（5分）"></a>8.嫌疑人是否通过命令行方式管理过数据库？找到相关线索。（5分）</h5><p>通过快照恢复之后，查询数据库是否启用mysql&gt;show variables like ‘log_bin’：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-37.png" alt="upload successful"><br>很好，没有开启。</p>
+<p><img src="/images/pasted-37.png" alt="upload successful"><br>很好，没有开启。</p>
 <p>查看数据库配置文件：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-36.png" alt="upload successful"></p>
+<p><img src="/images/pasted-36.png" alt="upload successful"></p>
 <p>查看导出的honglian.log可以看到：从数据库密码于一些基本路径等推断为服务器被转移的历史命令记录，并发现曾导出数据库数据至/mysite.sql，并且嫌疑人曾以命令行管理过数据库。</p>
 <p>另外：Honglian.log修改时间为6月24日12:57分，推测转移时间为中午。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-44.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-40.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-41.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-43.png" alt="upload successful"></p>
+<p><img src="/images/pasted-44.png" alt="upload successful"></p>
+<p><img src="/images/pasted-40.png" alt="upload successful"></p>
+<p><img src="/images/pasted-41.png" alt="upload successful"></p>
+<p><img src="/images/pasted-43.png" alt="upload successful"></p>
 <h5 id="解答：-7"><a href="#解答：-7" class="headerlink" title="解答："></a>解答：</h5><p>嫌疑人曾经使用过命令行的方式管理过数据库。</p>
 <h5 id="9-分析E盘中文件的可能来源，并计算其md5值。（10分）"><a href="#9-分析E盘中文件的可能来源，并计算其md5值。（10分）" class="headerlink" title="9.分析E盘中文件的可能来源，并计算其md5值。（10分）"></a>9.分析E盘中文件的可能来源，并计算其md5值。（10分）</h5><p>首先发现了E盘是bitlocker加密的，通过搜寻的秘钥直接可以解密，解密之后，挂载，发现只有一个文件夹，里面内容有两个。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-22.png" alt="upload successful"></p>
+<p><img src="/images/pasted-22.png" alt="upload successful"></p>
 <p>其中，MD5值为：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-23.png" alt="upload successful"></p>
+<p><img src="/images/pasted-23.png" alt="upload successful"></p>
 <p>查看服务器根目录下的mysite.sql,计算md5哈希值，与嫌疑人笔记本电脑中的mysite.sql一致，遂确认嫌疑人笔记本电脑中的mysite.sql来源为服务器。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-50.png" alt="upload successful"></p>
+<p><img src="/images/pasted-50.png" alt="upload successful"></p>
 <h5 id="解答：-8"><a href="#解答：-8" class="headerlink" title="解答："></a>解答：</h5><p>mysite.sql：DC6DC637E56EAF805636467A777D4632<br>hongliang.log：A7CD80DFFD896085F4BE9FA104710981</p>
 <p>mysite.sql虽然在站点文件夹中发现该文件，但是从站点文件夹中拷贝的详细过程有待深究。<br>hongliang可以从上一题中的备份history文件中得到来源线索，是从移动设备中拷出来的。</p>
 <p>尝试利用<code>NTFS log tracker</code>查看该磁盘操作日志，但是没有在<code>$extend</code>下找到<code>$J</code>，作罢。<br>附上<code>NTFS log tracker</code>的使用指导：</p>
 <p><a href="http://forensicinsight.org/wp-content/uploads/2013/06/F-INSIGHT-NTFS-Log-TrackerEnglish.pdf">http://forensicinsight.org/wp-content/uploads/2013/06/F-INSIGHT-NTFS-Log-TrackerEnglish.pdf</a></p>
 <h5 id="10-服务器中存在哪些恶意程序，分别是如何上传至服务器的。-（15分）"><a href="#10-服务器中存在哪些恶意程序，分别是如何上传至服务器的。-（15分）" class="headerlink" title="10.服务器中存在哪些恶意程序，分别是如何上传至服务器的。 （15分）"></a>10.服务器中存在哪些恶意程序，分别是如何上传至服务器的。 （15分）</h5><p>在站点文件夹中，有两个可执行文件十分显眼：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-24.png" alt="upload successful"></p>
+<p><img src="/images/pasted-24.png" alt="upload successful"></p>
 <p>一个是陈某留下的备份sh脚本；另一个查看可以发现在头部多了一个php语句：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-25.png" alt="upload successful"><br>遂怀疑是拼接一句话木马，发现nginx的访问日志<code>/var/log/nginx/access.log</code>被清空了。</p>
+<p><img src="/images/pasted-25.png" alt="upload successful"><br>遂怀疑是拼接一句话木马，发现nginx的访问日志<code>/var/log/nginx/access.log</code>被清空了。</p>
 <p>对虚拟机快照恢复，再次访问该日志文件：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-28.png" alt="upload successful"></p>
+<p><img src="/images/pasted-28.png" alt="upload successful"></p>
 <p>对<code>footer.php</code>查询：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-29.png" alt="upload successful"></p>
+<p><img src="/images/pasted-29.png" alt="upload successful"></p>
 <p>对第一条命令中的参数base64解密：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-32.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-33.png" alt="upload successful"></p>
+<p><img src="/images/pasted-32.png" alt="upload successful"></p>
+<p><img src="/images/pasted-33.png" alt="upload successful"></p>
 <p>很明显，写入一句话木马到c.php。</p>
 <p>对第三条语句中的参数base64解密：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-34.png" alt="upload successful"></p>
+<p><img src="/images/pasted-34.png" alt="upload successful"></p>
 <p>在hlj.php中写入一句话木马。</p>
 <p>第五题的答案迎刃而解。</p>
 <p>对<code>heb.php</code>查询：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-30.png" alt="upload successful"></p>
+<p><img src="/images/pasted-30.png" alt="upload successful"></p>
 <p>发现对数据库中的特定库中的特定表select出来了。</p>
 <p>另外，对网站进行复现还原，也可以直接定位<code>heb.php</code>的详细作用—-用于数据库的增删改查。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-54.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-66.png" alt="upload successful"></p>
+<p><img src="/images/pasted-54.png" alt="upload successful"></p>
+<p><img src="/images/pasted-66.png" alt="upload successful"></p>
 <p>在嫌疑人xise菜刀同目录下发现heb.php,校验md5哈希值与服务器上脚本一致，推断通过xise菜刀软件上传。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-56.png" alt="upload successful"></p>
+<p><img src="/images/pasted-56.png" alt="upload successful"></p>
 <p>同样值得注意的是：<code>footer.php</code>是命令执行文件，根据web access日志和服务器历史命令日志和文件拥有者是root这三点可以推断是陈某运维时利用root账户上传的，一直存在于服务器上。而恶意脚本<code>hlj.php</code>就是利用<code>footer.php</code>生成的。</p>
 <p>在取证大师中，对C盘进行卷影分析，恢复出了4个C盘记录，在当前和分析的桌面目录下找到了相关的文件：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-27.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-26.png" alt="upload successful"></p>
+<p><img src="/images/pasted-27.png" alt="upload successful"></p>
+<p><img src="/images/pasted-26.png" alt="upload successful"></p>
 <p>XISE菜刀是webshell管理工具,jsc.mdb是菜刀的access数据库文件；heb.php是管理数据库的php文件。</p>
 <p>对xise菜刀的还原：<br>发现嫌疑人存在对192.168.50.134的webshell hlj.php的连接记录：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-59.png" alt="upload successful"></p>
+<p><img src="/images/pasted-59.png" alt="upload successful"></p>
 <p>SAMInside是提权工具。可以通过此工具得到登录用户的NTLM哈希值，随后爆破可得密码。</p>
 <p>注意：实际上可以直接使用D盾对整个网站的源码进行扫描，可以很清楚看见恶意文件为footer.php和hlj.php：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-60.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-61.png" alt="upload successful"></p>
+<p><img src="/images/pasted-60.png" alt="upload successful"></p>
+<p><img src="/images/pasted-61.png" alt="upload successful"></p>
 <h5 id="解答：-9"><a href="#解答：-9" class="headerlink" title="解答："></a>解答：</h5><p>恶意文件有：</p>
 <p>hlj.php：通过footer.php写入，一句话木马。</p>
 <p>c.php：通过footer.php写入，一句话木马。</p>
 <p>heb.php：数据库管理脚本，推测为嫌疑人使用xise菜刀连接hlj.php上传。</p>
 <p>footer.php：命令执行，因为文件拥有者是root，怀疑是陈某运维时利用root账户上传的。</p>
-<h5 id="11-嫌疑人是否通过恶意程序从服务器端获取了数据库中的数据，固定相关线索。（10分）"><a href="#11-嫌疑人是否通过恶意程序从服务器端获取了数据库中的数据，固定相关线索。（10分）" class="headerlink" title="11.嫌疑人是否通过恶意程序从服务器端获取了数据库中的数据，固定相关线索。（10分）"></a>11.嫌疑人是否通过恶意程序从服务器端获取了数据库中的数据，固定相关线索。（10分）</h5><p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-31.png" alt="upload successful"></p>
+<h5 id="11-嫌疑人是否通过恶意程序从服务器端获取了数据库中的数据，固定相关线索。（10分）"><a href="#11-嫌疑人是否通过恶意程序从服务器端获取了数据库中的数据，固定相关线索。（10分）" class="headerlink" title="11.嫌疑人是否通过恶意程序从服务器端获取了数据库中的数据，固定相关线索。（10分）"></a>11.嫌疑人是否通过恶意程序从服务器端获取了数据库中的数据，固定相关线索。（10分）</h5><p><img src="/images/pasted-31.png" alt="upload successful"></p>
 <p>根据access.log可以清楚地得到，陈某利用heb.php文件对网站数据库中数据进行获取。</p>
 <p>查看access文件，发现存在大量192.168.50.133连接hlh.php记录，且UA信息与其他访问不同，推断为xise菜刀连接记录，根据mysite.sql文件创建时间推断嫌疑人与15:53分使用xise菜刀获取数据库数据文件。在17:45分出现连接heb.php记录。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-52.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-53.png" alt="upload successful"></p>
+<p><img src="/images/pasted-52.png" alt="upload successful"></p>
+<p><img src="/images/pasted-53.png" alt="upload successful"></p>
 <h5 id="解答：-10"><a href="#解答：-10" class="headerlink" title="解答："></a>解答：</h5><p>是，嫌疑人通过heb.php获取了数据库中的mysite库中的contract表的数据。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-31.png" alt="upload successful"></p>
+<p><img src="/images/pasted-31.png" alt="upload successful"></p>
 <h5 id="12-嫌疑人本次删除了多少条数据库记录，可能是什么时间，通过何种方式删除的。（10分）"><a href="#12-嫌疑人本次删除了多少条数据库记录，可能是什么时间，通过何种方式删除的。（10分）" class="headerlink" title="12.嫌疑人本次删除了多少条数据库记录，可能是什么时间，通过何种方式删除的。（10分）"></a>12.嫌疑人本次删除了多少条数据库记录，可能是什么时间，通过何种方式删除的。（10分）</h5><p>利用嫌疑人电脑里面的<code>mysite.sql</code>还原出数据库书籍文件，对比现有数据库文件中的数据，可以发现表contract中数据缺失49条。</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-39.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-62.png" alt="upload successful"></p>
+<p><img src="/images/pasted-39.png" alt="upload successful"></p>
+<p><img src="/images/pasted-62.png" alt="upload successful"></p>
 <p>并且分析嫌疑人的浏览器记录，发现url记录与服务器access.log对应：</p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-63.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-64.png" alt="upload successful"></p>
+<p><img src="/images/pasted-63.png" alt="upload successful"></p>
+<p><img src="/images/pasted-64.png" alt="upload successful"></p>
 <p>嫌疑人在6月24日17:45左右连接heb.php对表contratc进行操作。推断使用heb.php删除数据。</p>
 <h5 id="解答：-11"><a href="#解答：-11" class="headerlink" title="解答："></a>解答：</h5><p>删除了49条数据，可能时间是6月24日17:45左右，通过heb.php脚本的方式管理数据。</p>
 <h3 id="案件时间线："><a href="#案件时间线：" class="headerlink" title="案件时间线："></a>案件时间线：</h3><h5 id="2018年6月24日中午"><a href="#2018年6月24日中午" class="headerlink" title="2018年6月24日中午"></a>2018年6月24日中午</h5><p>嫌疑人使用服务器连接个人usb存储设备将.bash_history文件转移至存储设备并保存为honglian.log，并将footer.php木马文件上传至服务器web目录。Honglian.log最后被转移到嫌疑人笔记本加密盘E盘中</p>
@@ -923,8 +923,8 @@ exploit()</code></pre>
   <entry>
     <title>pwnable系列-fd</title>
     <url>/pwnable%E7%B3%BB%E5%88%97-fd.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-1.png" alt="upload successful"></p>
-<p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-2.png" alt="upload successful"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p><img src="/images/pasted-1.png" alt="upload successful"></p>
+<p><img src="/images/pasted-2.png" alt="upload successful"></p>
 <h3 id="到位。直接读源码就可以了。"><a href="#到位。直接读源码就可以了。" class="headerlink" title="到位。直接读源码就可以了。"></a>到位。直接读源码就可以了。</h3><pre><code>    #include &lt;stdio.h&gt;
     #include &lt;stdlib.h&gt;
     #include &lt;string.h&gt;
@@ -968,8 +968,8 @@ exploit()</code></pre>
 <h4 id="read-函数"><a href="#read-函数" class="headerlink" title="read()函数"></a>read()函数</h4><p><code>ssize_t read(int fd, void * buf, size_t count);</code>  </p>
 <p>函数说明：read()会把参数fd所指的文件传送count 个字节到buf 指针所指的内存中。</p>
 <p>返回值：返回值为实际读取到的字节数, 如果返回0, 表示已到达文件尾或是无可读取的数据。若参数count 为0, 则read()不会有作用并返回0。</p>
-<h6 id="注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。"><a href="#注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。" class="headerlink" title="注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。"></a>注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。</h6><h4 id="解读："><a href="#解读：" class="headerlink" title="解读："></a>解读：</h4><h5 id="1-读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN-n”的文件就可以实现了。但是好像比较麻烦。"><a href="#1-读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN-n”的文件就可以实现了。但是好像比较麻烦。" class="headerlink" title="1.读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN\n”的文件就可以实现了。但是好像比较麻烦。"></a>1.读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN\n”的文件就可以实现了。但是好像比较麻烦。</h5><h5 id="2-题目提示：文件描述符（file-description）"><a href="#2-题目提示：文件描述符（file-description）" class="headerlink" title="2.题目提示：文件描述符（file description）"></a>2.题目提示：文件描述符（file description）</h5><h5 id="关于文件描述符："><a href="#关于文件描述符：" class="headerlink" title="关于文件描述符："></a>关于文件描述符：</h5><p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-3.png" alt="upload successful"></p>
-<h5 id="fd-0时直接就是standard-input，美滋滋。"><a href="#fd-0时直接就是standard-input，美滋滋。" class="headerlink" title="fd=0时直接就是standard input，美滋滋。"></a>fd=0时直接就是standard input，美滋滋。</h5><h5 id="直接就是int-fd-atoi-argv-1-0x1234的值为0，然后带一个参数即可。"><a href="#直接就是int-fd-atoi-argv-1-0x1234的值为0，然后带一个参数即可。" class="headerlink" title="直接就是int fd = atoi( argv[1] ) - 0x1234的值为0，然后带一个参数即可。"></a>直接就是<code>int fd = atoi( argv[1] ) - 0x1234</code>的值为0，然后带一个参数即可。</h5><h5 id="另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi-函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。"><a href="#另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi-函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。" class="headerlink" title="另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi()函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。"></a>另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi()函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。</h5><p><img src="//myblog-1258055330.file.myqcloud.com/images/pasted-4.png" alt="upload successful"></p>
+<h6 id="注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。"><a href="#注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。" class="headerlink" title="注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。"></a>注意：read时fd中的数据如果小于要读取的数据，就会引起阻塞。</h6><h4 id="解读："><a href="#解读：" class="headerlink" title="解读："></a>解读：</h4><h5 id="1-读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN-n”的文件就可以实现了。但是好像比较麻烦。"><a href="#1-读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN-n”的文件就可以实现了。但是好像比较麻烦。" class="headerlink" title="1.读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN\n”的文件就可以实现了。但是好像比较麻烦。"></a>1.读取fd所指的文件，并把其中一定量的字符（这里是32个）放到buf中。只要构造出内容为“LETMEWIN\n”的文件就可以实现了。但是好像比较麻烦。</h5><h5 id="2-题目提示：文件描述符（file-description）"><a href="#2-题目提示：文件描述符（file-description）" class="headerlink" title="2.题目提示：文件描述符（file description）"></a>2.题目提示：文件描述符（file description）</h5><h5 id="关于文件描述符："><a href="#关于文件描述符：" class="headerlink" title="关于文件描述符："></a>关于文件描述符：</h5><p><img src="/images/pasted-3.png" alt="upload successful"></p>
+<h5 id="fd-0时直接就是standard-input，美滋滋。"><a href="#fd-0时直接就是standard-input，美滋滋。" class="headerlink" title="fd=0时直接就是standard input，美滋滋。"></a>fd=0时直接就是standard input，美滋滋。</h5><h5 id="直接就是int-fd-atoi-argv-1-0x1234的值为0，然后带一个参数即可。"><a href="#直接就是int-fd-atoi-argv-1-0x1234的值为0，然后带一个参数即可。" class="headerlink" title="直接就是int fd = atoi( argv[1] ) - 0x1234的值为0，然后带一个参数即可。"></a>直接就是<code>int fd = atoi( argv[1] ) - 0x1234</code>的值为0，然后带一个参数即可。</h5><h5 id="另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi-函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。"><a href="#另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi-函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。" class="headerlink" title="另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi()函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。"></a>另外，注意：0x1234为16进制数，如果我们在参数输入时输入0x1234，atoi()函数会将0x1234中的x转为整型数字，因此数值会发生变化，此时应该使用进制转换将0x1234转换为十进制的4660再输入“LETMEWIN”即可获得flag。</h5><p><img src="/images/pasted-4.png" alt="upload successful"></p>
 <h4 id="flag-mommy-I-think-I-know-what-a-file-descriptor-is"><a href="#flag-mommy-I-think-I-know-what-a-file-descriptor-is" class="headerlink" title="flag:mommy! I think I know what a file descriptor is!!"></a>flag:<code>mommy! I think I know what a file descriptor is!!</code></h4>]]></content>
       <categories>
         <category>学习</category>
