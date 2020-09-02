@@ -6,7 +6,7 @@
   <link href="https://7h4mid4.cn/atom.xml" rel="self"/>
   
   <link href="https://7h4mid4.cn/"/>
-  <updated>2020-09-01T02:22:12.434Z</updated>
+  <updated>2020-09-02T00:24:27.138Z</updated>
   <id>https://7h4mid4.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git学习小记</title>
+    <link href="https://7h4mid4.cn/Git%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0.html"/>
+    <id>https://7h4mid4.cn/Git%E5%AD%A6%E4%B9%A0%E5%B0%8F%E8%AE%B0.html</id>
+    <published>2020-09-02T00:18:23.000Z</published>
+    <updated>2020-09-02T00:24:27.138Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://7h4mid4.cn/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Git" scheme="https://7h4mid4.cn/categories/%E5%AD%A6%E4%B9%A0/Git/"/>
+    
+    
+    <category term="Git" scheme="https://7h4mid4.cn/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>Xpath爬虫入门笔记</title>
